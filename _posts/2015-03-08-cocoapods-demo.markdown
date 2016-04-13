@@ -1,5 +1,10 @@
-
-
+---
+layout: post
+title:  CocoaPods安装使用心得
+date:   2015-03-08 22:21:49
+categories: 熟能生巧
+tags: CocoaPods
+---
 <h1>CocoaPods安装使用心得，分享给墙内的朋友们</h1>
 
 
