@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Swift变量</title>
+  <meta name="description" content="Swift 变量">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift变量">
+  <meta name="twitter:description" content="Swift 变量">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift变量">
+  <meta property="og:description" content="Swift 变量">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://liuchuanweb.com/2015/03/swift-variable/">
+  <link rel="alternate" type="application/rss+xml" title="Hacker's Liu" href="http://liuchuanweb.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Hacker's Liu 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Hacker's Liu logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Hacker's Liu" class="blog-button">Hacker's Liu</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">人格的完善是本，财富的确立是末</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。<p>正在修行，探求创意之源。</p>There is no perfect system , only undiscovered vulnerabilities!.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">突破电脑特权，创造艺术之美!.</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
+                
+                  <li class="navigation__item"><a href="http://chinahackers.github.io/" target="_blank" title="My Projects">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/LiuChuan77" title="@LiuChuan77 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/ChinaHackers" title="@ChinaHackers 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/LiuChuan_" title="@LiuChuan_" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:93428739@qq.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-black"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2015-03-09 06:21:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
+    </div>
+    <h1 class="post-title">Swift变量</h1>
+  </header>
+
+  <section class="post">
+    <h2>Swift 变量</h2>
+
+<p>变量是一种使用方便的占位符，用于引用计算机内存地址。
+Swift 每个变量都指定了特定的类型，该类型决定了变量占用内存的大小，不同的数据类型也决定可存储值的范围。
+上一章节我们已经为大家介绍了基本的数据类型，包括整形Int、浮点数Double和Float、布尔类型Bool以及字符串类型String。此外，Swift还提供了其他更强大数据类型， Optional, Array, Dictionary, Struct, 和 Class 等。</p>
+
+<p>接下来我们将为大家介绍如何在 Swift 程序中声明和使用变量。
+<h3>变量声明</h3></p>
+
+<p>变量声明意思是告诉编译器在内存中的哪个位置上为变量创建多大的存储空间。
+在使用变量前，你需要使用 <b>var</b> 关键字声明它，如下所示：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">var variableName = &lt;initial value&gt;</code></pre></figure>
+
+<p><b>以下是一个 Swift 程序中变量声明的简单实例：</b></p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">import Cocoa
+var varA = 42
+print(varA)
+
+var varB:Float
+varB = 3.14159
+print(varB)</code></pre></figure>
+
+<p>以上程序执行结果为：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">42
+3.14159</code></pre></figure>
+
+<h3>变量命名</h3>
+
+<p>变量名可以由字母，数字和下划线组成。
+变量名需要以字母或下划线开始。
+Swift 是一个区分大小写的语言，所以字母大写与小写是不一样的。
+变量名也可以使用简单的 Unicode 字符，如下实例：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">import Cocoa
+
+var _var = &quot;Hello, Swift!&quot;
+print(_var)
+
+var 你好 = &quot;你好世界&quot;
+var 菜鸟教程 = &quot;www.runoob.com&quot;
+print(你好)
+print(菜鸟教程)</code></pre></figure>
+
+<p>以上程序执行结果为：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">Hello, Swift!
+你好世界
+www.runoob.com</code></pre></figure>
+
+<h3>变量输出</h3>
+
+<p>变量和常量可以使用<b> print</b>（swift 2 将 print 替换了 println） 函数来输出。
+在字符串中可以使用括号与反斜线来插入变量，如下实例：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">import Cocoa
+var name = &quot;菜鸟教程&quot;
+var site = &quot;http://www.runoob.com&quot;
+
+print(&quot;\(name)的官网地址为：\(site)&quot;)</code></pre></figure>
+
+<p>以上程序执行结果为：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">菜鸟教程的官网地址为：http://www.runoob.com</code></pre></figure>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/welcome-to-swift/" title="link to Swift简介">Swift简介</a></h2>
+       <p class="excerpt">Swift 简介Swift 是一种支持多编程范式和编译式的开源编程语言,苹果于2014年WWDC（苹果开发者大会）发布，用于开发 iOS，OS X 和 watchOS应用程序。Swift 结合了 C 和 Objective-C 的优点并且不受 C 兼容性的限制。Swift在 Mac OS 和 iOS 平台可以和Object-C使用相同的运行环境。这意味着Swift 程序可以运行于目前已存在的平台之上，包含 iOS 6 和 OS X 10.8 都可以运行Swift的程序。更重要的, Swif...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/welcome-to-swift/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/swift-data-type/" title="link to Swift数据类型">Swift数据类型</a></h2>
+       <p class="excerpt">Swift 数据类型在我们使用任何程序语言编程时，需要使用各种数据类似来存储不同的信息。变量的数据类型决定了如何将代表这些值的位存储到计算机的内存中。在声明变量时也可指定它的数据类型。所有变量都具有数据类型，以决定能够存储哪种数据。内置数据类型Swift 提供了非常丰富的数据类型，以下列出了常用了集中数据类型：Int一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：*在32位平台上，Int和Int32长度相同。*在64位平台上，...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-data-type/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://liuchuanweb.com/2015/03/swift-variable/";
+        this.page.identifier = "/2015/03/swift-variable/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-05-02 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

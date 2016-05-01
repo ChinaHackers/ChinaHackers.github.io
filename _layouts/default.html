@@ -1,32 +1,26 @@
----
-layout: compress
----
 <!DOCTYPE html>
 <html>
+
   {% include head.html %}
+
   <body>
-    {% include sidebar.html %}
 
-    <main id="main">
-      {{ content }}
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    {% include side-panel.html %}
 
-      <div class="footer">
-        <div class="container">
-          <p class="footer-entry">'hi 嗨，我是柳川 (@LiuChuan)，一名来自中国的 iOS / Unity 开发者。
-
-  正在修行，探求创意之源。
-
-  <p>There is no perfect system , only undiscovered vulnerabilities !</p>'
-
-</p>
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            {{ content }}
+            {% include footer.html %}
         </div>
-      </div>
-    </main>
-
-    <button id="menu">
-      <span id="menu-icons"></span>
-    </button>
-
-    {% include scripts.html %}
+    </div>
+    
+    {% include external.html %}
+    
   </body>
+
 </html>

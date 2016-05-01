@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hacker&#39;s Liu</title>
+    <description>hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。&lt;p&gt;正在修行，探求创意之源。&lt;/p&gt;There is no perfect system , only undiscovered vulnerabilities!.</description>
+    <link>http://liuchuanweb.com/</link>
+    <atom:link href="http://liuchuanweb.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 02 May 2016 01:21:09 +0800</pubDate>
+    <lastBuildDate>Mon, 02 May 2016 01:21:09 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Hello World - Vno</title>
+        <description>&lt;h4&gt;What&amp;#39;s this&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/onevcat/vno-jekyll&quot;&gt;Vno Jekyll&lt;/a&gt; is a theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;. It is a port of my Ghost theme &lt;a href=&quot;https://github.com/onevcat/vno&quot;&gt;vno&lt;/a&gt;, which is originally developed from &lt;a href=&quot;https://github.com/daleanthony/uno&quot;&gt;Dale Anthony&amp;#39;s Uno&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Usage&lt;/h4&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ git clone https://github.com/onevcat/vno-jekyll.git your_site
+$ cd your_site
+$ bundler install
+$ bundler exec jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;Your site with &lt;code&gt;Vno Jekyll&lt;/code&gt; enabled should be accessible in &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;http://127.0.0.1:4000&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For more information about Jekyll, please visit &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&amp;#39;s site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Configuration&lt;/h4&gt;
+
+&lt;p&gt;All configuration could be done in &lt;code&gt;_config.yml&lt;/code&gt;. Remember you need to restart to serve the page when after changing the config file. Everything in the config file should be self-explanatory.&lt;/p&gt;
+
+&lt;h4&gt;Background image and avatar&lt;/h4&gt;
+
+&lt;p&gt;You could replace the background and avatar image in &lt;code&gt;assets/images&lt;/code&gt; folder to change them.&lt;/p&gt;
+
+&lt;h4&gt;Sites using Vno&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://onevcat.com&quot;&gt;My blog&lt;/a&gt; is using &lt;code&gt;Vno Jekyll&lt;/code&gt; as well, you could see how it works in real. There are some other sites using the same theme. You can find them below:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Site Name&lt;/th&gt;
+&lt;th&gt;URL&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;OneV&amp;#39;s Den&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;http://onevcat.com&quot;&gt;http://onevcat.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If you happen to be using this theme, welcome to &lt;a href=&quot;https://github.com/onevcat/vno-jekyll/pulls&quot;&gt;send me a pull request&lt;/a&gt; to add your site link here. :)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4&gt;License&lt;/h4&gt;
+
+&lt;p&gt;Great thanks to &lt;a href=&quot;https://github.com/daleanthony&quot;&gt;Dale Anthony&lt;/a&gt; and his &lt;a href=&quot;https://github.com/daleanthony/uno&quot;&gt;Uno&lt;/a&gt;. Vno Jekyll is based on Uno, and contains a lot of modification on page layout, animation, font and some more things I can not remember. Vno Jekyll is followed with Uno and be licensed as &lt;a href=&quot;http://creativecommons.org/licenses/by/4.0/&quot;&gt;Creative Commons Attribution 4.0 International&lt;/a&gt;. See the link for more information.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Feb 2016 14:32:24 +0800</pubDate>
+        <link>http://liuchuanweb.com/2016/02/hello-world-vno/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2016/02/hello-world-vno/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Sample Post</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;def print_hi(name)
+  puts &amp;quot;Hi, #{name}&amp;quot;
+end
+print_hi(&amp;#39;Tom&amp;#39;)
+#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 15 Feb 2016 14:32:24 +0800</pubDate>
+        <link>http://liuchuanweb.com/2016/02/sample-post/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2016/02/sample-post/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve --watch&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;def print_hi(name)
+  puts &amp;quot;Hi, #{name}&amp;quot;
+end
+print_hi(&amp;#39;Tom&amp;#39;)
+#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.
+&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 08 Jan 2016 23:04:23 +0800</pubDate>
+        <link>http://liuchuanweb.com/2016/01/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2016/01/welcome-to-jekyll/</guid>
+        
+        <category>jekyll</category>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Swift简介</title>
+        <description>&lt;h2&gt;Swift 简介&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img0.imgtn.bdimg.com/it/u=165303722,1948513648&amp;amp;fm=21&amp;amp;gp=0.jpg&quot; alt=&quot;128x128&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;Swift 是一种支持多编程范式和编译式的开源编程语言,苹果于2014年WWDC（苹果开发者大会）发布，用于开发 iOS，OS X 和 watchOS应用程序。
+Swift 结合了 C 和 Objective-C 的优点并且不受 C 兼容性的限制。&lt;i&gt;&lt;/p&gt;
+
+&lt;p&gt;Swift在 Mac OS 和 iOS 平台可以和Object-C使用相同的运行环境。这意味着Swift 程序可以运行于目前已存在的平台之上，包含 iOS 6 和 OS X 10.8 都可以运行Swift的程序。
+更重要的, Swift 和 Obj-C 的代码可并存于单一程序内, 这种延伸就如同 C 和 C++ 的关系一样。
+2015年6月8日，苹果于WWDC 2015上宣布，Swift将开放源代码，包括编译器和标准库。&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;谁适合阅读本教程?&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;本教程适合想从事移动端(iphone)开发或 OS X 应用的编程人员，如果之前有编程基础更好。
+本教程所有实例基于 Xcode7.1（Swift 2.x 的语法格式） 开发测试。&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;第一个 Swift 程序&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;第一个 Swift 程序当然从输出 &amp;quot;Hello, World!&amp;quot; 开始，
+代码如下所示：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;/* 我的第一个 Swift 程序 */            
+var myString = &amp;quot;Hello, World!&amp;quot;    
+print(myString)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/welcome-to-swift/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/welcome-to-swift/</guid>
+        
+        <category>Swift</category>
+        
+        
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>Swift变量</title>
+        <description>&lt;h2&gt;Swift 变量&lt;/h2&gt;
+
+&lt;p&gt;变量是一种使用方便的占位符，用于引用计算机内存地址。
+Swift 每个变量都指定了特定的类型，该类型决定了变量占用内存的大小，不同的数据类型也决定可存储值的范围。
+上一章节我们已经为大家介绍了基本的数据类型，包括整形Int、浮点数Double和Float、布尔类型Bool以及字符串类型String。此外，Swift还提供了其他更强大数据类型， Optional, Array, Dictionary, Struct, 和 Class 等。&lt;/p&gt;
+
+&lt;p&gt;接下来我们将为大家介绍如何在 Swift 程序中声明和使用变量。
+&lt;h3&gt;变量声明&lt;/h3&gt;&lt;/p&gt;
+
+&lt;p&gt;变量声明意思是告诉编译器在内存中的哪个位置上为变量创建多大的存储空间。
+在使用变量前，你需要使用 &lt;b&gt;var&lt;/b&gt; 关键字声明它，如下所示：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;var variableName = &amp;lt;initial value&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;b&gt;以下是一个 Swift 程序中变量声明的简单实例：&lt;/b&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
+var varA = 42
+print(varA)
+
+var varB:Float
+varB = 3.14159
+print(varB)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;42
+3.14159&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3&gt;变量命名&lt;/h3&gt;
+
+&lt;p&gt;变量名可以由字母，数字和下划线组成。
+变量名需要以字母或下划线开始。
+Swift 是一个区分大小写的语言，所以字母大写与小写是不一样的。
+变量名也可以使用简单的 Unicode 字符，如下实例：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
+
+var _var = &amp;quot;Hello, Swift!&amp;quot;
+print(_var)
+
+var 你好 = &amp;quot;你好世界&amp;quot;
+var 菜鸟教程 = &amp;quot;www.runoob.com&amp;quot;
+print(你好)
+print(菜鸟教程)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;Hello, Swift!
+你好世界
+www.runoob.com&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3&gt;变量输出&lt;/h3&gt;
+
+&lt;p&gt;变量和常量可以使用&lt;b&gt; print&lt;/b&gt;（swift 2 将 print 替换了 println） 函数来输出。
+在字符串中可以使用括号与反斜线来插入变量，如下实例：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
+var name = &amp;quot;菜鸟教程&amp;quot;
+var site = &amp;quot;http://www.runoob.com&amp;quot;
+
+print(&amp;quot;\(name)的官网地址为：\(site)&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;菜鸟教程的官网地址为：http://www.runoob.com&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/swift-variable/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/swift-variable/</guid>
+        
+        <category>Swift</category>
+        
+        
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>Swift数据类型</title>
+        <description>&lt;h2&gt;Swift 数据类型&lt;/h2&gt;
+
+&lt;p&gt;在我们使用任何程序语言编程时，需要使用各种数据类似来存储不同的信息。
+变量的数据类型决定了如何将代表这些值的位存储到计算机的内存中。在声明变量时也可指定它的数据类型。
+所有变量都具有数据类型，以决定能够存储哪种数据。&lt;/p&gt;
+
+&lt;h3&gt;内置数据类型&lt;/h3&gt;
+
+&lt;p&gt;Swift 提供了非常丰富的数据类型，以下列出了常用了集中数据类型：&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Int&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：
+&lt;p&gt;*在32位平台上，Int和Int32长度相同。&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;*在64位平台上，Int和Int64长度相同。&lt;/p&gt;
+
+&lt;p&gt;除非你需要特定长度的整数，一般来说使用Int就够了。这可以提高代码一致性和可复用性。即使是在32位平台上，Int可以存储的整数范围也可以达到-2,147,483,648~2,147,483,647，大多数时候这已经足够大了。&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;UInt&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;Swift 也提供了一个特殊的无符号类型UInt，长度与当前平台的原生字长相同：
+&lt;p&gt;
+*在32位平台上，UInt和UInt32长度相同。&lt;/p&gt;
+
+&lt;p&gt;*在64位平台上，UInt和UInt64长度相同。
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;lt;b&amp;gt;注意：&amp;lt;/b&amp;gt;
+尽量不要使用UInt，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。除了这种情况，最好使用Int，即使你要存储的值已知是非负的。统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断，请参考&amp;lt;u&amp;gt;类型安全和类型推断。&amp;lt;/u&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3&gt;浮点数&lt;/h3&gt;
+
+&lt;p&gt;浮点数是有小数部分的数字，比如3.14159，0.1和-273.15。
+浮点类型比整数类型表示的范围更大，可以存储比Int类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：
+&lt;p&gt;
+Double表示64位浮点数。当你需要存储很大或者很高精度的浮点数时请使用此类型。&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;Float表示32位浮点数。精度要求不高的话可以使用此类型。&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;注意：&lt;/b&gt;
+Double精确度很高，至少有15位数字，而Float最少只有6位数字。选择哪个类型取决于你的代码需要处理的值的范围。&lt;/p&gt;
+
+&lt;h3&gt;布尔值&lt;/h3&gt;
+
+&lt;p&gt;Swift 有一个基本的布尔（Boolean）类型，叫做Bool。布尔值指逻辑上的值，因为它们只能是真或者假。Swift 有两个布尔常量，true和false。&lt;/p&gt;
+
+&lt;h3&gt;字符串&lt;/h3&gt;
+
+&lt;p&gt;字符串是字符的序列集合，例如：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;quot;Hello, World!&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3&gt;字符&lt;/h3&gt;
+
+&lt;p&gt;字符指的是单个字母，例如：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;quot;C&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3&gt;可选类型&lt;/h3&gt;
+
+&lt;p&gt;使用可选类型（optionals）来处理值可能缺失的情况。可选类型表示有值或没有值。
+数值范围
+下表显示了不同变量类型内存的存储空间，及变量类型的最大最小值：
+类型  大小（字节）  区间值
+Int8    1 字节    -127 到 127
+UInt8   1 字节    0 到 255
+Int32   4 字节    -2147483648 到 2147483647
+UInt32  4 字节    0 到 4294967295
+Int64   8 字节    -9223372036854775808 到 9223372036854775807
+UInt64  8 字节    0 到 18446744073709551615
+Float   4 字节    1.2E-38 到 3.4E+38 (~6 digits)
+Double  8 字节    2.3E-308 到 1.7E+308 (~15 digits)&lt;/p&gt;
+
+&lt;h3&gt;类型别名&lt;/h3&gt;
+
+&lt;p&gt;类型别名对当前的类型定义了另一个名字，类型别名通过使用 typealias 关键字来定义。语法格式如下：
+typealias newname = type
+例如以下定义了 Int 的类型别名为 Feet：
+typealias Feet = Int
+现在，我们可以通过别名来定义变量：
+import Cocoa&lt;/p&gt;
+
+&lt;p&gt;typealias Feet = Int
+var distance: Feet = 100
+print(distance)
+我们使用 playground 执行以上程序，输出结果为：
+100
+&lt;h3&gt;类型安全&lt;/h3&gt;&lt;/p&gt;
+
+&lt;p&gt;Swift 是一个类型安全（type safe）的语言。
+由于 Swift 是类型安全的，所以它会在编译你的代码时进行类型检查（type checks），并把不匹配的类型标记为错误。这可以让你在开发的时候尽早发现并修复错误。
+import Cocoa&lt;/p&gt;
+
+&lt;p&gt;var varA = 42
+varA = &amp;quot;This is hello&amp;quot;
+print(varA)
+以上程序，会在 Xcode 中报错：
+error: cannot assign value of type &amp;#39;String&amp;#39; to type &amp;#39;Int&amp;#39;
+varA = &amp;quot;This is hello&amp;quot;
+意思为不能将 &amp;#39;String&amp;#39; 字符串赋值给 &amp;#39;Int&amp;#39; 变量。&lt;/p&gt;
+
+&lt;h3&gt;类型推断&lt;/h3&gt;
+
+&lt;p&gt;当你要处理不同类型的值时，类型检查可以帮你避免错误。然而，这并不是说你每次声明常量和变量的时候都需要显式指定类型。
+如果你没有显式指定类型，Swift 会使用类型推断（type inference）来选择合适的类型。
+例如，如果你给一个新常量赋值42并且没有标明类型，Swift 可以推断出常量类型是Int，因为你给它赋的初始值看起来像一个整数：
+let meaningOfLife = 42
+// meaningOfLife 会被推测为 Int 类型
+同理，如果你没有给浮点字面量标明类型，Swift 会推断你想要的是Double：
+let pi = 3.14159
+// pi 会被推测为 Double 类型
+当推断浮点数的类型时，Swift 总是会选择Double而不是Float。
+如果表达式中同时出现了整数和浮点数，会被推断为Double类型：
+let anotherPi = 3 + 0.14159
+// anotherPi 会被推测为 Double 类型
+原始值3没有显式声明类型，而表达式中出现了一个浮点字面量，所以表达式会被推断为Double类型。
+实例
+import Cocoa&lt;/p&gt;
+
+&lt;p&gt;// varA 会被推测为 Int 类型 
+var varA = 42
+print(varA)&lt;/p&gt;
+
+&lt;p&gt;// varB 会被推测为 Double 类型&lt;br&gt;
+var varB = 3.14159
+print(varB)&lt;/p&gt;
+
+&lt;p&gt;// varC 也会被推测为 Double 类型&lt;br&gt;
+var varC = 3 + 0.14159
+print(varC)
+执行以上代码，输出结果为：
+42
+3.14159
+3.14159&lt;/p&gt;
+</description>
+        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/swift-data-type/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/swift-data-type/</guid>
+        
+        <category>Swift</category>
+        
+        
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>Swift基础语法</title>
+        <description>&lt;h2&gt;Swift 基本语法&lt;/h2&gt;
+
+&lt;p&gt;在上一章节中我们已经讲到如何创建 Swift 语言的 &amp;quot;Hello, World!&amp;quot; 程序。现在我们来复习下。
+如果创建的是 OS X playground 需要引入 Cocoa ：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
+/* 我的第一个 Swift 程序 */
+var myString = &amp;quot;Hello, World!&amp;quot;
+print(myString)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;&lt;b&gt;如果我们想创建 iOS playground 则需要引入 UIKit :&lt;/b&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import UIKit
+var myString = &amp;quot;Hello, World!&amp;quot;
+print(myString)
+执行以上程序，输出结果为：
+Hello, World!&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;以上代码即为 Swift 程序的基本结构，接下来我们来详细说明结构的组成部分。&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Swift 引入&lt;/b&gt; 
+&lt;h6&gt;
+我们可以使用 import 语句来引入任何的 Objective-C 框架（或 C 库）到 Swift 程序中。例如 import cocoa 语句导入了使用了 Cocoa 库和API，我们可以在 Swift 程序中使用他们。
+Cocoa 本身由 Objective-C 语言写成，Objective-C 又是 C 语言的严格超集，所以在 Swift 应用中我们可以很简单的混入 C 语言代码，甚至是 C++ 代码。
+&lt;/h6&gt;
+&lt;b&gt;Swift 标记&lt;/b&gt;
+&lt;h6&gt;
+Swift 程序由多种标记组成，标记可以是单词，标识符，常量，字符串或符号。例如以下 Swift 程序由三种标记组成：&lt;/h6&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;print(&amp;quot;test!&amp;quot;)
+标记是：单词、符号
+print
+(
+   &amp;quot;test!&amp;quot;
+)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;b&gt;注释&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;Swift的注释与C语言极其相似，单行注释以两个反斜线开头：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;//这是一行注释
+多行注释以/*开始，以*/结束:
+
+/* 这也是一条注释，
+但跨越多行 */&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;与 C 语言的多行注释有所不同的是，Swift 的多行注释可以嵌套在其他多行注释内部。写法是在一个多行注释块内插入另一个多行注释。第二个注释块封闭时，后面仍然接着第一个注释块：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;/* 这是第一个多行注释的开头
+
+/* 这是嵌套的第二个多行注释 */
+
+这是第一个多行注释的结尾 */&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;多行注释的嵌套是你可以更快捷方便的注释代码块，即使代码块中已经有了注释。&lt;/p&gt;
+
+&lt;h3&gt;分号&lt;/h3&gt;
+
+&lt;p&gt;与其它语言不同的是，Swift不要求在每行语句的结尾使用分号(;)，但当你在同一行书写多条语句时，必须用分号隔开：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
+/* 我的第一个 Swift 程序 */
+var myString = &amp;quot;Hello, World!&amp;quot;; print(myString)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3&gt;标识符&lt;/h3&gt;
+
+&lt;h5&gt;
+标识符就是给变量、常量、方法、函数、枚举、结构体、类、协议等指定的名字。构成标识符的字母均有一定的规范，Swift语言中标识符的命名规则如下：
+&lt;p&gt;*区分大小写，Myname与myname是两个不同的标识符；&lt;/p&gt;
+
+&lt;p&gt;*标识符首字符可以以下划线（_）或者字母开始，但不能是数字；&lt;/p&gt;
+&lt;p&gt;*标识符中其他字符可以是下划线（_）、字母或数字。&lt;/p&gt;
+
+例如： userName、User_Name、_sys_val、身高等为合法的标识符，而2mail、room#和class为非法的标识符。
+&lt;/h5&gt;
+
+&lt;h4&gt;注意&lt;/h4&gt;:Swift中的字母采用的是Unicode编码[1]。Unicode叫做统一编码制，它包含了亚洲文字编码，如中文、日文、韩文等字符，甚至是我们在聊天工具中使用的表情符号
+如果一定要使用关键字作为标识符，可以在关键字前后添加重音符号（`），例如：
+
+&lt;h3&gt;关键字&lt;/h3&gt;
+
+关键字是类似于标识符的保留字符序列，除非用重音符号（`）将其括起来，否则不能用作标识符。关键字是对编译器具有特殊意义的预定义保留标识符。常见的关键字有以下4种。
+
+&lt;h4&gt;与声明有关的关键字&lt;/h4&gt;
+
+&lt;p&gt;class   deinit  enum    extension
+func    import  init    internal
+let operator    private protocol
+public  static  struct  subscript
+typealias   var     &lt;/p&gt;
+
+&lt;p&gt;与语句有关的关键字&lt;/p&gt;
+
+&lt;p&gt;break   case    continue    default
+do  else    fallthrough for
+if  in  return  switch
+where   while       &lt;/p&gt;
+
+&lt;p&gt;表达式和类型关键字&lt;/p&gt;
+
+&lt;p&gt;as  dynamicType false   is
+nil self    Self    super
+true    &lt;em&gt;COLUMN&lt;/em&gt;    &lt;em&gt;FILE&lt;/em&gt;  &lt;em&gt;FUNCTION&lt;/em&gt;
+&lt;em&gt;LINE&lt;/em&gt;&lt;br&gt;
+在特定上下文中使用的关键字
+associativity   convenience dynamic didSet
+final   get infix   inout
+lazy    left    mutating    none
+nonmutating optional    override    postfix
+precedence  prefix  Protocol    required
+right   set Type    unowned
+weak    willSet     &lt;/p&gt;
+
+&lt;h3&gt;Swift 空格&lt;/h3&gt;
+
+&lt;p&gt;Swift语言并不是像C/C++，Java那样完全忽视空格，Swift对空格的使用有一定的要求，但是又不像Python对缩进的要求那么严格。
+在Swift中，运算符不能直接跟在变量或常量的后面。例如下面的代码会报错：&lt;/p&gt;
+
+&lt;p&gt;let a= 1 + 2&lt;/p&gt;
+
+&lt;p&gt;错误信息是：
+error: prefix/postfix &amp;#39;=&amp;#39; is reserved&lt;/p&gt;
+
+&lt;p&gt;意思大概是等号直接跟在前面或后面这种用法是保留的。
+下面的代码还是会报错（继续注意空格）：&lt;/p&gt;
+
+&lt;p&gt;let a = 1+ 2&lt;/p&gt;
+
+&lt;p&gt;错误信息是：
+error: consecutive statements on a line must be separated by &amp;#39;;&amp;#39;&lt;/p&gt;
+
+&lt;p&gt;这是因为Swift认为到1+这个语句就结束了，2就是下一个语句了。&lt;/p&gt;
+
+&lt;p&gt;只有这样写才不会报错：
+let a = 1 + 2;  // 编码规范推荐使用这种写法
+let b = 3+4 // 这样也是OK的
+&lt;h3&gt;Swift 字面量&lt;/h3&gt;&lt;/p&gt;
+
+&lt;h5&gt;所谓字面量，就是指像特定的数字，字符串或者是布尔值这样，能够直接了当地指出自己的类型并为变量进行赋值的值。比如在下面：&lt;/h5&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;42                 // 整型字面量
+3.14159            // 浮点型字面量
+&amp;quot;Hello, world!&amp;quot;    // 字符串型字面量
+true               // 布尔型字面量&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/swift-Basis/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/swift-Basis/</guid>
+        
+        <category>Swift</category>
+        
+        
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>CocoaPods安装使用心得</title>
+        <description>&lt;h1&gt;CocoaPods安装使用心得，分享给墙内的朋友们&lt;/h1&gt;
+
+&lt;h2&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;CocoaPods是一个负责管理iOS项目中第三方开源代码的工具。&lt;/p&gt;
+
+&lt;p&gt;二、安装
+由于网上的教程基本都大同小异，但细节之处还不是很完善，所以借机会在这里补充下：
+注：要使用CocoaPods，那就要下载安装它，而下载安装CocoaPods需要Ruby环境&lt;/p&gt;
+
+&lt;h2&gt;1.Ruby环境搭建&lt;/h2&gt;
+
+&lt;p&gt;当前安装环境为Mac Pro 10.11.1。Mac  OS本身自带Ruby，但还是更新一下保险，因为升级了系统之后,可能会出现一些意想不到的情况,最好还是更新一下Ruby。&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;p&gt;查看下当前ruby版本：打开终端输入 ruby -v（确实安装了，不过iOS9使用https协议替换http协议,所以以前挂靠在淘宝下ruby的源的路径也要修改下，顺便更新下ruby）&lt;/p&gt;&lt;p&gt;   
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$  ruby -v
+ruby 2.0.0p645 (2015-04-13 revision 50299) [universal.x86_64-darwin15]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+ 
+ &lt;/li&gt;&lt;li&gt;&lt;p&gt;淘宝已经停止基于 HTTP 协议的镜像服务, 请在配置中使用 HTTPS 协议代替&lt;/p&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$ gem sources - l
+*** CURRENT SOURCES ***
+http://ruby.taobao.org/
+CYdediannao:~ lcy$ gem sources --add https://ruby.taobao.org/ --remove http://ruby.taobao.org/
+
+https://ruby.taobao.org/ added to sources
+http://ruby.taobao.org/ removed from sources&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;
+&lt;p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;gem sources -l  （用来检查使用替换镜像位置成功，然后升级ruby
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$ sudo gem install rails&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+
+
+或者是 &lt;code&gt;CYdediannao:~ lcy$ sudo gem update --system&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;2.下载安装CocoaPods&lt;/h2&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$ sudo gem install cocoapods
+
+&amp;lt;h3&amp;gt;出现的错误###：原因是该文件夹没有修改的权限&amp;lt;/h3&amp;gt;
+
+CYdediannao:~ lcy$ sudo gem install cocoapods 
+Fetching: nap-1.0.0.gem (100%)
+Successfully installed nap-1.0.0
+Fetching: molinillo-0.4.0.gem (100%)
+Successfully installed molinillo-0.4.0
+Fetching: cocoapods-trunk-0.6.4.gem (100%)
+Successfully installed cocoapods-trunk-0.6.4
+Fetching: cocoapods-try-0.5.1.gem (100%)
+Successfully installed cocoapods-try-0.5.1
+Fetching: cocoapods-stats-0.6.2.gem (100%)
+Successfully installed cocoapods-stats-0.6.2
+Fetching: cocoapods-search-0.1.0.gem (100%)
+Successfully installed cocoapods-search-0.1.0
+Fetching: cocoapods-downloader-0.9.3.gem (100%)
+Successfully installed cocoapods-downloader-0.9.3
+Fetching: xcodeproj-0.28.2.gem (100%)
+ERROR:  While executing gem ... (Errno::EPERM)
+    Operation not permitted - /usr/bin/xcodeproj&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+
+   &lt;h3&gt;10.11以上系统使用命令： sudo gem install -n /usr/local/bin cocoapods&lt;/h3&gt;
+    
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$ sudo gem install -n /usr/local/bin cocoapods
+Password:
+Successfully installed xcodeproj-0.28.2
+Fetching: cocoapods-core-0.39.0.gem (100%)
+Successfully installed cocoapods-core-0.39.0
+Fetching: cocoapods-0.39.0.gem (100%)
+Successfully installed cocoapods-0.39.0
+Parsing documentation for xcodeproj-0.28.2
+Installing ri documentation for xcodeproj-0.28.2
+Parsing documentation for cocoapods-core-0.39.0
+Installing ri documentation for cocoapods-core-0.39.0
+Parsing documentation for cocoapods-0.39.0
+Installing ri documentation for cocoapods-0.39.0
+3 gems installed&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+
+&lt;h4&gt;3.使用命令 pod search AFNetworking 查找某一个库，看cocoapods有没有安装好，搜索结果如下，已经安装好了cocoa pods&lt;/h4&gt;&lt;p&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;-&amp;gt; AFNetworking (2.6.0)
+   A delightful iOS and OS X networking framework.
+   pod &amp;#39;AFNetworking&amp;#39;, &amp;#39;~&amp;gt; 2.6.0&amp;#39;
+   - Homepage: https://github.com/AFNetworking/AFNetworking
+   - Source:   https://github.com/AFNetworking/AFNetworking.git
+   - Versions: 2.6.0, 2.5.4, 2.5.3, 2.5.2, 2.5.1, 2.5.0, 2.4.1, 2.4.0, 2.3.1,
+   2.3.0, 2.2.4, 2.2.3, 2.2.2, 2.2.1, 2.2.0, 2.1.0, 2.0.3, 2.0.2, 2.0.1, 2.0.0,
+   2.0.0-RC3, 2.0.0-RC2, 2.0.0-RC1, 1.3.4, 1.3.3, 1.3.2, 1.3.1, 1.3.0, 1.2.1,
+   1.2.0, 1.1.0, 1.0.1, 1.0, 1.0RC3, 1.0RC2, 1.0RC1, 0.10.1, 0.10.0, 0.9.2,
+   0.9.1, 0.9.0, 0.7.0, 0.5.1 [master repo] - 2.6.0, 2.5.4, 2.5.3, 2.5.2, 2.5.1,
+   2.5.0, 2.4.1, 2.4.0, 2.3.1, 2.3.0, 2.2.4, 2.2.3, 2.2.2, 2.2.1, 2.2.0, 2.1.0,
+   2.0.3, 2.0.2, 2.0.1, 2.0.0, 2.0.0-RC3, 2.0.0-RC2, 2.0.0-RC1, 1.3.4, 1.3.3,
+   1.3.2, 1.3.1, 1.3.0, 1.2.1, 1.2.0, 1.1.0, 1.0.1, 1.0, 1.0RC3, 1.0RC2, 1.0RC1,
+   0.10.1, 0.10.0, 0.9.2, 0.9.1, 0.9.0, 0.7.0, 0.5.1 [master-1 repo]
+   - Subspecs:
+     - AFNetworking/Serialization (2.6.0)
+     - AFNetworking/Security (2.6.0)
+     - AFNetworking/Reachability (2.6.0)
+     - AFNetworking/NSURLConnection (2.6.0)
+     - AFNetworking/NSURLSession (2.6.0)
+     - AFNetworking/UIKit (2.6.0)
+
+
+-&amp;gt; AFNetworking+AutoRetry (0.0.5)
+   Auto Retries for AFNetworking requests
+   pod &amp;#39;AFNetworking+AutoRetry&amp;#39;, &amp;#39;~&amp;gt; 0.0.5&amp;#39;
+   - Homepage: https://github.com/shaioz/AFNetworking-AutoRetry
+   - Source:   https://github.com/shaioz/AFNetworking-AutoRetry.git
+   - Versions: 0.0.5, 0.0.4, 0.0.3, 0.0.2, 0.0.1 [master repo] - 0.0.5, 0.0.4,
+   0.0.3, 0.0.2, 0.0.1 [master-1 repo]
+
+
+-&amp;gt; AFNetworking+Ext (1.2.1)
+   AFNetworking的封装, 并提供一个 UIImageView+DYLoading  cache in fileSystem+memory
+   pod &amp;#39;AFNetworking+Ext&amp;#39;, &amp;#39;~&amp;gt; 1.2.1&amp;#39;
+   - Homepage: https://github.com/junhaiyang/AFNetworkingExt
+   - Source:   https://github.com/junhaiyang/AFNetworkingExt.git
+   - Versions: 1.2.1, 1.2, 1.1, 1.0, 0.5, 0.4, 0.3 [master repo] - 1.2.1, 1.2,
+   1.1, 1.0, 0.5, 0.4, 0.3 [master-1 repo]
+   - Subspecs:
+     - AFNetworking+Ext/Base (1.2.1)
+     - AFNetworking+Ext/AFCustomRequestOperation (1.2.1)
+     - AFNetworking+Ext/AFDownloadRequestOperation (1.2.1)
+     - AFNetworking+Ext/AFTextResponseSerializer (1.2.1)
+     - AFNetworking+Ext/example (1.2.1)
+     - AFNetworking+Ext/UIKit (1.2.1)
+     - AFNetworking+Ext/UIKit/UIImageView+DYLoading (1.2.1)
+
+##还有很大篇幅的结果，此处省略。。。##&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+
+&lt;/h5&gt;&lt;h2&gt;4.cocoapods的使用&lt;/h2&gt;
+
+&lt;/li&gt;&lt;li&gt;&lt;p&gt;新建一个项目，名字podsTest项目
+
+&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-25c7ce2edc1537e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
+
+
+&lt;/li&gt;&lt;li&gt;&lt;p&gt;打开项目所在的文件夹，在终端敲入 cd 将文件夹拖拽到终端 &lt;p&gt;
+或者用cd打开项目所在文件夹（注意：包含podsTest文件夹、podsTest.xcodeproj、podsTestTest、podsTestUITests的那个总目录）如图：
+
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-135856a82cc057d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-bc6bbedf65e2da2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
+&lt;/li&gt;&lt;li&gt;&lt;p&gt;建立Podfile（配置文件）
+&lt;/p&gt;
+1.接着上一步，终端输入 vim Podfile
+&lt;/p&gt;
+&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-ff9367af4eea800b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
+&lt;p&gt;
+2.键盘输入 i，进入编辑模式&lt;/p&gt;
+
+&lt;p&gt;
+&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-82d38c7fcfc4d8c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
+&lt;/p&gt;
+
+&lt;p&gt;3.内容按这个格式输入
+  platform :ios, &amp;#39;7.0&amp;#39;
+　pod &amp;#39;MBProgressHUD&amp;#39;, &amp;#39;~&amp;gt; 0.9.1&amp;#39;
+　pod &amp;#39;ASIHTTPRequest&amp;#39;, &amp;#39;~&amp;gt; 1.8.2&amp;#39;
+　pod &amp;#39;SDWebImage&amp;#39;, &amp;#39;~&amp;gt; 3.7.3&amp;#39;
+　&lt;p&gt;
+　注意：　如果你不知道这些框架目前的版本是，可以使用命令pod search +框架名称查看 相应的信息&lt;/p&gt;&lt;p&gt;
+　
+&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-31adb37f17d235b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;p&gt; 4.然后按Esc，并且输入 shift +“ ：”号进入vim命令模式，然后在冒号后边输入wq 按回车键，保存并且退出。
+ &lt;/p&gt;5.结果如下图：
+ &lt;/p&gt;&lt;p&gt;
+&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-1f1a82c28b6110c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;6.发现podTest项目总目录中多一个Podfile文件&lt;/p&gt;&lt;p&gt;
+&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-7aadbe1cfd34ad7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;p&gt;7.激动人心的时刻到了：确定终端cd到项目总目录，然后输入 pod install，等待一会，框架安装好了如图所示，多出了3个文件夹/文件夹。&lt;/p&gt;&lt;p&gt;
+&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-08526c1690c9f975.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;注意：&lt;/h3&gt;&lt;p&gt;现在打开项目不是点击 podTest.xodeproj了，而是点击 podsTest.xcworkspace&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-374b5624ae6ecf9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;h2&gt;5.cocoaPods使用心得&lt;/h2&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;最近使用CocoaPods来添加第三方类库，无论是执行pod install还是pod update都卡在了Analyzing dependencies不动 原因在于当执行以上两个命令的时候会升级CocoaPods的spec仓库，加一个参数可以省略这一步，命令如下：&lt;br&gt;
+&lt;/p&gt;&lt;code&gt;pod install --verbose --no-repo-update&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;code&gt;pod update --verbose --no-repo-update&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;$ pod install只会按照Podfile的要求来请求类库，如果类库版本号有变化，那么将获取失败。但是 $ pod update会更新所有的类库，获取最新版本的类库。每次用$ pod update就行。&lt;/p&gt;
+
+&lt;p&gt;&lt;/li&gt;&lt;li&gt;安装一个xcode插件管理工具，&lt;a href=&quot;http://alcatraz.io&quot;&gt;地址&lt;/a&gt; 目前还不支持XCode7
+
+
+在终端中执行
+&lt;code&gt;curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh&lt;/code&gt;
+&lt;p&gt;
+安装完了打开xcode-&gt;window-&gt;package manger 搜cocoapods安装，方便操作。&lt;/li&gt;&lt;li&gt;工程在模拟器上编译报错，不支持i386，Cocoapods确实还不支持64位模拟器，&lt;a href=&quot;http://stackoverflow.com/questions/19213782/undefined-symbols-for-architecture-arm64&quot;&gt;解决办法：&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;其实就2条：
+&lt;p&gt;1.build active architecture only 在debug的时候设置成YES，不要在release的时候用模拟器
+&lt;p&gt;2.other linker flags 加一个 $(inherited)
+&lt;p&gt;用到svn,git多人协作的话，Pods/这个文件夹不要上传，例如：
+.../Pods/Pods.xcodeproj  ...Pods/Target Support Files/这些每次编译都会改动从而引起合并代码的时候冲突&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://www.cocoachina.com/bbs/read.php?tid-277900.html&quot;&gt;心得内容来源&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;h2&gt;6.cocoaPods使用常见错误汇总：&lt;/h2&gt;
+
+&lt;p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;pod install 时出现以下错误，错误原因是在vim Podfile 时，输入命令前面带有空格导致的，把空格去掉就好了&lt;/p&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;lt;code&amp;gt;错误写法：
+　platform :ios, &amp;#39;7.0&amp;#39;
+　pod &amp;#39;MBProgressHUD&amp;#39;, &amp;#39;~&amp;gt; 0.9.1&amp;#39;
+　pod &amp;#39;ASIHTTPRequest&amp;#39;, &amp;#39;~&amp;gt; 1.8.2&amp;#39;
+　pod &amp;#39;SDWebImage&amp;#39;, &amp;#39;~&amp;gt; 3.7.3&amp;#39;
+提示错误：
+
+[!] Invalid &amp;lt;/code&amp;gt;Podfile&amp;lt;code&amp;gt; file: undefined method ‘pod’; for #&amp;lt;Pod::Podfile:0x007ff3f9a45a48&amp;amp;amp&amp;gt;. Updating CocoaPods might fix the issue.
+正确写法：命令前面不留空格
+ platform :ios, &amp;#39;7.0&amp;#39;
+　pod &amp;#39;MBProgressHUD&amp;#39;, &amp;#39;~&amp;gt; 0.9.1&amp;#39;
+　pod &amp;#39;ASIHTTPRequest&amp;#39;, &amp;#39;~&amp;gt; 1.8.2&amp;#39;
+　pod &amp;#39;SDWebImage&amp;#39;, &amp;#39;~&amp;gt; 3.7.3&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3&gt;7 使用CocoaPods来管理Objective-c的类库，非常方便。但是有一个小问题，当我在xcode输入import关键字的时候，没有自动联想补齐代码的功能，需要手工敲全了文件名，难以适应。&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;lt;/p&amp;gt;&amp;lt;code&amp;gt;在stackoverflow上找到了解决办法:
+1.Go to the Target &amp;amp;amp;gt; \”Build Settings\” tab and find the \”User Header Search Paths\” setting.
+
+2.Set this to \”$(BUILT&amp;lt;em&amp;gt;PRODUCTS&amp;lt;/em&amp;gt;DIR)\” and check the \”Recursive\” check box.
+
+Now the built target will search the workspace’s shared build directory to locate the linkable header files.
+
+简单说就是这么几步:
+
+1.选择Target -&amp;gt; Build Settings 菜单，找到\”User Header Search Paths\”设置项
+2.新增一个值$(BUILT&amp;lt;em&amp;gt;PRODUCTS&amp;lt;/em&amp;gt;DIR)，并且选择\”Recursive\”，这样xcode就会在项目目录中递归搜索文件
+自动补齐功能马上就好使了.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/cocoapods-demo/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/cocoapods-demo/</guid>
+        
+        <category>CocoaPods</category>
+        
+        
+        <category>熟能生巧</category>
+        
+      </item>
+    
+  </channel>
+</rss>
