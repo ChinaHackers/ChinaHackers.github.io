@@ -381,4 +381,4 @@ iOS 系统为你默认执行了所有的重绘操作，所以你只需写这句�
 注意
 为了查看本课的完整实例项目，下载文件并在 Xcode 中查看它。
 
-![下载文件](https://developer.apple.com/sample-code/swift/downloads/Start-Dev-iOS-Apps-03.zip)
+[下载文件](https://developer.apple.com/sample-code/swift/downloads/Start-Dev-iOS-Apps-03.zip)
