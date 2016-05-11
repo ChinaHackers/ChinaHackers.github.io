@@ -18,11 +18,10 @@ tags: Swift
 
 参数标签是 Swift 中非常 cool 的一个特性，我们可以这么写：
 
-{% highlight swift %}
-for i in 1.stride(to: 9, by: 2) {  
-    print(i)
-}
-{% endhighlight %} 
+	for i in 1.stride(to: 9, by: 2) {  
+	    print(i)
+	}
+
 
 这个函数很简单，由 1 开始，每次加 2，返回一系列的值，最后的结果要小于 9：
 {% highlight swift %}
@@ -186,7 +185,8 @@ public struct AnySequence<Element> : SequenceType {
 * 类型别名（为已存在的类型起一个别名）
 * 关联类型（作为占位符类型成为协议的一部分）
 
-以上两种声明应该使用不同的关键字，为此我们为关联类型准备了新的关键字 `associatedtype`，因此在 Swift 2.2 中 `typealias` 只能用做类型别名的声明，所以协议中使用的关联类型只能用 `associatedtype`，如果用了 `typealias` 就会报错：
+> 以上两种声明应该使用不同的关键字，为此我们为关联类型准备了新的关键字 `associatedtype`，因此在 Swift 2.2 中 `typealias` 只能用做类型别名的声明，所以协议中使用的关联类型只能用 `associatedtype`，如果用了 `typealias` 就会报错：
+
 {% highlight swift %}
 protocol Prot {  
     associatedtype Container : SequenceType
@@ -305,7 +305,7 @@ Swift 2.2 提供了新的选项使你将同一个版本的 Swift 代码集中在
 
 <h3>++ 和 -- 将被取消</h3>
 
-Swift 2.2 正式将 `++` 和`--` *deprecates* 掉了，意味着虽然在 Swift 2.2 版本还能工作，但编译器会给你一个警告。但在 3.0 版本会被完全移除。
+> Swift 2.2 正式将 `++` 和`--` *deprecates* 掉了，意味着虽然在 Swift 2.2 版本还能工作，但编译器会给你一个警告。但在 3.0 版本会被完全移除。
 
 * 你可以使用 += 1 和 -= 1 来替代，至于为什么要将其移除，有这么几个解释：
 

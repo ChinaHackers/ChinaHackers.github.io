@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Swift变量
-date:   2015-03-08 22:21:49
+date:   2015-03-08 22:24:49
 categories: Swift
 tags: Swift
 ---
