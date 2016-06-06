@@ -12,12 +12,12 @@ permalink: /:year/:month/:title/
 
 # Format
 highlighter: plain
-markdown: redcarpet
-redcarpet:
+markdown: kramdown
+kramdown:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", tables]
 
 # supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: black
+cover_color: slate
 
 # The blog button should not be removed.
 blog_button:
@@ -45,7 +45,7 @@ social:
     weibo: LiuChuan77
     github: ChinaHackers
     twitter: LiuChuan_
-   # Facebook: ImLiuChuan
+    #Facebook: ImLiuChuan
    # gplus: 107108267983477358170
     mail: 93428739@qq.com
 
