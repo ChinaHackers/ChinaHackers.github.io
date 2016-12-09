@@ -64,7 +64,7 @@
               <ul class="navigation">
                 <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">博客</a></li>
                 
-                  <li class="navigation__item"><a href="github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
+                  <li class="navigation__item"><a href="https://github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
                 
                   <li class="navigation__item"><a href="http://chinahackers.github.io/" target="_blank" title="My Projects">关于</a></li>
                 
@@ -133,7 +133,7 @@
     </div>
     
     
-    <div class="panel-cover--overlay cover-black"></div>
+    <div class="panel-cover--overlay cover-slate"></div>
     
   </div>
 </header>
@@ -144,7 +144,7 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2015-03-09 06:21:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
+      <time datetime="2015-03-09 06:24:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
     </div>
     <h1 class="post-title">Swift变量</h1>
   </header>
@@ -156,8 +156,8 @@
 Swift 每个变量都指定了特定的类型，该类型决定了变量占用内存的大小，不同的数据类型也决定可存储值的范围。
 上一章节我们已经为大家介绍了基本的数据类型，包括整形Int、浮点数Double和Float、布尔类型Bool以及字符串类型String。此外，Swift还提供了其他更强大数据类型， Optional, Array, Dictionary, Struct, 和 Class 等。</p>
 
-<p>接下来我们将为大家介绍如何在 Swift 程序中声明和使用变量。
-<h3>变量声明</h3></p>
+<p>接下来我们将为大家介绍如何在 Swift 程序中声明和使用变量。</p>
+<h3>变量声明</h3>
 
 <p>变量声明意思是告诉编译器在内存中的哪个位置上为变量创建多大的存储空间。
 在使用变量前，你需要使用 <b>var</b> 关键字声明它，如下所示：</p>
@@ -225,9 +225,9 @@ print(&quot;\(name)的官网地址为：\(site)&quot;)</code></pre></figure>
    
    <div class="read-more-item">
        <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2015/03/welcome-to-swift/" title="link to Swift简介">Swift简介</a></h2>
-       <p class="excerpt">Swift 简介Swift 是一种支持多编程范式和编译式的开源编程语言,苹果于2014年WWDC（苹果开发者大会）发布，用于开发 iOS，OS X 和 watchOS应用程序。Swift 结合了 C 和 Objective-C 的优点并且不受 C 兼容性的限制。Swift在 Mac OS 和 iOS 平台可以和Object-C使用相同的运行环境。这意味着Swift 程序可以运行于目前已存在的平台之上，包含 iOS 6 和 OS X 10.8 都可以运行Swift的程序。更重要的, Swif...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/welcome-to-swift/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/Swift-Optionals/" title="link to Swift可选类型">Swift可选类型</a></h2>
+       <p class="excerpt">Swift 可选(Optionals)类型  Swift 的可选（Optional）类型，用于处理值缺失的情况。可选表示”那儿有一个值，并且它等于 x “或者”那儿没有值”。Swfit语言定义后缀？作为命名类型Optional的简写，换句话说，以下两种声明是相等的：var optionalInteger: Int?var optionalInteger: Optional&lt;Int&gt;在这两种情况下，变量optionalInteger都是可选整数类型。注意，在类型和？之间没有空格。...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:25:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/Swift-Optionals/>继续阅读</a></div>
    </div>
    
    
@@ -236,8 +236,8 @@ print(&quot;\(name)的官网地址为：\(site)&quot;)</code></pre></figure>
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
        <h2 class="post-list__post-title post-title"><a href="/2015/03/swift-data-type/" title="link to Swift数据类型">Swift数据类型</a></h2>
-       <p class="excerpt">Swift 数据类型在我们使用任何程序语言编程时，需要使用各种数据类似来存储不同的信息。变量的数据类型决定了如何将代表这些值的位存储到计算机的内存中。在声明变量时也可指定它的数据类型。所有变量都具有数据类型，以决定能够存储哪种数据。内置数据类型Swift 提供了非常丰富的数据类型，以下列出了常用了集中数据类型：Int一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：*在32位平台上，Int和Int32长度相同。*在64位平台上，...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-data-type/>继续阅读</a></div>
+       <p class="excerpt">Swift 数据类型在我们使用任何程序语言编程时，需要使用各种数据类似来存储不同的信息。变量的数据类型决定了如何将代表这些值的位存储到计算机的内存中。在声明变量时也可指定它的数据类型。所有变量都具有数据类型，以决定能够存储哪种数据。内置数据类型Swift 提供了非常丰富的数据类型，以下列出了常用了集中数据类型：Int  一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：          在32位平台上，Int和Int32长度相...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:23:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-data-type/>继续阅读</a></div>
    </div>
    
 </section>
@@ -273,7 +273,7 @@ print(&quot;\(name)的官网地址为：\(site)&quot;)</code></pre></figure>
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-05-02 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-12-09 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
         <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
     </footer>
 </section>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Swift基本运算符</title>
+  <meta name="description" content="基本运算符(Basic Operators)">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift基本运算符">
+  <meta name="twitter:description" content="基本运算符(Basic Operators)">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift基本运算符">
+  <meta property="og:description" content="基本运算符(Basic Operators)">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://liuchuanweb.com/2015/03/Swift-Basic-Operators/">
+  <link rel="alternate" type="application/rss+xml" title="Hacker's Liu" href="http://liuchuanweb.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Hacker's Liu 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Hacker's Liu logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Hacker's Liu" class="blog-button">Hacker's Liu</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">人格的完善是本，财富的确立是末</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。<p>正在修行，探求创意之源。</p>There is no perfect system , only undiscovered vulnerabilities!.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">突破电脑特权，创造艺术之美!.</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
+                
+                  <li class="navigation__item"><a href="http://chinahackers.github.io/" target="_blank" title="My Projects">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/LiuChuan77" title="@LiuChuan77 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/ChinaHackers" title="@ChinaHackers 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/LiuChuan_" title="@LiuChuan_" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:93428739@qq.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2015-03-09 06:28:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
+    </div>
+    <h1 class="post-title">Swift基本运算符</h1>
+  </header>
+
+  <section class="post">
+    <h1>基本运算符(Basic Operators)</h1>
+
+<h3>1、基本运算符</h3>
+
+<blockquote>
+  <ul>
+    <li>1、Swift支持C标准库中的大多数运算符并提升了各自的兼容性，从而可以排除常见的编码错误</li>
+    <li>2、分配符 (=)不会返回一个值，这样可以防止你因粗心将 等于(==)写成 赋值运算符(=) 而引起的错误</li>
+    <li>3、算术符(+、 -、 *、 /、 % 等)会检查与驳回值溢出，这样可以避免值类型的数据在超过值类型所允许的存储范围时，
+  出现意想不到的数据。你可以选择使用Swift所提供的值溢出运算符进行量化溢出的行为，详细见溢出操作符。</li>
+    <li>4、与C语言不同，Swift允许你对浮点数执行取余运算</li>
+    <li>5、Swift提供两个范围的运算符 (<code>a..b</code> 和 <code>a...b</code>)，作为表示一个数值范围的简写方式，这点C不支持</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h3>术语</h3>
+
+<blockquote>
+  <p>操作符都是一元、二元或三元:</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>一元操作符操作单个对象 (如 -a)。一元前缀操作符出现在对象前(如 !b)，一元后缀操作符在对象后出现 (如 i++)。</p>
+  </li>
+  <li>
+    <p>二元操作符操作两个对象(如 2 + 3)，并且操作符位于两个元素中间。</p>
+  </li>
+  <li>
+    <p>三元操作符对两个对象进行操作。与C一样，Swift仅支持一个三元操作符：三元条件操作符 (a ? b : c)。(?前面一定需要至少一个空格)</p>
+  </li>
+</ul>
+
+<p>操作符所影响的值被称为操作数。</p>
+
+<p>表达式<code>1 + 2</code>中，符号<code> + </code>是一个二元运算符并且两个操作数分别为<code> 1 </code>和 <code>2</code>。</p>
+
+<h3>2、赋值运算符</h3>
+
+<pre><code> let b = 10
+ var a = 5
+ a = b      //用b的值去初始化或更新a 的值
+ 
+ let (x, y) = (1, 2) // x等于1, 并且y等于2
+</code></pre>
+
+<blockquote>
+  <p>与C及Objective-C不同，Swift中赋值运算符并不将自身作为一个值进行返回。所以以下的代码是不合法的：</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>此特性帮助你避免因粗心将 等于<code>(==)</code>写成 赋值运算符<code> (=)</code> 而引起的错误。因为 <code>if a = b</code> 这样写是无效的</p>
+
+    <pre><code>  if a = b {
+  // 错误, 因为a = b并不会返回一个值
+  }
+</code></pre>
+  </li>
+</ul>
+
+<h3>3、算术运算符</h3>
+
+<blockquote>
+  <ul>
+    <li>Swift支持所有数字类型的四个标注运算符:</li>
+  </ul>
+</blockquote>
+
+<ul>
+  <li>
+    <p>加法(+)</p>
+  </li>
+  <li>
+    <p>减法(-)</p>
+  </li>
+  <li>
+    <p>乘法(*)</p>
+  </li>
+  <li>
+    <p>除法(/)</p>
+
+    <pre><code>  1 + 2 // equals 3
+  5 - 3 // equals 2
+  2 * 3 // equals 6
+  10.0 / 2.5 // equals 4.0
+</code></pre>
+  </li>
+  <li>不同于C和Objective-C，默认情况下Swift的算术运算符不允许值溢出。</li>
+  <li>你可以通过Swift的溢出运算符来选择值的溢出情况(例如 a &amp; + b)。详见<code> 溢出运算符</code></li>
+  <li>
+    <p>两个字符，或者一个字符一个字符串，能组合成一个新的字符串：</p>
+
+    <pre><code>  let dog: Character = "🐶"
+  let cow: Character = "🐮"
+  //let dogCow = dog + cow  // dogCow is equal to "🐶🐮"
+  var dogCow: String = ""
+  dogCow.append(dog)
+  dogCow.append(cow)
+  print(dogCow)
+</code></pre>
+  </li>
+</ul>
+
+<h4>3.1、求余运算符</h4>
+
+<ul>
+  <li>
+    <p>求余运算符<code>(a % b)</code>，a是b的几倍并且返回被留下的值(叫作余数)</p>
+
+    <p><code>9 % 4 // 等于 1</code></p>
+  </li>
+  <li>浮点数求余数计算</li>
+  <li>不同于C和Objective-C，Swift的余数运算符也能运用于浮点数：</li>
+</ul>
+
+<p><code>8 % 2.5 // 等于 0.5</code></p>
+
+<blockquote>
+  <p>swift自增 ++ 和自减运算符 – 将被取消.
+Swift 2.2 正式将 ++ 和 – 否决掉了，意味着虽然在 Swift 2.2 版本还能工作，但编译器会给你一个警告。但在 3.0 版本会被完全移除。</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>你可以使用<code> += 1</code> 和<code> -= 1</code> 来替代，至于为什么要将其移除，有这么几个解释：</p>
+  </li>
+  <li>
+    <p>写<code> ++</code> 并不比 <code>+=1 </code>能节省多少时间, <code>++ </code>对学 Swift 没有任何帮助，<code>+= </code>至少可读性更好</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>传统 C styel for 循环中的 – 也被否决掉了</p>
+</blockquote>
+
+<pre><code> var a1 = 0
+</code></pre>
+
+<blockquote>
+  <p>要注意的是，复合赋值操作符不返回值。例如，你不能写让成<code>"let b1 = a1 += 1"</code></p>
+</blockquote>
+
+<pre><code> let b1 = a1 += 1 // `a`和`b`是现在都等于1
+ let c1 = a1 += 1 // 现在等于2,但`c1`前增量值被设置为1
+</code></pre>
+
+<blockquote>
+  <p>一元负号运算符（一个数值前加了符号-，叫作一元减运算符）</p>
+</blockquote>
+
+<pre><code>let three = 3
+let minusThree = -three     // minusThree 等于 -3
+let plusThree = -minusThree // plusThree 等于 3, or "minus minus three"
+</code></pre>
+
+<p>//一元正号算符（一元加运算符(+)返回的值，不做任何变动）</p>
+
+<pre><code>let minusSix = -6
+let alsoMinusSix = +minusSix // alsoMinusSix 等于 -6
+</code></pre>
+
+<h3>4、复合赋值操作符</h3>
+
+<pre><code>var e = 1
+
+//要注意的是，复合赋值操作符不返回值。例如，你不能写让成"let b = e += 2"
+//let b = e += 2  
+</code></pre>
+<h3>5、比较运算符</h3>
+
+<ul>
+  <li>通常用在条件语句</li>
+</ul>
+
+<blockquote>
+  <p>Swift支持所有标准c的比较运算符</p>
+</blockquote>
+
+<pre><code> 	 等于 (a == b)	 
+	 不等于(a != b)
+	 大于 (a &gt; b)
+	 小于 (a &lt; b)
+	 大于等于 (a &gt;= b)
+	 小于等于(a &lt;= b)
+</code></pre>
+
+<blockquote>
+  <p>Swift 提供两个<code>恒等运算符</code>(<code>=== </code>and<code> !==</code>)，用它来测试两个对象引用是否来自于同一个对象实例</p>
+</blockquote>
+
+<pre><code>1 == 1 	 // true, 因为1等于1
+2 != 1 	// true, 因为2不等于1
+2 &gt; 1 		// true, 因为 2 &gt; 1成立
+1 &lt; 2 		// true, 因为1 &lt; 2 成立
+1 &gt;= 1		 // true, 因为1是大于或等于1
+2 &lt;= 1		 // false, 因为2是小于或等于1
+</code></pre>
+
+<h3>6、三元条件运算符</h3>
+
+<blockquote>
+  <p>三元条件运算符是一种特殊的运算符 有三个部分，其形式为<code>question? answer1：answer2</code></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>特别注意：因为Swift语言(?)有特殊的意义（可选量），所以三目运算符里面的(?)前面一定要有至少一个空格，否则就当成了可选量</p>
+  </li>
+  <li>
+    <p>三元条件运算符是下面的代码的简化</p>
+
+    <pre><code>  if question {
+      answer1
+   } else {
+      answer2
+   }
+  let contentHeight = 40
+  let hasHeader = true
+  let rowHeight = contentHeight + (hasHeader ? 50 : 20)
+</code></pre>
+  </li>
+</ul>
+
+<h3>空合运算符(Nil Coalescing Operator)</h3>
+
+<blockquote>
+  <p>空合运算符<code>( a ?? b )</code>将对可选类型 <code>a </code>进行空判断,如果 <code>a </code>包含一个值就进行解封,否则就返回一个默认值 b .</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>这个运算符有两个条件:</p>
+  </li>
+  <li>
+    <p>表达式 a 必须是Optional类型</p>
+  </li>
+  <li>
+    <p>默认值 b 的类型必须要和 a 存储值的类型保持一致</p>
+  </li>
+</ul>
+
+<p>空合并运算符是对以下代码的简短表达方法</p>
+
+<pre><code>a != nil ? a! : b
+</code></pre>
+
+<blockquote>
+  <p>上述代码使用了三目运算符。当可选类型 a 的值不为空时,进行强制解封( a! )访问 a 中值,反之当 a 中值为空时,返回默认值b。</p>
+</blockquote>
+
+<blockquote>
+  <p>无疑空合运算符<code>( ?? )</code>提供了一种更为优雅的方式去封装条件判断和解封两种行为,显得简洁以及更具可读性。</p>
+</blockquote>
+
+<p>注意: 如果<code> a </code>为非空值( non-nil ),那么值 b 将不会被估值。这也就是所谓的短路求值。</p>
+
+<ul>
+  <li>
+    <p>下文例子采用空合并运算符,实现了在默认颜色名和可选自定义颜色名之间抉择:</p>
+
+    <pre><code>  let defaultColorName = "red"
+  var userDefinedColorName:String?    //默认值为nil
+  var colorNameToUse = userDefinedColorName ?? defaultColorName
+  //userDefinedColorName的值为空 ,所以colorNameToUse的值为`red`
+</code></pre>
+  </li>
+  <li>详解：</li>
+  <li><code>userDefinedColorName</code> 的值被定义为一个可选String类型，默认值为nil.</li>
+  <li>由于 <code>userDefinedColorName</code> 是一个可选类型，我们可以使用空合运算符去判断其值。</li>
+  <li>
+    <p>在上一个例子中,通过空合运算符为一个名为 <code>colorNameToUse</code> 的的变量赋予一个字符串类型初始值。
+ 由于 <code>userDefinedColorName</code> 值为空, 因此表达式 <code>userDefinedColorName?? defaultColorName </code>返回 <code>DefinedColorName</code> 的值，即<code>red</code></p>
+  </li>
+  <li>
+    <p>另一种情况,分配一个非空值（non-nil）给 <code>userDefinedColorName</code> ,再次执行空合运算,运算结果为封包在 <code>userDefinedColorName</code>中的值。
+ 而非默认值</p>
+
+    <pre><code>  userDefinedColorName = "green"
+  colorNameToUse = userDefinedColorName ?? defaultColorName
+  //userDefinedColorName非空,因此colorNameToUsede的值为绿色
+</code></pre>
+  </li>
+</ul>
+
+<h3>区间（也叫范围）运算符</h3>
+
+<ul>
+  <li>Swift 提供了两个方便表达一个区间的值的运算符。</li>
+</ul>
+
+<h4>闭区间运算符:</h4>
+
+<blockquote>
+  <p>闭区间运算符(<code> a...b</code> )定义一个包含从 a 到 b (包括 a 和 b )的所有值的区间, b 必须大于等于 a 。</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>闭区间运算符在迭代一个区间的所有值时是非常有用的,如在<code> for-in </code>循环中:</p>
+
+    <pre><code> for index in 1...5 {
+     print("\(index) * 5 = \(index * 5)")
+ }
+ // 1 * 5 = 5
+ // 2 * 5 = 10
+ // 3 * 5 = 15
+ // 4 * 5 = 20
+ // 5 * 5 = 25
+</code></pre>
+  </li>
+</ul>
+
+<h4>半开区间运算符</h4>
+
+<blockquote>
+  <p>半开区间(<code> a..&lt;b </code>)定义一个从 a 到 b 但不包括 b 的区间。 
+ 之所以称为半开区间,是因为该区间包含第一个值而不包括最后的值。</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>半开区间的实用性在于当你使用一个0始的列表(如数组)时,非常方便地从0数到列表的长度。</p>
+
+    <pre><code> let names = ["Anna", "Alex", "Brian", "Jack"]
+ let count = names.count
+ for i in 0..&lt;count {
+     print("第 \(i + 1) 个人叫 \(names[i])")    
+ }
+ // 第 1 个人叫 Anna
+ // 第 2 个人叫 Alex
+ // 第 3 个人叫 Brian
+ // 第 4 个人叫 Jack
+</code></pre>
+
+    <ul>
+      <li>数组有4个元素,但 <code>0..&lt;count </code>只数到3(最后一个元素的下标),因为它是半开区间。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>8、逻辑运算符</h3>
+
+<blockquote>
+  <p>逻辑运算符修改或结合布尔逻辑值<code>true</code>和<code>false</code>。</p>
+</blockquote>
+
+<p>Swift支持这三个标准逻辑运算符基于c语言:</p>
+
+<ul>
+  <li>Logical NOT (<code>!</code>a)        	//逻辑非</li>
+  <li>Logical AND (a <code>&amp;&amp;</code> b)   	//逻辑与</li>
+  <li>Logical OR (a <code>||</code> b)    	 //逻辑或</li>
+</ul>
+
+<blockquote>
+  <p>以下列出了 Swift 语言支持的逻辑运算符，其中<code>变量A</code>为 <code>true</code>，<code>变量B</code> 为 <code>false：</code></p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">运算符</th>
+      <th style="text-align: left">描述</th>
+      <th style="text-align: left">实例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">&amp;&amp;</td>
+      <td style="text-align: left">逻辑与。如果运算符两侧都为 TRUE 则为 TRUE。</td>
+      <td style="text-align: left">(A &amp;&amp; B) 为 false。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code>||	</code></td>
+      <td style="text-align: left">逻辑或。 如果运算符两侧至少有一个为 TRUE 则为 TRUE</td>
+      <td style="text-align: left">(A <code>||</code> B)为true。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">!</td>
+      <td style="text-align: left">逻辑非。布尔值取反，使得true变false，false变true。</td>
+      <td style="text-align: left">!(A &amp;&amp; B) 为 true。</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>以下为逻辑运算的简单实例：</p>
+</blockquote>
+
+<pre><code> var A = true
+ var B = false
+ print("A &amp;&amp; B 结果为：\(A &amp;&amp; B)")
+ print("A || B 结果为：\(A || B)")
+ print("!A 结果为：\(!A)")
+ print("!B 结果为：\(!B)")
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code> A &amp;&amp; B 结果为：false
+ A || B 结果为：true
+ !A 结果为：false
+ !B 结果为：true
+</code></pre>
+
+<h4>8.1逻辑非运算符</h4>
+
+<ul>
+  <li>
+    <p>逻辑非运算符<code>(!a)</code>转化一个<code>Bollean</code>值，以便<code>true</code>成为<code>false</code>，<code>false</code>变成<code>true</code></p>
+
+    <pre><code>  let allowedEntry = false
+
+  if !allowedEntry {
+	    
+      print("ACCESS DENIED")
+  }
+</code></pre>
+  </li>
+</ul>
+
+<h4>8.2逻辑与运算符</h4>
+
+<blockquote>
+  <ul>
+    <li>对于逻辑与运算，如果第一个操作数被判定为“false”，系统不再判定或求解第二个操作数。结果就为“ false”。</li>
+  </ul>
+</blockquote>
+
+<ul>
+  <li>
+    <p>逻辑与运算符：<code>（A &amp;&amp; B）</code>，其中A和B两个值必须同时为true时表达式才正确。</p>
+
+    <pre><code>  let enteredDoorCode = true
+  let passedRetinaScan = false
+
+  if enteredDoorCode &amp;&amp; passedRetinaScan {
+      print("Welcome!")
+  } else {
+      print("ACCESS DENIED")
+  }
+</code></pre>
+  </li>
+</ul>
+
+<h4>8.3逻辑或运算符</h4>
+
+<ul>
+  <li>
+    <p>表达式<code>（a || b）</code>运算符中、只要a或者b有一个为true、则表达式正确。</p>
+
+    <pre><code>  let hasDoorKey = false
+  let knowsOverridePassword = true
+  if hasDoorKey || knowsOverridePassword {
+      print("Welcome!")
+  } else {
+      print("ACCESS DENIED")
+  }
+</code></pre>
+  </li>
+</ul>
+
+<h4>8.4复合逻辑表达式 （ 逻辑运算符组合计算 ）</h4>
+
+<ul>
+  <li>
+    <p>你可以将多个逻辑运算符复合来创建更长的复合表达式</p>
+
+    <pre><code>  if enteredDoorCode &amp;&amp; passedRetinaScan || hasDoorKey || knowsOverridePassword {
+	    
+      print("Welcome!")
+  } else {
+      print("ACCESS DENIED")
+  }
+</code></pre>
+  </li>
+</ul>
+
+<blockquote>
+  <ul>
+    <li>说明：</li>
+    <li>这个例子使用了含多个<code> &amp;&amp; </code>和 <code>||</code> 的复合逻辑。但无论怎样,<code> &amp;&amp;</code> 和 <code>||</code> 始终只能操作两个值。</li>
+    <li>所以这实际是三个 简单逻辑连续操作的结果。 所以整个复杂表达式的值还是 <code>true </code>。</li>
+  </ul>
+</blockquote>
+
+<hr />
+<blockquote>
+  <ul>
+    <li>注意: Swift 逻辑操作符 <code>&amp;&amp;</code> 和 <code>||</code> 是左结合的,这意味着拥有多元逻辑操作符的复合表达式优先计算 最左边 的子表达式。</li>
+  </ul>
+</blockquote>
+
+<h3> 使用括号（）来明确优先级</h3>
+
+<ul>
+  <li>
+    <p>可以添加(), 明确意图</p>
+  </li>
+  <li>
+    <p>为了一个复杂表达式更容易读懂,在合适的地方使用括号来明确优先级是很有效的,虽然它并非必要的。</p>
+  </li>
+</ul>
+
+<p>在上个关于门的权限的例子中,我们给第一个部分加个括号,使用它看起来逻辑更明确:</p>
+
+<pre><code>if (enteredDoorCode &amp;&amp; passedRetinaScan) || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+</code></pre>
+
+<ul>
+  <li>
+    <p>这括号使得前两个值被看成整个逻辑表达中独立的一个部分。虽然有括号和没括号的输出结果是一样的,</p>
+  </li>
+  <li>
+    <p>但对于读代码的人来说有括号的代码更清晰。可读性比简洁性更重要,请在可以让你代码变清晰地地方加个括号吧!</p>
+  </li>
+</ul>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/iOS-WeiCat/" title="link to 自己实现iOS微信自动抢红包(非越狱)">自己实现iOS微信自动抢红包(非越狱)</a></h2>
+       <p class="excerpt">自己实现iOS微信自动抢红包(非越狱)微信红包前言：最近笔者在研究iOS逆向工程，顺便拿微信来练手，在非越狱手机上实现了微信自动抢红包的功能。题外话：此教程是一篇严肃的学术探讨类文章，仅仅用于学习研究，也请读者不要用于商业或其他非法途径上，笔者一概不负责哟~~好了，接下来可以进入正题了！此教程所需要的工具/文件yololibclass-dumpdumpdecryptediOSOpenDeviToolsOpenSSH(Cydia)iFile(Cydia)Cycript(Cydia)Comma...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-24 06:22:49 +0800" class="post-list__meta--date date">2015-03-24</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2015/03/iOS-WeiCat/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/Swift-literal/" title="link to Swift字面量">Swift字面量</a></h2>
+       <p class="excerpt">Swift 字面量所谓字面量，就是指像特定的数字，字符串或者是布尔值这样，能够直接了当地指出自己的类型并为变量进行赋值的值。比如在下面：let aNumber = 3         //整型字面量let aString = "Hello"   //字符串字面量let aBool = true        //布尔值字面量整型字面量  整型字面量可以是一个十进制，二进制，八进制或十六进制常量。 二进制前缀为 0b，八进制前缀为 0o，十六进制前缀为 0x，十进制没有前缀：以下为一些整型字...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:27:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/Swift-literal/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://liuchuanweb.com/2015/03/Swift-Basic-Operators/";
+        this.page.identifier = "/2015/03/Swift-Basic-Operators/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-12-09 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

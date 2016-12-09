@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>马上着手开发 iOS 应用程序 (一) -现在就开始</title>
+  <meta name="description" content="马上着手开发 iOS 应用程序 (一) -现在就开始">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="马上着手开发 iOS 应用程序 (一) -现在就开始">
+  <meta name="twitter:description" content="马上着手开发 iOS 应用程序 (一) -现在就开始">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="马上着手开发 iOS 应用程序 (一) -现在就开始">
+  <meta property="og:description" content="马上着手开发 iOS 应用程序 (一) -现在就开始">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://liuchuanweb.com/2016/04/Start-Developing-iOS-Apps-(Swift)/">
+  <link rel="alternate" type="application/rss+xml" title="Hacker's Liu" href="http://liuchuanweb.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Hacker's Liu 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Hacker's Liu logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Hacker's Liu" class="blog-button">Hacker's Liu</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">人格的完善是本，财富的确立是末</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。<p>正在修行，探求创意之源。</p>There is no perfect system , only undiscovered vulnerabilities!.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">突破电脑特权，创造艺术之美!.</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
+                
+                  <li class="navigation__item"><a href="http://chinahackers.github.io/" target="_blank" title="My Projects">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/LiuChuan77" title="@LiuChuan77 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/ChinaHackers" title="@ChinaHackers 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/LiuChuan_" title="@LiuChuan_" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:93428739@qq.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-04-02 06:22:49 +0800" itemprop="datePublished" class="post-meta__date date">2016-04-02</time> &#8226; <span class="post-meta__tags tags">Swift</span>
+    </div>
+    <h1 class="post-title">马上着手开发 iOS 应用程序 (一) -现在就开始</h1>
+  </header>
+
+  <section class="post">
+    <h2>马上着手开发 iOS 应用程序 (一) -现在就开始</h2>
+
+<blockquote>
+  <ul>
+    <li>重要：这是针对于正在开发中的API或技术的预备文档(预发布版本)。
+  苹果提供这份文档的目的是帮助你按照文中描述的方式对技术的选择及界面的设计开发进行规划。
+  这些信息有可能发生变化，因此根据本文档的软件开发应当基于最终版本的操作系统和文档进行测试。
+  该文档的新版本或许会随着API或相关技术未来的发展而进行更新。</li>
+  </ul>
+</blockquote>
+
+<p>翻译自苹果官网:</p>
+
+<p><a href="https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html#//apple_ref/doc/uid/TP40015214-CH2-SW1">Start Developing iOS Apps (Swift) - Jump Right In</a></p>
+
+<p><code>马上着手开发 iOS 应用程序（Swift）</code>是创建能运行在 <code>iPhone</code> 和 <code>iPad </code>上应用程序的完美起点。查看这一系列循序渐进的课程来指导你构建你的第一个 app - 包括工具，主要概念和最佳实践让你的学习之路更加简单。</p>
+
+<p>每个课程包含一篇教程以及一些概念信息，你需要完成它们。课程间彼此互相关联，让你经历逐步创建一个简单，真实世界的 iOS app 的过程。</p>
+
+<p>当你经历构建 app 的过程，你将了解 iOS app 开发的概念，增加对 Swift 开发语言的理解，并熟悉 Xcode 这个苹果集成开发环境（IDE）的许多有价值功能。</p>
+
+<h3>关于课程</h3>
+
+<p>在这些课程中，主要学习开发一个叫 <code>FoodTracker </code>的食物跟踪 app。
+这个 app 展示由食物名称、评分及照片组成的列表。
+用户可以增加一份新的食物，也可以删除或编辑现有的一份。
+为了完成这些操作,用户需要导航至不同的界面，在那里可以为特定食物指定名字、评分和照片。</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/909589-19ba58cf7e9e393f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>第一节课是<code> playground</code> ，它是种能让你与代码进行交互并实时看到结果的 Xcode 文件。在<code> Xcode </code>中打开它，并用它来熟悉 <code>Swift</code> 的关键概念。</p>
+
+<p>剩下的每节课程都伴随着一个 Xcode 项目，展示课程结束时你的代码和界面应该是什么样子。当学完一节课程，你可以下载这个项目并对照它检查你的学习情况。</p>
+
+<p>最后有个词汇表帮助你回忆在整个课程中学到的概念，词汇表关联所有这些课程。</p>
+
+<h3>获取开发工具</h3>
+
+<p>为了使用这些课程中描述的最新技术来开发<code> iOS</code> 应用程序，你需要一台 Mac 电脑（OS X 10.10 或之后）运行最新版本的 Xcode。 Xcode 包括所有设计、开发和调试 app 需要的工具。它同样包含<code> iOS SDK</code>。iOS SDK 扩展了 Xcode 的功能，它包含 iOS 开发专用的<code>工具</code>、<code>编译器</code>和<code>框架</code>等。</p>
+
+<p>免费从 App Store 下载最新版本的 Xcode 到你的 Mac 上。</p>
+
+<h3>下载最新版本 Xcode</h3>
+
+<ul>
+  <li>1、 打开 Mac 上的 <code>App Store</code> 程序（默认位于 Dock 中）。</li>
+  <li>2、 在右上角的搜索栏中，输入 Xcode，回车确认。Xcode 程序显示在第一个搜索结果。</li>
+  <li>3、 单击“获取”，然后点击安装程序。</li>
+  <li>4、 当提示时输入你的 Apple ID 和密码。Xcode 会下载并安装到到你的应用目录中</li>
+</ul>
+
+<blockquote>
+  <h3>重要提示：</h3>
+  <p>课程使用 Xcode 7.0 和 iOS SDK 9.0。确保使用了最新版本的<code> Xcode</code> 和 <code>iOS SDK</code>
+当一切准备完毕，让我们开始吧！</p>
+</blockquote>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/04/Start-Swift_Connect-the-UI-to-Code/" title="link to 马上着手开发 iOS 应用程序 (四) - 连接 UI 和代码">马上着手开发 iOS 应用程序 (四) - 连接 UI 和代码</a></h2>
+       <p class="excerpt">马上着手开发 iOS 应用程序 (四) - 连接 UI 和代码翻译自苹果官网:Connect the UI to Code在本课中，连接 FoodTracker app 的 UI 和源代码并且定义一些用户可以在 UI 中执行的动作。当完成这些，你的 app 看起来是这样：学习目标在课程的最后，你将学会：  解释 storyboard 中的场景和底层的视图控制器的关系。  在 storyboard 中的 UI 控件和源代码之间创建 outlet 和 action 连接  处理文本框中的用户输...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-04-02 06:27:49 +0800" class="post-list__meta--date date">2016-04-02</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2016/04/Start-Swift_Connect-the-UI-to-Code/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/02/hello-world-vno/" title="link to Hello World - Vno">Hello World - Vno</a></h2>
+       <p class="excerpt">What’s thisVno Jekyll is a theme for Jekyll. It is a port of my Ghost theme vno, which is originally developed from Dale Anthony’s Uno.Usagebash$ git clone https://github.com/onevcat/vno-jekyll.git your_site$ cd your_site$ bundler install$ bundler...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-02-16 14:32:24 +0800" class="post-list__meta--date date">2016-02-16</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2016/02/hello-world-vno/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://liuchuanweb.com/2016/04/Start-Developing-iOS-Apps-(Swift)/";
+        this.page.identifier = "/2016/04/Start-Developing-iOS-Apps-(Swift)/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-12-09 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

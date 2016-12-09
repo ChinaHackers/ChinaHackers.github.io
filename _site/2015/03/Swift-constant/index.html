@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Swift常量</title>
+  <meta name="description" content="Swift 常量">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift常量">
+  <meta name="twitter:description" content="Swift 常量">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift常量">
+  <meta property="og:description" content="Swift 常量">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://liuchuanweb.com/2015/03/Swift-constant/">
+  <link rel="alternate" type="application/rss+xml" title="Hacker's Liu" href="http://liuchuanweb.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Hacker's Liu 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Hacker's Liu logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Hacker's Liu" class="blog-button">Hacker's Liu</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">人格的完善是本，财富的确立是末</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。<p>正在修行，探求创意之源。</p>There is no perfect system , only undiscovered vulnerabilities!.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">突破电脑特权，创造艺术之美!.</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
+                
+                  <li class="navigation__item"><a href="http://chinahackers.github.io/" target="_blank" title="My Projects">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/LiuChuan77" title="@LiuChuan77 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/ChinaHackers" title="@ChinaHackers 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/LiuChuan_" title="@LiuChuan_" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:93428739@qq.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2015-03-09 06:26:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
+    </div>
+    <h1 class="post-title">Swift常量</h1>
+  </header>
+
+  <section class="post">
+    <h2>Swift 常量</h2>
+
+<blockquote>
+  <ul>
+    <li>常量一旦设定，在程序运行时就无法改变其值。</li>
+    <li>常量可以是任何的数据类型如：<code>整型常量</code>，<code>浮点型常量</code>，<code>字符常量</code>或<code>字符串常量</code>。同样也有<code>枚举类型的常量</code>：</li>
+    <li>常量类似于变量，区别在于常量的值一旦设定就不能改变，而变量的值可以随意更改。</li>
+  </ul>
+</blockquote>
+
+<h2>常量声明</h2>
+
+<p>常量使用关键字 <code>let</code> 来声明，语法如下：</p>
+
+<pre><code>let constantName = &lt;initial value&gt;
+</code></pre>
+
+<p>以下是一个简单的 Swift 程序中使用常量的实例：</p>
+
+<pre><code>let constA = 42
+print(constA)
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code>42
+</code></pre>
+
+<h3>类型标注</h3>
+
+<blockquote>
+  <p>当你声明常量或者变量的时候可以加上类型标注（type annotation），说明常量或者变量中要存储的值的类型。如果要添加类型标注，需要在常量或者变量名后面加上一个冒号和空格，然后加上类型名称。</p>
+</blockquote>
+
+<pre><code>var constantName:&lt;data type&gt; = &lt;optional initial value&gt;
+</code></pre>
+
+<p>以下是一个简单是实例演示了 Swift 中常量使用<code>类型标注</code>。需要注意的是常量定义时必须初始值：</p>
+
+<pre><code>let constA = 42
+print(constA)
+
+let constB:Float = 3.14159
+print(constB)
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code>42
+3.14159
+</code></pre>
+
+<h3>常量命名</h3>
+
+<blockquote>
+  <ul>
+    <li>常量的命名可以由<code>字母</code>，<code>数字</code>和<code>下划线</code>组成。</li>
+    <li>常量需要以<code>字母</code>或<code>下划线</code>开始。</li>
+  </ul>
+</blockquote>
+
+<p><code>Swift</code> 是一个区分大小写的语言，所以字母大写与小写是不一样的。</p>
+
+<p><em>常量名也可以使用简单的 <code>Unicode</code> 字符，如下实例：</em></p>
+
+<pre><code>let _const = "Hello, Swift!"
+print(_const)
+
+let 你好 = "你好世界"
+print(你好)
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code>Hello, Swift!
+你好世界
+</code></pre>
+
+<h3>常量输出</h3>
+
+<blockquote>
+  <p>变量和常量可以使用 <code>print</code> 函数来输出。</p>
+</blockquote>
+
+<p>在字符串中可以使用括号与反斜线来插入常量，如下实例：</p>
+
+<pre><code>let name = "Apple"
+let site = "http://www.apple.com"
+print("\(name)的官网地址为：\(site)")
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code>Apple的官网地址为：http://www.apple.com
+</code></pre>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/Swift-literal/" title="link to Swift字面量">Swift字面量</a></h2>
+       <p class="excerpt">Swift 字面量所谓字面量，就是指像特定的数字，字符串或者是布尔值这样，能够直接了当地指出自己的类型并为变量进行赋值的值。比如在下面：let aNumber = 3         //整型字面量let aString = "Hello"   //字符串字面量let aBool = true        //布尔值字面量整型字面量  整型字面量可以是一个十进制，二进制，八进制或十六进制常量。 二进制前缀为 0b，八进制前缀为 0o，十六进制前缀为 0x，十进制没有前缀：以下为一些整型字...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:27:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/Swift-literal/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/Swift-Optionals/" title="link to Swift可选类型">Swift可选类型</a></h2>
+       <p class="excerpt">Swift 可选(Optionals)类型  Swift 的可选（Optional）类型，用于处理值缺失的情况。可选表示”那儿有一个值，并且它等于 x “或者”那儿没有值”。Swfit语言定义后缀？作为命名类型Optional的简写，换句话说，以下两种声明是相等的：var optionalInteger: Int?var optionalInteger: Optional&lt;Int&gt;在这两种情况下，变量optionalInteger都是可选整数类型。注意，在类型和？之间没有空格。...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:25:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/Swift-Optionals/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://liuchuanweb.com/2015/03/Swift-constant/";
+        this.page.identifier = "/2015/03/Swift-constant/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-12-09 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

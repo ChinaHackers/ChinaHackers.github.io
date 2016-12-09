@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Swift可选类型</title>
+  <meta name="description" content="Swift 可选(Optionals)类型">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift可选类型">
+  <meta name="twitter:description" content="Swift 可选(Optionals)类型">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift可选类型">
+  <meta property="og:description" content="Swift 可选(Optionals)类型">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://liuchuanweb.com/2015/03/Swift-Optionals/">
+  <link rel="alternate" type="application/rss+xml" title="Hacker's Liu" href="http://liuchuanweb.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Hacker's Liu 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Hacker's Liu logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Hacker's Liu" class="blog-button">Hacker's Liu</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">人格的完善是本，财富的确立是末</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。<p>正在修行，探求创意之源。</p>There is no perfect system , only undiscovered vulnerabilities!.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">突破电脑特权，创造艺术之美!.</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
+                
+                  <li class="navigation__item"><a href="http://chinahackers.github.io/" target="_blank" title="My Projects">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/LiuChuan77" title="@LiuChuan77 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/ChinaHackers" title="@ChinaHackers 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/LiuChuan_" title="@LiuChuan_" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:93428739@qq.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2015-03-09 06:25:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
+    </div>
+    <h1 class="post-title">Swift可选类型</h1>
+  </header>
+
+  <section class="post">
+    <h2>Swift 可选(Optionals)类型</h2>
+
+<blockquote>
+  <p>Swift 的可选<code>（Optional）</code>类型，用于处理值缺失的情况。可选表示”那儿有一个值，并且它等于 x “或者”那儿没有值”。
+Swfit语言定义后缀<code>？</code>作为命名类型Optional的简写，换句话说，以下两种声明是相等的：</p>
+</blockquote>
+
+<pre><code>var optionalInteger: Int?
+var optionalInteger: Optional&lt;Int&gt;
+</code></pre>
+
+<p>在这两种情况下，变量<code>optionalInteger</code>都是可选整数类型。注意，在类型和<code>？</code>之间没有空格。
+&gt; <code>Optional</code> 是一个含有两种情况的枚举，<code>None</code>和<code>Some(T)</code>，用来表示可能有或可能没有值。任何类型都可以明确声明为（或者隐式转换）可选类型。当声明一个可选类型的时候，要确保用括号给？操作符一个合适的范围。例如，声明可选整数数组，应该写成<code>(Int[])?</code>；写成<code>Int[]?</code>会报错。</p>
+
+<p>当你声明一个可选变量或者可选属性的时候没有提供初始值，它的值会默认为<code>nil</code>。</p>
+
+<blockquote>
+  <p>可选项遵照LogicValue协议，因此可以出现在布尔环境中。在这种情况下，如果可选类型T?包含类型为T的任何值（也就是说它的值是Optional.Some(T)），这个可选类型等于<code>true</code>，反之为<code>false</code>。</p>
+</blockquote>
+
+<p>如果一个可选类型的实例包含一个值，你可以用后缀操作符 <code>！</code>来访问这个值，如下所示：</p>
+
+<pre><code>optionalInteger = 42
+optionalInteger! // 42
+</code></pre>
+
+<p>使用操作符<code>！</code>去获取值为nil的可选变量会有运行时错误。</p>
+
+<p>你可以用可选链接和可选绑定选择性执行可选表达式上的操作。如果值为<code>nil</code>，任何操作都不会执行，也不会有运行报错。
+让我们来详细看下以下实例来了解 Swift 中可选类型的应用:</p>
+
+<pre><code>import Cocoa
+var myString:String? = nil
+if myString != nil {
+    print(myString)
+}else{
+    print("字符串为 nil")
+}
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code>字符串为 nil
+</code></pre>
+
+<p>可选类型类似于Objective-C中指针的<code>nil</code>值，但是<code>nil</code>只对类(class)有用，而可选类型对所有的类型都可用，并且更安全。</p>
+
+<h3>强制解析</h3>
+
+<blockquote>
+  <p>当你确定可选类型确实包含值之后，你可以在可选的名字后面加一个感叹号<code>（!）</code>来获取值。这个感叹号表示”我知道这个可选有值，请使用它。”这被称为可选值的强制解析（forced unwrapping）。</p>
+</blockquote>
+
+<p>实例如下：</p>
+
+<pre><code>import Cocoa
+var myString:String?
+myString = "Hello, Swift!"
+
+if myString != nil {
+   print(myString)
+}else{
+   print("myString 值为 nil")
+}
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code>Optional("Hello, Swift!")
+</code></pre>
+
+<p>强制解析可选值，使用感叹号（!）：</p>
+
+<pre><code>import Cocoa
+
+var myString:String?
+
+myString = "Hello, Swift!"
+
+if myString != nil {
+   // 强制解析
+   print( myString! )
+}else{
+   print("myString 值为 nil")
+}
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code>Hello, Swift!
+</code></pre>
+
+<blockquote>
+  <p>注意：
+使用<code>!</code>来获取一个不存在的可选值会导致运行时错误。使用!来强制解析值之前，一定要确定可选包含一个非nil的值。</p>
+</blockquote>
+
+<h3>自动解析</h3>
+
+<p>你可以在声明可选变量时使用感叹号<code>（!）</code>替换问号<code>（?）</code>。这样可选变量在使用时就不需要再加一个感叹号<code>（!）</code>来获取值，它会自动解析。</p>
+
+<p>实例如下：</p>
+
+<pre><code>import Cocoa
+
+var myString:String!
+
+myString = "Hello, Swift!"
+
+if myString != nil {
+   print(myString)
+}else{
+   print("myString 值为 nil")
+}
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code>Hello, Swift!
+</code></pre>
+
+<h3>可选绑定</h3>
+
+<blockquote>
+  <p>使用可选绑定（optional binding）来判断可选类型是否包含值，如果包含就把值赋给一个临时常量或者变量。可选绑定可以用在if和while语句中来对可选类型的值进行判断并把值赋给一个常量或者变量。</p>
+</blockquote>
+
+<p>像下面这样在if语句中写一个可选绑定：</p>
+
+<pre><code>if let constantName = someOptional {
+    statements
+}
+</code></pre>
+
+<p>让我们来看下一个简单的可选绑定实例：</p>
+
+<pre><code>import Cocoa
+
+var myString:String?
+
+myString = "Hello, Swift!"
+
+if let yourString = myString {
+   print("你的字符串值为 - \(yourString)")
+}else{
+   print("你的字符串没有值")
+}
+</code></pre>
+
+<p>以上程序执行结果为：</p>
+
+<pre><code>你的字符串值为 - Hello, Swift!
+</code></pre>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/Swift-constant/" title="link to Swift常量">Swift常量</a></h2>
+       <p class="excerpt">Swift 常量      常量一旦设定，在程序运行时就无法改变其值。    常量可以是任何的数据类型如：整型常量，浮点型常量，字符常量或字符串常量。同样也有枚举类型的常量：    常量类似于变量，区别在于常量的值一旦设定就不能改变，而变量的值可以随意更改。  常量声明常量使用关键字 let 来声明，语法如下：let constantName = &lt;initial value&gt;以下是一个简单的 Swift 程序中使用常量的实例：let constA = 42print(cons...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:26:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/Swift-constant/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/swift-variable/" title="link to Swift变量">Swift变量</a></h2>
+       <p class="excerpt">Swift 变量变量是一种使用方便的占位符，用于引用计算机内存地址。Swift 每个变量都指定了特定的类型，该类型决定了变量占用内存的大小，不同的数据类型也决定可存储值的范围。上一章节我们已经为大家介绍了基本的数据类型，包括整形Int、浮点数Double和Float、布尔类型Bool以及字符串类型String。此外，Swift还提供了其他更强大数据类型， Optional, Array, Dictionary, Struct, 和 Class 等。接下来我们将为大家介绍如何在 Swift ...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:24:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-variable/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://liuchuanweb.com/2015/03/Swift-Optionals/";
+        this.page.identifier = "/2015/03/Swift-Optionals/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-12-09 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

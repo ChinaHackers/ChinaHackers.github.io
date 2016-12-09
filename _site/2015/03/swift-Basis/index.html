@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <title>Swift基础语法</title>
-  <meta name="description" content="Swift 基本语法">
+  <meta name="description" content="Swift 基本语法在上一章节中我们已经讲到如何创建 Swift 语言的 “Hello, World!” 程序。现在我们来复习下。如果创建的是 OS X playground 需要引入 Cocoa ：import Cocoa/* 我的第一个 Swift 程序 */var myString = "Hello, Wo...">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Swift基础语法">
-  <meta name="twitter:description" content="Swift 基本语法">
+  <meta name="twitter:description" content="Swift 基本语法在上一章节中我们已经讲到如何创建 Swift 语言的 “Hello, World!” 程序。现在我们来复习下。如果创建的是 OS X playground 需要引入 Cocoa ：import Cocoa/* 我的第一个 Swift 程序 */var myString = "Hello, Wo...">
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Swift基础语法">
-  <meta property="og:description" content="Swift 基本语法">
+  <meta property="og:description" content="Swift 基本语法在上一章节中我们已经讲到如何创建 Swift 语言的 “Hello, World!” 程序。现在我们来复习下。如果创建的是 OS X playground 需要引入 Cocoa ：import Cocoa/* 我的第一个 Swift 程序 */var myString = "Hello, Wo...">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -64,7 +64,7 @@
               <ul class="navigation">
                 <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">博客</a></li>
                 
-                  <li class="navigation__item"><a href="github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
+                  <li class="navigation__item"><a href="https://github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
                 
                   <li class="navigation__item"><a href="http://chinahackers.github.io/" target="_blank" title="My Projects">关于</a></li>
                 
@@ -133,7 +133,7 @@
     </div>
     
     
-    <div class="panel-cover--overlay cover-black"></div>
+    <div class="panel-cover--overlay cover-slate"></div>
     
   </div>
 </header>
@@ -144,42 +144,47 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2015-03-09 06:21:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
+      <time datetime="2015-03-09 06:22:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
     </div>
     <h1 class="post-title">Swift基础语法</h1>
   </header>
 
   <section class="post">
     <h2>Swift 基本语法</h2>
-
-<p>在上一章节中我们已经讲到如何创建 Swift 语言的 &quot;Hello, World!&quot; 程序。现在我们来复习下。
-如果创建的是 OS X playground 需要引入 Cocoa ：</p>
-
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">import Cocoa
+<p>在上一章节中我们已经讲到如何创建 Swift 语言的 “Hello, World!” 程序。
+现在我们来复习下。如果创建的是 OS X playground 需要引入 Cocoa ：
+<code>
+import Cocoa
 /* 我的第一个 Swift 程序 */
-var myString = &quot;Hello, World!&quot;
-print(myString)</code></pre></figure>
+var myString = "Hello, World!"
+print(myString)
+</code></p>
 
-<hr>
+<hr />
 
 <p><b>如果我们想创建 iOS playground 则需要引入 UIKit :</b></p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">import UIKit
 var myString = &quot;Hello, World!&quot;
-print(myString)
-执行以上程序，输出结果为：
-Hello, World!</code></pre></figure>
+print(myString)</code></pre></figure>
+
+<p>执行以上程序，输出结果为：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">Hello, World!</code></pre></figure>
 
 <p>以上代码即为 Swift 程序的基本结构，接下来我们来详细说明结构的组成部分。</p>
 
-<p><b>Swift 引入</b> 
-<h6>
-我们可以使用 import 语句来引入任何的 Objective-C 框架（或 C 库）到 Swift 程序中。例如 import cocoa 语句导入了使用了 Cocoa 库和API，我们可以在 Swift 程序中使用他们。
-Cocoa 本身由 Objective-C 语言写成，Objective-C 又是 C 语言的严格超集，所以在 Swift 应用中我们可以很简单的混入 C 语言代码，甚至是 C++ 代码。
-</h6>
-<b>Swift 标记</b>
-<h6>
-Swift 程序由多种标记组成，标记可以是单词，标识符，常量，字符串或符号。例如以下 Swift 程序由三种标记组成：</h6></p>
+<h3>Swift 引入</h3>
+
+<ul>
+  <li>我们可以使用 import 语句来引入任何的 Objective-C 框架（或 C 库）到 Swift 程序中。例如 import cocoa 语句导入了使用了 Cocoa 库和API，我们可以在 Swift 程序中使用他们。
+Cocoa 本身由 Objective-C 语言写成，Objective-C 又是 C 语言的严格超集，所以在 Swift 应用中我们可以很简单的混入 C 语言代码，甚至是 C++ 代码。</li>
+</ul>
+
+<h3>Swift 标记</h3>
+
+<p>Swift 程序由多种标记组成，标记可以是单词，标识符，常量，字符串或符号。
+例如以下 Swift 程序由三种标记组成：</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">print(&quot;test!&quot;)
 标记是：单词、符号
@@ -188,7 +193,7 @@ print
    &quot;test!&quot;
 )</code></pre></figure>
 
-<p><b>注释</b></p>
+<h3>注释</h3>
 
 <p>Swift的注释与C语言极其相似，单行注释以两个反斜线开头：</p>
 
@@ -198,19 +203,21 @@ print
 /* 这也是一条注释，
 但跨越多行 */</code></pre></figure>
 
-<p>与 C 语言的多行注释有所不同的是，Swift 的多行注释可以嵌套在其他多行注释内部。写法是在一个多行注释块内插入另一个多行注释。第二个注释块封闭时，后面仍然接着第一个注释块：</p>
+<ul>
+  <li>与 C 语言的多行注释有所不同的是，Swift 的多行注释可以嵌套在其他多行注释内部。写法是在一个多行注释块内插入另一个多行注释。第二个注释块封闭时，后面仍然接着第一个注释块：</li>
+</ul>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">/* 这是第一个多行注释的开头
-
 /* 这是嵌套的第二个多行注释 */
-
 这是第一个多行注释的结尾 */</code></pre></figure>
 
 <p>多行注释的嵌套是你可以更快捷方便的注释代码块，即使代码块中已经有了注释。</p>
 
 <h3>分号</h3>
 
-<p>与其它语言不同的是，Swift不要求在每行语句的结尾使用分号(;)，但当你在同一行书写多条语句时，必须用分号隔开：</p>
+<ul>
+  <li>与其它语言不同的是，Swift不要求在每行语句的结尾使用分号(;)，但当你在同一行书写多条语句时，必须用分号隔开：</li>
+</ul>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">import Cocoa
 /* 我的第一个 Swift 程序 */
@@ -218,79 +225,93 @@ var myString = &quot;Hello, World!&quot;; print(myString)</code></pre></figure>
 
 <h3>标识符</h3>
 
-<h5>
-标识符就是给变量、常量、方法、函数、枚举、结构体、类、协议等指定的名字。构成标识符的字母均有一定的规范，Swift语言中标识符的命名规则如下：
-<p>*区分大小写，Myname与myname是两个不同的标识符；</p>
+<ul>
+  <li>
+    <p>标识符就是给变量、常量、方法、函数、枚举、结构体、类、协议等指定的名字。
+构成标识符的字母均有一定的规范，Swift语言中标识符的命名规则如下：</p>
 
-<p>*标识符首字符可以以下划线（_）或者字母开始，但不能是数字；</p>
-<p>*标识符中其他字符可以是下划线（_）、字母或数字。</p>
+    <ul>
+      <li>区分大小写，Myname与myname是两个不同的标识符；</li>
+      <li>标识符首字符可以以下划线（_）或者字母开始，但不能是数字；</li>
+      <li>标识符中其他字符可以是下划线（_）、字母或数字.</li>
+    </ul>
+  </li>
+</ul>
 
-例如： userName、User_Name、_sys_val、身高等为合法的标识符，而2mail、room#和class为非法的标识符。
-</h5>
+<p>例如： userName、User_Name、_sys_val、身高等为合法的标识符，而2mail、room#和class为非法的标识符。</p>
 
-<h4>注意</h4>:Swift中的字母采用的是Unicode编码[1]。Unicode叫做统一编码制，它包含了亚洲文字编码，如中文、日文、韩文等字符，甚至是我们在聊天工具中使用的表情符号
+<pre><code>注意:
+Swift中的字母采用的是Unicode编码[1]。Unicode叫做统一编码制，它包含了亚洲文字编码，如中文、日文、韩文等字符，甚至是我们在聊天工具中使用的表情符号
 如果一定要使用关键字作为标识符，可以在关键字前后添加重音符号（`），例如：
+</code></pre>
+
+<hr />
 
 <h3>关键字</h3>
 
-关键字是类似于标识符的保留字符序列，除非用重音符号（`）将其括起来，否则不能用作标识符。关键字是对编译器具有特殊意义的预定义保留标识符。常见的关键字有以下4种。
+<ul>
+  <li>关键字是类似于标识符的保留字符序列，除非用重音符号（`）将其括起来，否则不能用作标识符。关键字是对编译器具有特殊意义的预定义保留标识符。常见的关键字有以下4种。</li>
+</ul>
 
-<h4>与声明有关的关键字</h4>
+<h5>与声明有关的关键字</h5>
 
-<p>class   deinit  enum    extension
-func    import  init    internal
-let operator    private protocol
-public  static  struct  subscript
-typealias   var     </p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">class	deinit	enum	extension
+func	import	init	internal
+let	operator	private	protocol
+public	static	struct	subscript
+typealias	var</code></pre></figure>
 
-<p>与语句有关的关键字</p>
+<h5>与语句有关的关键字</h5>
 
-<p>break   case    continue    default
-do  else    fallthrough for
-if  in  return  switch
-where   while       </p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">break	case	continue	default
+do	else	fallthrough for
+if	in	return	switch
+where	while</code></pre></figure>
 
-<p>表达式和类型关键字</p>
+<h5>表达式和类型关键字</h5>
 
-<p>as  dynamicType false   is
-nil self    Self    super
-true    <em>COLUMN</em>    <em>FILE</em>  <em>FUNCTION</em>
-<em>LINE</em><br>
-在特定上下文中使用的关键字
-associativity   convenience dynamic didSet
-final   get infix   inout
-lazy    left    mutating    none
-nonmutating optional    override    postfix
-precedence  prefix  Protocol    required
-right   set Type    unowned
-weak    willSet     </p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">as	dynamicType	false	is
+nil	self	Self	super
+true	_COLUMN_	_FILE_	_FUNCTION_
+_LINE_</code></pre></figure>
+
+<h5>在特定上下文中使用的关键字</h5>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">associativity	convenience	dynamic	didSet
+final	get	infix	inout
+lazy	left	mutating	none
+nonmutating	optional	override	postfix
+precedence	prefix	Protocol	required
+right	set	Type	unowned
+weak	willSet</code></pre></figure>
 
 <h3>Swift 空格</h3>
 
 <p>Swift语言并不是像C/C++，Java那样完全忽视空格，Swift对空格的使用有一定的要求，但是又不像Python对缩进的要求那么严格。
-在Swift中，运算符不能直接跟在变量或常量的后面。例如下面的代码会报错：</p>
+在Swift中，运算符不能直接跟在变量或常量的后面。
+例如下面的代码会报错：</p>
 
-<p>let a= 1 + 2</p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">let a= 1 + 2</code></pre></figure>
 
 <p>错误信息是：
-error: prefix/postfix &#39;=&#39; is reserved</p>
-
-<p>意思大概是等号直接跟在前面或后面这种用法是保留的。
+error: prefix/postfix ‘=’ is reserved
+意思大概是等号直接跟在前面或后面这种用法是保留的。
 下面的代码还是会报错（继续注意空格）：</p>
 
-<p>let a = 1+ 2</p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">let a = 1+ 2</code></pre></figure>
 
 <p>错误信息是：
-error: consecutive statements on a line must be separated by &#39;;&#39;</p>
+error: consecutive statements on a line must be separated by ‘;’</p>
 
-<p>这是因为Swift认为到1+这个语句就结束了，2就是下一个语句了。</p>
+<p>这是因为Swift认为到1+这个语句就结束了，2就是下一个语句了。
+只有这样写才不会报错：</p>
 
-<p>只有这样写才不会报错：
-let a = 1 + 2;  // 编码规范推荐使用这种写法
-let b = 3+4 // 这样也是OK的
-<h3>Swift 字面量</h3></p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">let a = 1 + 2;  // 编码规范推荐使用这种写法
+let b = 3+4 // 这样也是OK的</code></pre></figure>
 
-<h5>所谓字面量，就是指像特定的数字，字符串或者是布尔值这样，能够直接了当地指出自己的类型并为变量进行赋值的值。比如在下面：</h5>
+<h4>Swift 字面量</h4>
+
+<p>所谓字面量，就是指像特定的数字，字符串或者是布尔值这样，能够直接了当地指出自己的类型并为变量进行赋值的值。比如在下面：</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">42                 // 整型字面量
 3.14159            // 浮点型字面量
@@ -306,8 +327,8 @@ true               // 布尔型字面量</code></pre></figure>
    <div class="read-more-item">
        <span class="read-more-item-dim">最近的文章</span>
        <h2 class="post-list__post-title post-title"><a href="/2015/03/swift-data-type/" title="link to Swift数据类型">Swift数据类型</a></h2>
-       <p class="excerpt">Swift 数据类型在我们使用任何程序语言编程时，需要使用各种数据类似来存储不同的信息。变量的数据类型决定了如何将代表这些值的位存储到计算机的内存中。在声明变量时也可指定它的数据类型。所有变量都具有数据类型，以决定能够存储哪种数据。内置数据类型Swift 提供了非常丰富的数据类型，以下列出了常用了集中数据类型：Int一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：*在32位平台上，Int和Int32长度相同。*在64位平台上，...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-data-type/>继续阅读</a></div>
+       <p class="excerpt">Swift 数据类型在我们使用任何程序语言编程时，需要使用各种数据类似来存储不同的信息。变量的数据类型决定了如何将代表这些值的位存储到计算机的内存中。在声明变量时也可指定它的数据类型。所有变量都具有数据类型，以决定能够存储哪种数据。内置数据类型Swift 提供了非常丰富的数据类型，以下列出了常用了集中数据类型：Int  一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：          在32位平台上，Int和Int32长度相...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:23:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-data-type/>继续阅读</a></div>
    </div>
    
    
@@ -315,9 +336,9 @@ true               // 布尔型字面量</code></pre></figure>
    
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2015/03/cocoapods-demo/" title="link to CocoaPods安装使用心得">CocoaPods安装使用心得</a></h2>
-       <p class="excerpt">CocoaPods安装使用心得，分享给墙内的朋友们前言CocoaPods是一个负责管理iOS项目中第三方开源代码的工具。二、安装由于网上的教程基本都大同小异，但细节之处还不是很完善，所以借机会在这里补充下：注：要使用CocoaPods，那就要下载安装它，而下载安装CocoaPods需要Ruby环境1.Ruby环境搭建当前安装环境为Mac Pro 10.11.1。Mac  OS本身自带Ruby，但还是更新一下保险，因为升级了系统之后,可能会出现一些意想不到的情况,最好还是更新一下Ruby。查...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">CocoaPods</span><a class="btn-border-small" href=/2015/03/cocoapods-demo/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/welcome-to-swift/" title="link to Swift简介">Swift简介</a></h2>
+       <p class="excerpt">Swift 简介Swift 是一种支持多编程范式和编译式的开源编程语言,苹果于2014年WWDC（苹果开发者大会）发布，用于开发 iOS，OS X 和 watchOS应用程序。Swift 结合了 C 和 Objective-C 的优点并且不受 C 兼容性的限制.  Swift在 Mac OS 和 iOS 平台可以和Object-C使用相同的运行环境。这意味着Swift 程序可以运行于目前已存在的平台之上，包含 iOS 6 和 OS X 10.8 都可以运行Swift的程序。更重要的, Sw...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/welcome-to-swift/>继续阅读</a></div>
    </div>
    
 </section>
@@ -353,7 +374,7 @@ true               // 布尔型字面量</code></pre></figure>
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-05-02 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-12-09 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
         <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
     </footer>
 </section>

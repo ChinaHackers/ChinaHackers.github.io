@@ -5,55 +5,529 @@
     <description>hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。&lt;p&gt;正在修行，探求创意之源。&lt;/p&gt;There is no perfect system , only undiscovered vulnerabilities!.</description>
     <link>http://liuchuanweb.com/</link>
     <atom:link href="http://liuchuanweb.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 May 2016 01:21:09 +0800</pubDate>
-    <lastBuildDate>Mon, 02 May 2016 01:21:09 +0800</lastBuildDate>
-    <generator>Jekyll v3.1.2</generator>
+    <pubDate>Fri, 09 Dec 2016 21:09:20 +0800</pubDate>
+    <lastBuildDate>Fri, 09 Dec 2016 21:09:20 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.1</generator>
+    
+      <item>
+        <title>马上着手开发 iOS 应用程序 (四) - 连接 UI 和代码</title>
+        <description>&lt;h2&gt;马上着手开发 iOS 应用程序 (四) - 连接 UI 和代码&lt;/h2&gt;
+
+&lt;p&gt;翻译自苹果官网:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson3.html#//apple_ref/doc/uid/TP40015214-CH22-SW1&quot;&gt;Connect the UI to Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;在本课中，连接 FoodTracker app 的 UI 和源代码并且定义一些用户可以在 UI 中执行的动作。当完成这些，你的 app 看起来是这样：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_sim_finalUI_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;学习目标&lt;/h3&gt;
+
+&lt;p&gt;在课程的最后，你将学会：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;解释&lt;code&gt; storyboard &lt;/code&gt;中的场景和底层的视图控制器的关系。&lt;/li&gt;
+  &lt;li&gt;在&lt;code&gt; storyboard&lt;/code&gt; 中的 UI 控件和源代码之间创建&lt;code&gt; outlet&lt;/code&gt; 和&lt;code&gt; action&lt;/code&gt; 连接&lt;/li&gt;
+  &lt;li&gt;处理文本框中的用户输入及在 UI 中显示结果&lt;/li&gt;
+  &lt;li&gt;创建一个类遵循协议&lt;/li&gt;
+  &lt;li&gt;理解代理设计模式&lt;/li&gt;
+  &lt;li&gt;当设计 app 结构时遵循 target-action 模式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;连接 UI 和源代码&lt;/h3&gt;
+
+&lt;p&gt;storyboard 中控件关联着源代码。理解 storyboard 和你写的代码间的关系非常重要。&lt;/p&gt;
+
+&lt;p&gt;在 storyboard 中，一个&lt;code&gt;场景&lt;/code&gt;代表一个屏幕的内容通常是个视图控制器。视图控制器实现 app 的功能并管理内容视图和它的各级子类，同时协调封装数据的模型层和显示数据的视图层之间的信息流，管理它们的内容视图的生命周期，当设备旋转时处理方向变化，在 app 中定义导航，响应用户输入。所有的 iOS 视图控制器对象都是&lt;code&gt; UIViewController &lt;/code&gt;和它的子类型。&lt;/p&gt;
+
+&lt;p&gt;通过在代码中创建和实现自定义控制器类来定义功能。在这个类和&lt;code&gt; storyboard &lt;/code&gt;场景间创建连接,这样你就同时得到了代码中的功能和&lt;code&gt; storyboard&lt;/code&gt; 中的 UI。&lt;/p&gt;
+
+&lt;p&gt;Xcode 已经在之前创建了这样的类了，&lt;code&gt; ViewController.swift &lt;/code&gt;,把它连接到之前定义的场景。未来，你会遇到更多的场景，那时你得自己在识别检查器&lt;code&gt;（Identity inspector）&lt;/code&gt; 中连接它们。识别检查器让你能够编辑 storyboard 中对象的与身份相关属性，例如对象属于哪个类。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_inspector_identity_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;运行时，storyboard 会创建自定义 ViewController 的实例，app 显示 storyboard 中定义的 UI 并执行&lt;code&gt; ViewController.swift &lt;/code&gt;中定义的一些功能。&lt;/p&gt;
+
+&lt;p&gt;尽管场景成功连接到了&lt;code&gt; ViewController.swift&lt;/code&gt;，但这不是唯一需要连接的。为了在 app 中定义交互，控制器源代码需要与 storyboard 中视图关联。通过在视图和控制器源代码间定义 outlets 和 acitons 来实现关联。&lt;/p&gt;
+
+&lt;h3&gt;创建 UI 控件Outlets&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;Outlets &lt;/code&gt;是在代码中引用界面对象的一种方式。为了创建&lt;code&gt; Outlet&lt;/code&gt;，按住&lt;code&gt; Control&lt;/code&gt; 从 &lt;code&gt;Storyboard &lt;/code&gt;中对象往控制器文件拖拽。这会在控制器中创建对象属性，让你能在运行时访问这个属性。&lt;/p&gt;
+
+&lt;p&gt;你需要为 UI 中文本框和标签创建 &lt;code&gt;outlets&lt;/code&gt; 来引用它们。&lt;/p&gt;
+
+&lt;h4&gt;连接文本框和 ViewController.swift 代码&lt;/h4&gt;
+
+&lt;p&gt;1.打开&lt;code&gt; Main.storyboard&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;2.点击 Xcode 右上角工具栏中的&lt;code&gt; Assistant&lt;/code&gt; 按钮来打开 &lt;code&gt;辅助编辑器 &lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/assistant_editor_toggle_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3.如果你想要更多空间来工作，请点击 Xcode 工具栏中的&lt;code&gt; Navigator &lt;/code&gt;和&lt;code&gt; Utilities &lt;/code&gt;按钮来收缩项目导航和实用工具区。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/navigator_utilities_toggle_on_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;同样可以收缩&lt;code&gt;大纲视图&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;4.在辅助编辑器顶部的编辑器选择栏，从&lt;code&gt; Preview &lt;/code&gt;修改辅助编辑器为&lt;code&gt; Automatic&lt;/code&gt; &amp;gt; &lt;code&gt;ViewController.swift &lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_switchtoviewcontroller_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ViewController.swift &lt;/code&gt;会在右边的编辑器中显示。&lt;/p&gt;
+
+&lt;p&gt;5.在&lt;code&gt; ViewController.swift &lt;/code&gt;中，找到如下的&lt;code&gt; class &lt;/code&gt;行：&lt;/p&gt;
+
+&lt;p&gt;class ViewController: UIViewController {&lt;/p&gt;
+
+&lt;p&gt;6.在&lt;code&gt; class &lt;/code&gt;行下面，添加如下行:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;pre&gt;&lt;code&gt;// MARK: Properties
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这仅仅向源代码添加了一行&lt;code&gt;注释&lt;/code&gt;。回忆一下，&lt;code&gt;注释 &lt;/code&gt;是代码中不会被编译的文本，但提供了有关代码的上下文说明信息。&lt;/p&gt;
+
+&lt;p&gt;以&lt;code&gt; // MARK: &lt;/code&gt;开头的的注释是种很特别的注释，让你（或任何其他读你代码的人）组织代码并进行导航的。你稍后会在 action 一节中再次看到它的。具体来说，用它来分割逻辑代码区域。&lt;/p&gt;
+
+&lt;p&gt;7.在&lt;code&gt; storyboard&lt;/code&gt; 中，选择&lt;code&gt;文本框&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;8.按住 Control 从画板中的文本框拖动到右边编辑器中的代码。在刚刚添加的注释下面停止拖动。ViewController.swift.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_textfield_dragoutlet_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;9.在打开的对象框中，输入名字&lt;code&gt; nameTextField&lt;/code&gt;。
+忽略其他的选项。最后对话框应该像这样:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_textfield_addoutlet_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;10.点击 Connect&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Xcode 向 ViewController.swift 中添加必要的代码来存储文本框的指针并且配置 storyboard 来设置刚才的连接。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;pre&gt;&lt;code&gt;@IBOutlet weak var nameTextField: UITextField!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;花点时间理解这行代码发生了什么。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;IBOutlet&lt;/code&gt; 属性告诉 Xcode 让你可以从 ` Interface Builder &lt;code&gt;中连接&lt;/code&gt; nameTextField &lt;code&gt;属性(这就是为什么属性有 IB 前缀)。&lt;/code&gt; weak &lt;code&gt;关键字意味着属性在生命周期某些时候可能没有值(是 nil)。剩下的部分定义了一个叫&lt;/code&gt; nameTextField` 的文本框。&lt;/p&gt;
+
+&lt;p&gt;注意在声明的结尾&lt;code&gt; ! &lt;/code&gt;。你可能还记得在某些类型的AppDelegate.swift文件的末尾看到这些。这个感叹号&lt;code&gt;(!) &lt;/code&gt; 表明该类型是&lt;code&gt; 隐式解包可选&lt;/code&gt;的，这是一个可选类型，在第一次赋值后就一直存在值.&lt;/p&gt;
+
+&lt;p&gt;现在，以同样的方式连接&lt;code&gt; TextFiled&lt;/code&gt;和 你的代码。&lt;/p&gt;
+
+&lt;p&gt;连接&lt;code&gt; TextFiled &lt;/code&gt;和 &lt;code&gt;ViewController.swift&lt;/code&gt;代码&lt;/p&gt;
+
+&lt;p&gt;1.在 &lt;code&gt;storyboard &lt;/code&gt;中，选择&lt;code&gt; TextFiled &lt;/code&gt;。
+按住&lt;code&gt; Control &lt;/code&gt;从画板中的标签拖动到右边编辑器的代码中，在&lt;code&gt; ViewController.swift &lt;/code&gt;中 &lt;code&gt;nameTextField &lt;/code&gt;属性的下面的行停止拖动。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_label_dragoutlet_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3.在出现的对话框中，输入名字&lt;code&gt; mealNameLabel&lt;/code&gt;。忽略其他选项。你的对话框应该是这样：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_label_addoutlet_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4.点击&lt;code&gt; Connect&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;再一次，Xcode 往 &lt;code&gt;ViewController.swift &lt;/code&gt;中添加了必要的代码来存储标签的指针并配置 storyboard 来设置连接。这个&lt;code&gt; Outlet &lt;/code&gt;除了名字和类型其他都类似之前文本框的。&lt;/p&gt;
+
+&lt;p&gt;再次，Xcode 以 &lt;code&gt;ViewController.swift&lt;/code&gt;中添加必要的代码，来存储一个指向 和配置故事板来设置该连接。该类似 &lt;code&gt;TextFiled&lt;/code&gt;，除了它的名字和它的类型（这是一个&lt;code&gt;UILabel&lt;/code&gt;，以匹配 storyboard）。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;pre&gt;&lt;code&gt;@IBOutlet weak var mealNameLabel: UILabel!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;当使用这种方式成功在代码中引用界面控件，你需要定义事件来与这些控件触发交互。这就是&lt;/p&gt;
+
+&lt;p&gt;现在，你有办法从代码中引用界面元素控件，你需要定义一个事件触发这些元素之间的互动。这就是Actions 的由来。&lt;/p&gt;
+
+&lt;h3&gt;定义一个动作(Action)来执行&lt;/h3&gt;
+
+&lt;p&gt;iOS app 是基于&lt;code&gt; 事件驱动的程序 &lt;/code&gt;。那就是，app 的流程是由系统事件和用户动作决定的。用户在界面中执行动作并触发事件。这些事件导致 app 逻辑的执行和相应的数据处理。app 响应用户动作并反馈到 UI。当确定代码块执行时，因为 app 是用户而不是开发者在控制的，所以在代码中标示用户可以执行哪个动作以及怎么响应这些动作。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;动作&lt;/code&gt;（或动作方法）是 app 中关联事件的一部分代码块。当事件发生了，对应代码得到执行。你可以定义一个动作方法来完成从操作一块数据到更新 UI 的任何事情。使用动作驱动 app 的流程来响应用户或系统的事件。&lt;/p&gt;
+
+&lt;p&gt;像创建 outlet 一样创建 action：按住 Control 从一个 storyboard 中特定对象向视图控制器文件拖动。这步操作会在视图控制器中创建一个方法，当用户与这个方法关联的对象交互时就会触发这个方法。&lt;/p&gt;
+
+&lt;p&gt;通过创建一个简单的动作:当用户点击&lt;code&gt; Set Default Label Text &lt;/code&gt;按钮，设置标签为默认值,&lt;code&gt;Default Text&lt;/code&gt;（设置标签为文本框中文本的代码有点复杂，所以将在下一节讲解。）&lt;/p&gt;
+
+&lt;h3&gt;在 ViewController.swift 代码中创建标签重置动作&lt;/h3&gt;
+
+&lt;p&gt;1.在 ViewController.swift 的最后一个大括号(}) 前面，添加如下注释:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;pre&gt;&lt;code&gt;// MARK: Actions
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这行注释表明以下是写 Actions 的区域。&lt;/p&gt;
+
+&lt;p&gt;2.在 storyboard 中， 选择&lt;code&gt; Set Default Label Text &lt;/code&gt;按钮。&lt;/p&gt;
+
+&lt;p&gt;3.按住&lt;code&gt; Control &lt;/code&gt;从画板中的&lt;code&gt; Set Default Label Text &lt;/code&gt;按钮拖动到右边编辑器代码中，在刚才的注释行下面停止拖动。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_button_dragaction_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4.在弹出的对话框中 &lt;code&gt;Connection &lt;/code&gt;那一行选择&lt;code&gt; Action&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;对于名称，类型设置默认标签文本。
+5.对于名称，类型设置 Name 那一行输入: setDefaultLabelText 。
+6.对于类型，Type 那一行，选择&lt;code&gt; UIButton&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;你或许注意到文本框的默认值&lt;code&gt; AnyObject&lt;/code&gt;。在 Swift 中， &lt;code&gt;AnyObject &lt;/code&gt;类型用于描述属于任何类的对象。指定&lt;code&gt; action &lt;/code&gt;方法的类型为&lt;code&gt; UIButton &lt;/code&gt;意味着&lt;code&gt; 只有按钮对象可以连接这个 action。&lt;/code&gt;尽管对现在创建的这个动作没有什么意义，但是记住这点很重要。&lt;/p&gt;
+
+&lt;p&gt;忽略剩下的选项。你的对话框应该是这样：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_button_addaction_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;7.点击 Connect。&lt;/p&gt;
+
+&lt;p&gt;Xcode 向 &lt;code&gt;ViewController.swift &lt;/code&gt;中添加必要的代码来设置 action 方法。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@IBAction func setDefaultLabelText(sender: UIButton) {
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;sender &lt;/code&gt;参数:指向负责触发动作的对象-当前是这个按钮。 &lt;code&gt;IBAction &lt;/code&gt;属性表明这个方法是个 &lt;code&gt;action&lt;/code&gt; 可以在 storyboard 中连接这个方法。剩下的定义就是方法名字 &lt;code&gt;setDefaultLabelText(_:)&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;方法实现是空的。设置标签值为空非常简单。&lt;/p&gt;
+
+&lt;h3&gt;在 ViewController 代码中实现重置标签文本动作&lt;/h3&gt;
+
+&lt;p&gt;1.在&lt;code&gt; VieController.swift &lt;/code&gt;中，找到刚才添加的&lt;code&gt;setDefaultLabelText &lt;/code&gt;动作方法。
+在大括号（{}）之间的代码实现中，添加这行代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mealNameLabel.text = &quot;Default Text&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或许你会猜到，这句代码就是设置&lt;code&gt; Label &lt;/code&gt;的文本为默认值。&lt;/p&gt;
+
+&lt;p&gt;注意到你没有指定&lt;code&gt; Default Text&lt;/code&gt; 的类型，因为 Swift 类型推断发现你给标签赋值 String 类型的值所以可以正确推断类型。&lt;/p&gt;
+
+&lt;p&gt;iOS 系统为你默认执行了所有的重绘操作，所以你只需写这句代码就行了。你的 setDefaultLabelText(_:) 方法最后应该是这样:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@IBAction func setDefaultLabelText(sender: UIButton) {
+    mealNameLabel.text = &quot;Default Text&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;检验: 运行模拟器测试你的修改。当点击&lt;code&gt; Set Default Label Text &lt;/code&gt;按钮，标签的文本应该从 &lt;code&gt;Meal Name &lt;/code&gt;(storyboard 中设置的值) 变为&lt;code&gt; Default Text &lt;/code&gt;(动作设置的值)。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_sim_defaulttext_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;你刚才的行为是 iOS app &lt;code&gt;target-action &lt;/code&gt;设计模式的一个例子。当特定的事件发生相应对象就会发送消息给另外一个对象。在这个例子中，事件就是用户点击&lt;code&gt; Set Default Label Text &lt;/code&gt;按钮，动作就是 &lt;code&gt;setDefaultLabelText&lt;/code&gt;, &lt;code&gt;target&lt;/code&gt; 就是&lt;code&gt; ViewController&lt;/code&gt;，&lt;code&gt;sender &lt;/code&gt;就是&lt;code&gt; Set Default Label Text &lt;/code&gt;按钮。消息就是在源代码中定义的动作方法，target 就是接受消息并有能力执行动作的对象。发送动作消息通常是 control 对象，例如按钮，slider 或 switch - 它们可以触发事件来响应用户的交互如点击，拖动或值改变。这种设计模式在 iOS app 开发中很常见，后面的课程你会看到更多的例子。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;处理用户输入&lt;/h3&gt;
+
+&lt;p&gt;使用这种方式重置&lt;code&gt; Label &lt;/code&gt;的默认值，继续添加一个功能来设置&lt;code&gt; Label &lt;/code&gt;为文本框中的值。我们简单处理，当用户点击文本框键盘上的&lt;code&gt; Return &lt;/code&gt;按钮，更新&lt;code&gt; Label &lt;/code&gt;的值。&lt;/p&gt;
+
+&lt;p&gt;当使用一个&lt;code&gt;文本框&lt;/code&gt;来接受用户输入，你需要一个&lt;code&gt;文本框代理&lt;/code&gt;的帮助。一个 &lt;code&gt;delegate &lt;/code&gt;代表一个对象去执行一些任务。代理对象 - 在本例中是这个文本框会保持代理的引用。在合适的时间它会发送消息给代理。告诉代理它将要处理或刚刚已经处理过的事件。代理可能做一些响应如更新它自己或 app 中其他对象的外观和状态，或者返回值来影响即将到来的事件的处理。&lt;/p&gt;
+
+&lt;p&gt;只要遵循合适的协议任何对象都可以作为代理为另一个对象服务。文本框的代理协议叫做 
+` UITextFieldDelegate。&lt;code&gt;在这个例子中，因为&lt;/code&gt; ViewController &lt;code&gt;保持了文本框的引用，设置&lt;/code&gt; ViewController `为文本框的代理。&lt;/p&gt;
+
+&lt;p&gt;通过把它列在类定义的后面让 &lt;code&gt;ViewController&lt;/code&gt; 遵循 &lt;code&gt;UITextFieldDelegate&lt;/code&gt; 协议。&lt;/p&gt;
+
+&lt;h3&gt;遵循 UITextFieldDelegate 协议&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在打开的辅助编辑器中，点击&lt;code&gt; Standard &lt;/code&gt;按钮返回 标准的编辑器。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/standard_toggle_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;点击 Xcode 工具栏的&lt;code&gt; Navigator &lt;/code&gt;和 &lt;code&gt;Utilities&lt;/code&gt; 按钮来展开项目导航和实用工具区。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;在项目导航中，选择&lt;code&gt; ViewController.swift&lt;/code&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在&lt;code&gt; ViewController.swift &lt;/code&gt;中，找到如下的 &lt;code&gt;class &lt;/code&gt;行:&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;pre&gt;&lt;code&gt;class ViewController: UIViewController {
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在&lt;code&gt; UIViewController &lt;/code&gt;后面添加一个&lt;code&gt; , &lt;/code&gt;和&lt;code&gt; UITextFieldDelegate &lt;/code&gt;来遵循这个协议。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class ViewController: UIViewController, UITextFieldDelegate {
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过遵循这个协议，&lt;code&gt;ViewController &lt;/code&gt;就有能力确认自己是&lt;code&gt; UITextFieldDelegate&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;意味着你可以设置它作为&lt;code&gt;文本框的代理&lt;/code&gt;并实现处理用户文本框输入的功能。&lt;/p&gt;
+
+&lt;h3&gt;设置` ViewController` 作为 `nameTextField `的代理&lt;/h3&gt;
+
+&lt;p&gt;1.在&lt;code&gt; ViewController.swift &lt;/code&gt;中，找到如下的&lt;code&gt; ViewDidLoad() &lt;/code&gt;方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; override func viewDidLoad() {
+     super.viewDidLoad()
+     // Do any additional setup after loading the view, typically from a nib.
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;模板方法的实现包含一行注释。我们不需要它，所以删掉。&lt;/p&gt;
+
+&lt;p&gt;2.在&lt;code&gt; super.viewDidLoad() &lt;/code&gt;行下面，添加一个如下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; // Handle the text field’s user input through delegate callbacks.
+ nameTextField.delegate = self
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;self &lt;/code&gt;指的是&lt;code&gt; ViewController 类&lt;/code&gt;，因为它是在&lt;code&gt; ViewController &lt;/code&gt;类的定义范围内引用的。&lt;/p&gt;
+
+&lt;p&gt;可以添加自己的注释来帮助理解代码的逻辑。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;viewDidLoad() &lt;/code&gt;方法应该像这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;override func viewDidLoad() {
+    super.viewDidLoad()
+
+    // Handle the text field’s user input through delegate callbacks.
+    nameTextField.delegate = self
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;ViewController &lt;/code&gt;现在是&lt;code&gt; nameTextField&lt;/code&gt; 的一个代理了。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;UITextFieldDelegate &lt;/code&gt;协议包含&lt;code&gt;可选&lt;/code&gt;方法，意味着它们不是必须要实现的。但是为了得到你想的特定的行为，需要实现它们中的两个方法:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func textFieldShouldReturn(textField: UITextField) -&amp;gt; Bool
+func textFieldDidEndEditing(textField: UITextField)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为了理解什么时候调用这些方法，首先需要知道文本框怎么响应用户事件。当用户点击一个文本框，文本框自动变成第一响应者。而&lt;code&gt; 第一响应者&lt;/code&gt; 是对象集合中第一个接收 app 事件的对象，事件包括键盘事件，移动事件和动作消息，当然还有其他的。换言之，用户的事件优先传给第一响应者。&lt;/p&gt;
+
+&lt;p&gt;当文本框变成第一响应者时，iOS 会显示键盘以及一个编辑区域。让用户使用键盘而不是文本框输入文字。&lt;/p&gt;
+
+&lt;p&gt;当用户完成编辑，文本框应该放弃第一响应者状态。点击 Return(本例是 Done) 按钮来结束在文本框中的编辑,相应的 textFieldShouldReturn(_:) 方法触发了&lt;/p&gt;
+
+&lt;h3&gt;实现` UITextFieldDelegate` 协议方法` textFieldShouldReturn(_:)` &lt;/h3&gt;
+
+&lt;p&gt;1.在&lt;code&gt; ViewController.swift &lt;/code&gt;文件中 // MARK: Actions 的右上角，添加如下注释:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;pre&gt;&lt;code&gt;// MARK: UITextFieldDelegate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这行注释是用来组织代码并帮助你（或任何其他读你代码的人）导航。&lt;/p&gt;
+
+&lt;p&gt;到目前为止添加了一些注释。Xcode 在&lt;code&gt; Functions menu&lt;/code&gt; 区域列举了每个注释,点击标题来跳到对应的区域。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_functionsmenu_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.在注释的下面，添加如下方法:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; func textFieldShouldReturn(textField: UITextField) -&amp;gt; Bool {
+ 
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.在这个方法中，添加如下代码来放弃文本框的第一响应者状态，并添加注释描述代码做了什么:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; // Hide the keyboard.
+ textField.resignFirstResponder()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;不要复制粘贴而是自己输入第二行的代码。当输入时&lt;code&gt; Xcode &lt;/code&gt;会弹出代码提示列表，滚动这个列表找到你想要的那项然后回车确认选择。Xcode 代码提示真是非常牛逼和省时的功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_code_completion_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4.在方法中，添加如下代码行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;return true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;由于该方法返回一个布尔值 true 表示文本框能够响应用户点击&lt;code&gt; Return &lt;/code&gt;键来关闭键盘的操作。&lt;/p&gt;
+
+&lt;p&gt;你的 &lt;code&gt;textFieldShouldReturn(_:) &lt;/code&gt;方法最后应该像这样:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func textFieldShouldReturn(textField: UITextField) -&amp;gt; Bool {
+    // Hide the keyboard.
+    textField.resignFirstResponder()
+    return true
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第二个需要实现的方法是&lt;code&gt; textFieldDidEndEditing(_:)&lt;/code&gt;,在文本框放弃第一响应者状态时被调用。也就是在你刚实现的&lt;code&gt; textFieldShouldReturn &lt;/code&gt;后面。&lt;/p&gt;
+
+&lt;p&gt;你可以在&lt;code&gt; textFieldDidEndEditing(_:) &lt;/code&gt;方法中读取刚才输入到文本框中的文本信息。在这个例子中，你会得到文本框的文本并使用它来修改标签的值。&lt;/p&gt;
+
+&lt;h3&gt;实现 UITextFieldDelegate 协议的方法 textFieldDidEndEditing(_:)&lt;/h3&gt;
+
+&lt;p&gt;1.在 ViewController.swift 的 textFieldShouldReturn(_:) 方法后面，添加如下方法:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; func textFieldDidEndEditing(textField: UITextField) {
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.在方法中，添加如下代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mealNameLabel.text = textField.text
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最后 &lt;code&gt;textFieldDidEndEditing(_:) &lt;/code&gt;方法应该像这样:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func textFieldDidEndEditing(textField: UITextField) {
+    mealNameLabel.text = textField.text
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;检验: 运行模拟器测试你的修改。选择&lt;code&gt;文本框&lt;/code&gt;并输入文本。当你点击键盘上的完成按钮，键盘消失然后会在标签中显示文本框中输入的文本。当点击&lt;code&gt; Set Default Label Text&lt;/code&gt; 按钮，Label从当前显示的文本变为 &lt;code&gt;Default Text&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/3_sim_finalUI_2x.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注意
+为了查看本课的完整实例项目，下载文件并在 Xcode 中查看它。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/sample-code/swift/downloads/Start-Dev-iOS-Apps-03.zip&quot;&gt;下载文件&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 02 Apr 2016 06:27:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2016/04/Start-Swift_Connect-the-UI-to-Code/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2016/04/Start-Swift_Connect-the-UI-to-Code/</guid>
+        
+        <category>Swift</category>
+        
+        
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>马上着手开发 iOS 应用程序 (一) -现在就开始</title>
+        <description>&lt;h2&gt;马上着手开发 iOS 应用程序 (一) -现在就开始&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;重要：这是针对于正在开发中的API或技术的预备文档(预发布版本)。
+  苹果提供这份文档的目的是帮助你按照文中描述的方式对技术的选择及界面的设计开发进行规划。
+  这些信息有可能发生变化，因此根据本文档的软件开发应当基于最终版本的操作系统和文档进行测试。
+  该文档的新版本或许会随着API或相关技术未来的发展而进行更新。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;翻译自苹果官网:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html#//apple_ref/doc/uid/TP40015214-CH2-SW1&quot;&gt;Start Developing iOS Apps (Swift) - Jump Right In&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;马上着手开发 iOS 应用程序（Swift）&lt;/code&gt;是创建能运行在 &lt;code&gt;iPhone&lt;/code&gt; 和 &lt;code&gt;iPad &lt;/code&gt;上应用程序的完美起点。查看这一系列循序渐进的课程来指导你构建你的第一个 app - 包括工具，主要概念和最佳实践让你的学习之路更加简单。&lt;/p&gt;
+
+&lt;p&gt;每个课程包含一篇教程以及一些概念信息，你需要完成它们。课程间彼此互相关联，让你经历逐步创建一个简单，真实世界的 iOS app 的过程。&lt;/p&gt;
+
+&lt;p&gt;当你经历构建 app 的过程，你将了解 iOS app 开发的概念，增加对 Swift 开发语言的理解，并熟悉 Xcode 这个苹果集成开发环境（IDE）的许多有价值功能。&lt;/p&gt;
+
+&lt;h3&gt;关于课程&lt;/h3&gt;
+
+&lt;p&gt;在这些课程中，主要学习开发一个叫 &lt;code&gt;FoodTracker &lt;/code&gt;的食物跟踪 app。
+这个 app 展示由食物名称、评分及照片组成的列表。
+用户可以增加一份新的食物，也可以删除或编辑现有的一份。
+为了完成这些操作,用户需要导航至不同的界面，在那里可以为特定食物指定名字、评分和照片。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/909589-19ba58cf7e9e393f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第一节课是&lt;code&gt; playground&lt;/code&gt; ，它是种能让你与代码进行交互并实时看到结果的 Xcode 文件。在&lt;code&gt; Xcode &lt;/code&gt;中打开它，并用它来熟悉 &lt;code&gt;Swift&lt;/code&gt; 的关键概念。&lt;/p&gt;
+
+&lt;p&gt;剩下的每节课程都伴随着一个 Xcode 项目，展示课程结束时你的代码和界面应该是什么样子。当学完一节课程，你可以下载这个项目并对照它检查你的学习情况。&lt;/p&gt;
+
+&lt;p&gt;最后有个词汇表帮助你回忆在整个课程中学到的概念，词汇表关联所有这些课程。&lt;/p&gt;
+
+&lt;h3&gt;获取开发工具&lt;/h3&gt;
+
+&lt;p&gt;为了使用这些课程中描述的最新技术来开发&lt;code&gt; iOS&lt;/code&gt; 应用程序，你需要一台 Mac 电脑（OS X 10.10 或之后）运行最新版本的 Xcode。 Xcode 包括所有设计、开发和调试 app 需要的工具。它同样包含&lt;code&gt; iOS SDK&lt;/code&gt;。iOS SDK 扩展了 Xcode 的功能，它包含 iOS 开发专用的&lt;code&gt;工具&lt;/code&gt;、&lt;code&gt;编译器&lt;/code&gt;和&lt;code&gt;框架&lt;/code&gt;等。&lt;/p&gt;
+
+&lt;p&gt;免费从 App Store 下载最新版本的 Xcode 到你的 Mac 上。&lt;/p&gt;
+
+&lt;h3&gt;下载最新版本 Xcode&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1、 打开 Mac 上的 &lt;code&gt;App Store&lt;/code&gt; 程序（默认位于 Dock 中）。&lt;/li&gt;
+  &lt;li&gt;2、 在右上角的搜索栏中，输入 Xcode，回车确认。Xcode 程序显示在第一个搜索结果。&lt;/li&gt;
+  &lt;li&gt;3、 单击“获取”，然后点击安装程序。&lt;/li&gt;
+  &lt;li&gt;4、 当提示时输入你的 Apple ID 和密码。Xcode 会下载并安装到到你的应用目录中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h3&gt;重要提示：&lt;/h3&gt;
+  &lt;p&gt;课程使用 Xcode 7.0 和 iOS SDK 9.0。确保使用了最新版本的&lt;code&gt; Xcode&lt;/code&gt; 和 &lt;code&gt;iOS SDK&lt;/code&gt;
+当一切准备完毕，让我们开始吧！&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Sat, 02 Apr 2016 06:22:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2016/04/Start-Developing-iOS-Apps-(Swift)/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2016/04/Start-Developing-iOS-Apps-(Swift)/</guid>
+        
+        <category>Swift</category>
+        
+        
+        <category>Swift</category>
+        
+      </item>
     
       <item>
         <title>Hello World - Vno</title>
-        <description>&lt;h4&gt;What&amp;#39;s this&lt;/h4&gt;
+        <description>&lt;h4 id=&quot;whats-this&quot;&gt;What’s this&lt;/h4&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/onevcat/vno-jekyll&quot;&gt;Vno Jekyll&lt;/a&gt; is a theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;. It is a port of my Ghost theme &lt;a href=&quot;https://github.com/onevcat/vno&quot;&gt;vno&lt;/a&gt;, which is originally developed from &lt;a href=&quot;https://github.com/daleanthony/uno&quot;&gt;Dale Anthony&amp;#39;s Uno&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/onevcat/vno-jekyll&quot;&gt;Vno Jekyll&lt;/a&gt; is a theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;. It is a port of my Ghost theme &lt;a href=&quot;https://github.com/onevcat/vno&quot;&gt;vno&lt;/a&gt;, which is originally developed from &lt;a href=&quot;https://github.com/daleanthony/uno&quot;&gt;Dale Anthony’s Uno&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h4&gt;Usage&lt;/h4&gt;
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;$ git clone https://github.com/onevcat/vno-jekyll.git your_site
+&lt;h4 id=&quot;usage&quot;&gt;Usage&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ git clone https://github.com/onevcat/vno-jekyll.git your_site
 $ cd your_site
 $ bundler install
 $ bundler exec jekyll serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;Your site with &lt;code&gt;Vno Jekyll&lt;/code&gt; enabled should be accessible in &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;http://127.0.0.1:4000&lt;/a&gt;.&lt;/p&gt;
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;For more information about Jekyll, please visit &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&amp;#39;s site&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Your site with &lt;code&gt;Vno Jekyll&lt;/code&gt; enabled should be accessible in http://127.0.0.1:4000.&lt;/p&gt;
 
-&lt;h4&gt;Configuration&lt;/h4&gt;
+&lt;p&gt;For more information about Jekyll, please visit &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll’s site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;configuration&quot;&gt;Configuration&lt;/h4&gt;
 
 &lt;p&gt;All configuration could be done in &lt;code&gt;_config.yml&lt;/code&gt;. Remember you need to restart to serve the page when after changing the config file. Everything in the config file should be self-explanatory.&lt;/p&gt;
 
-&lt;h4&gt;Background image and avatar&lt;/h4&gt;
+&lt;h4 id=&quot;background-image-and-avatar&quot;&gt;Background image and avatar&lt;/h4&gt;
 
 &lt;p&gt;You could replace the background and avatar image in &lt;code&gt;assets/images&lt;/code&gt; folder to change them.&lt;/p&gt;
 
-&lt;h4&gt;Sites using Vno&lt;/h4&gt;
+&lt;h4 id=&quot;sites-using-vno&quot;&gt;Sites using Vno&lt;/h4&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://onevcat.com&quot;&gt;My blog&lt;/a&gt; is using &lt;code&gt;Vno Jekyll&lt;/code&gt; as well, you could see how it works in real. There are some other sites using the same theme. You can find them below:&lt;/p&gt;
 
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Site Name&lt;/th&gt;
-&lt;th&gt;URL&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;OneV&amp;#39;s Den&lt;/td&gt;
-&lt;td&gt;&lt;a href=&quot;http://onevcat.com&quot;&gt;http://onevcat.com&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Site Name&lt;/th&gt;
+      &lt;th&gt;URL&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;OneV’s Den&lt;/td&gt;
+      &lt;td&gt;http://onevcat.com&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;If you happen to be using this theme, welcome to &lt;a href=&quot;https://github.com/onevcat/vno-jekyll/pulls&quot;&gt;send me a pull request&lt;/a&gt; to add your site link here. :)&lt;/p&gt;
+  &lt;p&gt;If you happen to be using this theme, welcome to &lt;a href=&quot;https://github.com/onevcat/vno-jekyll/pulls&quot;&gt;send me a pull request&lt;/a&gt; to add your site link here. :)&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h4&gt;License&lt;/h4&gt;
+&lt;h4 id=&quot;license&quot;&gt;License&lt;/h4&gt;
 
 &lt;p&gt;Great thanks to &lt;a href=&quot;https://github.com/daleanthony&quot;&gt;Dale Anthony&lt;/a&gt; and his &lt;a href=&quot;https://github.com/daleanthony/uno&quot;&gt;Uno&lt;/a&gt;. Vno Jekyll is based on Uno, and contains a lot of modification on page layout, animation, font and some more things I can not remember. Vno Jekyll is followed with Uno and be licensed as &lt;a href=&quot;http://creativecommons.org/licenses/by/4.0/&quot;&gt;Creative Commons Attribution 4.0 International&lt;/a&gt;. See the link for more information.&lt;/p&gt;
 </description>
@@ -79,6 +553,7 @@ print_hi(&amp;#39;Tom&amp;#39;)
 #=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
 </description>
         <pubDate>Mon, 15 Feb 2016 14:32:24 +0800</pubDate>
         <link>http://liuchuanweb.com/2016/02/sample-post/</link>
@@ -94,13 +569,17 @@ print_hi(&amp;#39;Tom&amp;#39;)
 &lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;def print_hi(name)
-  puts &amp;quot;Hi, #{name}&amp;quot;
+
+&lt;p&gt;&lt;code&gt;ruby
+def print_hi(name)
+  puts &quot;Hi, #{name}&quot;
 end
-print_hi(&amp;#39;Tom&amp;#39;)
-#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.
-&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+print_hi(&#39;Tom&#39;)
+#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.
+&lt;/code&gt;&lt;/p&gt;
+
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
 </description>
         <pubDate>Fri, 08 Jan 2016 23:04:23 +0800</pubDate>
         <link>http://liuchuanweb.com/2016/01/welcome-to-jekyll/</link>
@@ -114,692 +593,1202 @@ print_hi(&amp;#39;Tom&amp;#39;)
       </item>
     
       <item>
-        <title>Swift简介</title>
-        <description>&lt;h2&gt;Swift 简介&lt;/h2&gt;
+        <title>自己实现iOS微信自动抢红包(非越狱)</title>
+        <description>&lt;h2&gt;自己实现iOS微信自动抢红包(非越狱)&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://img0.imgtn.bdimg.com/it/u=165303722,1948513648&amp;amp;fm=21&amp;amp;gp=0.jpg&quot; alt=&quot;128x128&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-c7e714dcf4f87a75.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;i&gt;Swift 是一种支持多编程范式和编译式的开源编程语言,苹果于2014年WWDC（苹果开发者大会）发布，用于开发 iOS，OS X 和 watchOS应用程序。
-Swift 结合了 C 和 Objective-C 的优点并且不受 C 兼容性的限制。&lt;i&gt;&lt;/p&gt;
+&lt;p&gt;微信红包&lt;/p&gt;
 
-&lt;p&gt;Swift在 Mac OS 和 iOS 平台可以和Object-C使用相同的运行环境。这意味着Swift 程序可以运行于目前已存在的平台之上，包含 iOS 6 和 OS X 10.8 都可以运行Swift的程序。
-更重要的, Swift 和 Obj-C 的代码可并存于单一程序内, 这种延伸就如同 C 和 C++ 的关系一样。
-2015年6月8日，苹果于WWDC 2015上宣布，Swift将开放源代码，包括编译器和标准库。&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;前言：最近笔者在研究iOS逆向工程，顺便拿微信来练手，在非越狱手机上实现了微信自动抢红包的功能。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;题外话：此教程是一篇严肃的学术探讨类文章，仅仅用于学习研究，也请读者不要用于商业或其他非法途径上，笔者一概不负责哟~~&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;好了，接下来可以进入正题了！&lt;/p&gt;
+&lt;h4&gt;此教程所需要的工具/文件&lt;/h4&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;&lt;b&gt;谁适合阅读本教程?&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/KJCracks/yololib&quot; target=&quot;_blank&quot;&gt;yololib&lt;/a&gt;&lt;/li&gt;
 
-&lt;p&gt;本教程适合想从事移动端(iphone)开发或 OS X 应用的编程人员，如果之前有编程基础更好。
-本教程所有实例基于 Xcode7.1（Swift 2.x 的语法格式） 开发测试。&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;http://stevenygard.com/projects/*class-dump*/&quot; target=&quot;_blank&quot;&gt;class-dump&lt;/a&gt;&lt;/li&gt;
 
-&lt;p&gt;&lt;b&gt;第一个 Swift 程序&lt;/b&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/stefanesser/dumpdecrypted&quot; target=&quot;_blank&quot;&gt;dumpdecrypted&lt;/a&gt;&lt;/li&gt;
 
-&lt;p&gt;第一个 Swift 程序当然从输出 &amp;quot;Hello, World!&amp;quot; 开始，
-代码如下所示：&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;http://iosopendev.com/download/&quot; target=&quot;_blank&quot;&gt;iOSOpenDev&lt;/a&gt;&lt;/li&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;/* 我的第一个 Swift 程序 */            
-var myString = &amp;quot;Hello, World!&amp;quot;    
-print(myString)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.itools.cn/&quot; target=&quot;_blank&quot;&gt;iTools&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;OpenSSH(Cydia)&lt;/li&gt;
+
+&lt;li&gt;iFile(Cydia)&lt;/li&gt;
+
+&lt;li&gt;Cycript(Cydia)&lt;/li&gt;
+
+&lt;li&gt;Command Line Tools&lt;/li&gt;
+
+&lt;li&gt;Xcode&lt;/li&gt;
+
+&lt;li&gt;苹果开发者证书或企业证书&lt;/li&gt;
+&lt;li&gt;一台越狱的iPhone&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;是的，想要实现在非越狱iPhone上达到自动抢红包的目的，工具用的可能是有点多（&lt;strong&gt;工欲善其事必先利其器&lt;/strong&gt;^_^）。不过，没关系，大家可以按照教程的步骤一步一步来执行，不清楚的步骤可以重复实验，毕竟天上不会掉馅饼嘛。&lt;/p&gt;
+
+&lt;h2&gt;解密微信可执行文件(Mach-O)&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;因为从Appstore下载安装的应用都是加密过的，所以我们需要用一些工具来为下载的App解密，俗称砸壳。这样才能便于后面分析App的代码结构。&lt;/p&gt;
+&lt;p&gt;首先我们需要一台已经越狱的iPhone手机(现在市面上越狱已经很成熟，具体越狱方法这里就不介绍了)。然后进入Cydia，安装&lt;strong&gt;OpenSSH&lt;/strong&gt;、&lt;strong&gt;Cycript&lt;/strong&gt;、&lt;strong&gt;iFile&lt;/strong&gt;(调试程序时可以方便地查看日志文件)这三款软件。&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;PS：笔者的手机是iPhone 6Plus，系统版本为iOS9.1。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;在电脑上用iTunes上下载一个最新的微信，笔者当时下载的微信版本为6.3.13。下载完后，iTunes上会显示出已下载的app。&lt;/p&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-2830c17dd8f98e92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-2830c17dd8f98e92.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;iTunes&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;连上iPhone，用iTunes装上刚刚下载的微信应用。&lt;/p&gt;
+
+&lt;p&gt;打开Mac的终端，用ssh进入连上的iPhone&lt;strong&gt;(确保iPhone和Mac在同一个网段，笔者iPhone的IP地址为192.168.8.54)&lt;/strong&gt;。OpenSSH的root密码默认为	:alpine&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;SSH&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-efbcbbadadb0ea51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-efbcbbadadb0ea51.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;
+
+
+&lt;/div&gt;
+&lt;p&gt;接下来就是需要找到微信的Bundle id了，，这里笔者有一个小技巧，我们可以把iPhone上的所有App都关掉，唯独保留微信，然后输入命令 &lt;code&gt;ps -e&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-ea9fc8c6ca4dfd63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-ea9fc8c6ca4dfd63.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;微信bundle id&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这样我们就找到了微信的可执行文件Wechat的具体路径了。接下来我们需要用Cycript找出微信的Documents的路径，输入命令&lt;code&gt;cycript -p WeChat&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-0e731253d5adee7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-0e731253d5adee7c.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;cycript&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;编译dumpdecrypted&lt;br /&gt;先记下刚刚我们获取到的两个路径(Bundle和Documents)，这时候我们就要开始用dumpdecrypted来为微信二进制文件(WeChat)砸壳了。&lt;br /&gt;确保我们从Github上下载了最新的dumpdecrypted源码，进入dumpdecrypted源码的目录，编译dumpdecrypted.dylib，命令如下:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-a444fac57bafe7f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-a444fac57bafe7f5.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;dumpdecrypted.dylib&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这样我们可以看到dumpdecrypted目录下生成了一个dumpdecrypted.dylib的文件。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;scp&lt;br /&gt;拷贝dumpdecrypted.dylib到iPhone上，这里我们用到scp命令.&lt;br /&gt;&lt;code&gt;scp 源文件路径 目标文件路径&lt;/code&gt; 。具体如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-50aec0e15d68b229.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-50aec0e15d68b229.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;scp&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;开始砸壳&lt;br /&gt;dumpdecrypted.dylib的具体用法是：&lt;code&gt;DYLD_INSERT_LIBRARIES=/PathFrom/dumpdecrypted.dylib /PathTo&lt;/code&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-29352a27fd1d0bb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-29352a27fd1d0bb1.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;dumpdecrypted&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这样就代表砸壳成功了，当前目录下会生成砸壳后的文件，即WeChat.decrypted。同样用scp命令把WeChat.decrypted文件拷贝到电脑上,接下来我们要正式的dump微信的可执行文件了。&lt;/p&gt;
+&lt;h2&gt;dump微信可执行文件&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;从Github上下载最新的class-dump源代码，然后用Xcode编译即可生成class-dump(这里比较简单，笔者就不详细说明了)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;导出微信的头文件&lt;br /&gt;使用class-dump命令,把刚刚砸壳后的WeChat.decrypted,导出其中的头文件。&lt;code&gt;./class-dump -s -S -H ./WeChat.decrypted -o ./header6.3-arm64&lt;/code&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-1aacfbf80ef82f78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-1aacfbf80ef82f78.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;导出的头文件&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这里我们可以新建一个Xcode项目，把刚刚导出的头文件加到新建的项目中，这样便于查找微信的相关代码。&lt;/p&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-eaf3744cdfd9390d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-eaf3744cdfd9390d.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;微信的头文件&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;找到&lt;strong&gt;CMessageMgr.h&lt;/strong&gt;和&lt;strong&gt;WCRedEnvelopesLogicMgr.h&lt;/strong&gt;这两文件，其中我们注意到有这两个方法：&lt;code&gt;- (void)AsyncOnAddMsg:(id)arg1 MsgWrap:(id)arg2;&lt;/code&gt; ，&lt;code&gt;- (void)OpenRedEnvelopesRequest:(id)arg1;&lt;/code&gt;。没错，接下来我们就是要利用这两个方法来实现微信自动抢红包功能。其实现原理是，通过hook微信的新消息函数，我们判断是否为红包消息，如果是，我们就调用微信的打开红包方法。这样就能达到自动抢红包的目的了。哈哈，是不是很简单，我们一起来看看具体是怎么实现的吧。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新建一个dylib工程，因为Xcode默认不支持生成dylib，所以我们需要下载iOSOpenDev，安装完成后(Xcode7环境会提示安装iOSOpenDev失败，请参考&lt;a href=&quot;http://www.tqcto.com/article/software/14553.html&quot; target=&quot;_blank&quot;&gt;iOSOpenDev安装问题&lt;/a&gt;)，重新打开Xcode，在新建项目的选项中即可看到iOSOpenDev选项了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-ccbcb59d4e6eea3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-ccbcb59d4e6eea3a.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;iOSOpenDev&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;dylib代码&lt;br /&gt;选择Cocoa Touch Library，这样我们就新建了一个dylib工程了，我们命名为autoGetRedEnv。&lt;/p&gt;
+&lt;p&gt;删除autoGetRedEnv.h文件，修改autoGetRedEnv.m为autoGetRedEnv.mm，然后在项目中加入&lt;a href=&quot;https://github.com/rpetrich/CaptainHook&quot; target=&quot;_blank&quot;&gt;CaptainHook.h&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;因为微信不会主动来加载我们的hook代码，所以我们需要把hook逻辑写到构造函数中。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;objc&quot;&gt;__attribute__((constructor)) static void entry()
+{
+  //具体hook方法
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;hook微信的AsyncOnAddMsg: MsgWrap:方法，实现方法如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;objc&quot;&gt;//声明CMessageMgr类
+CHDeclareClass(CMessageMgr);
+CHMethod(2, void, CMessageMgr, AsyncOnAddMsg, id, arg1, MsgWrap, id, arg2)
+{
+  //调用原来的AsyncOnAddMsg:MsgWrap:方法
+  CHSuper(2, CMessageMgr, AsyncOnAddMsg, arg1, MsgWrap, arg2);
+  //具体抢红包逻辑
+  //...
+  //调用原生的打开红包的方法
+  //注意这里必须为给objc_msgSend的第三个参数声明为NSMutableDictionary,不然调用objc_msgSend时，不会触发打开红包的方法
+  ((void (*)(id, SEL, NSMutableDictionary*))objc_msgSend)(logicMgr, @selector(OpenRedEnvelopesRequest:), params);
+}
+__attribute__((constructor)) static void entry()
+{
+  //加载CMessageMgr类
+  CHLoadLateClass(CMessageMgr);
+  //hook AsyncOnAddMsg:MsgWrap:方法
+  CHClassHook(2, CMessageMgr, AsyncOnAddMsg, MsgWrap);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;&lt;p&gt;项目的全部代码，笔者已放入&lt;a href=&quot;https://github.com/east520/AutoGetRedEnv&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt;中。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;完成好具体实现逻辑后，就可以顺利生成dylib了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;重新打包微信App&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;为微信可执行文件注入dylib&lt;br /&gt;要想微信应用运行后，能执行我们的代码，首先需要微信加入我们的dylib，这里我们用到一个dylib注入神器:&lt;a href=&quot;https://github.com/KJCracks/yololib&quot; target=&quot;_blank&quot;&gt;yololib&lt;/a&gt;，从网上下载源代码，编译后得到yololib。&lt;/p&gt;
+&lt;p&gt;使用yololib简单的执行下面一句就可以成功完成注入。注入之前我们先把之前保存的WeChat.decrypted重命名为WeChat，即已砸完壳的可执行文件。&lt;br /&gt;&lt;code&gt;./yololib 目标可执行文件 需注入的dylib&lt;/code&gt;&lt;br /&gt;注入成功后即可见到如下信息：&lt;/p&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-7319139328678dd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-7319139328678dd9.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;dylib注入&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建Entitlements.plist&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+&amp;lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&amp;gt;
+&amp;lt;plist version=&quot;1.0&quot;&amp;gt;
+&amp;lt;dict&amp;gt;
+  &amp;lt;key&amp;gt;application-identifier&amp;lt;/key&amp;gt;
+  &amp;lt;string&amp;gt;123456.com.autogetredenv.demo&amp;lt;/string&amp;gt;
+  &amp;lt;key&amp;gt;com.apple.developer.team-identifier&amp;lt;/key&amp;gt;
+  &amp;lt;string&amp;gt;123456&amp;lt;/string&amp;gt;
+  &amp;lt;key&amp;gt;get-task-allow&amp;lt;/key&amp;gt;
+  &amp;lt;true/&amp;gt;
+  &amp;lt;key&amp;gt;keychain-access-groups&amp;lt;/key&amp;gt;
+  &amp;lt;array&amp;gt;
+      &amp;lt;string&amp;gt;123456.com.autogetredenv.demo&amp;lt;/string&amp;gt;
+  &amp;lt;/array&amp;gt;
+&amp;lt;/dict&amp;gt;
+&amp;lt;/plist&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里大家也许不清楚自己的证书Teamid及其他信息，没关系，笔者这里有一个小窍门，大家可以找到之前用开发者证书或企业证书打包过的App(例如叫Demo)，然后在终端中输入以下命令即可找到相关信息，命令如下：&lt;br /&gt;&lt;code&gt;./ldid -e ./Demo.app/demo&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;给微信重新签名&lt;br /&gt;接下来把我们生成的&lt;strong&gt;dylib(libautoGetRedEnv.dylib)&lt;/strong&gt;、刚刚注入dylib的&lt;strong&gt;WeChat&lt;/strong&gt;、以及&lt;strong&gt;embedded.mobileprovision&lt;/strong&gt;文件(可以在之前打包过的App中找到)拷贝到&lt;strong&gt;WeChat.app&lt;/strong&gt;中。&lt;/p&gt;
+&lt;p&gt;命令格式：&lt;code&gt;codesign -f -s 证书名字 目标文件&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;PS:证书名字可以在钥匙串中找到&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;分别用codesign命令来为微信中的相关文件签名,具体实现如下：&lt;/p&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-93795a412c283610.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-93795a412c283610.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;重新签名&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打包成ipa&lt;br /&gt;给微信重新签名后，我们就可以用xcrun来生成ipa了，具体实现如下：&lt;br /&gt;&lt;code&gt;xcrun -sdk iphoneos PackageApplication -v WeChat.app  -o ~/WeChat.ipa&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;安装拥有抢红包功能的微信&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;以上步骤如果都成功实现的话，那么真的就是万事俱备，只欠东风了~~~&lt;/p&gt;
+&lt;p&gt;我们可以使用iTools工具，来为iPhone(此iPhone Device id需加入证书中)安装改良过的微信了。&lt;/p&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-5b04b16681fb37ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-5b04b16681fb37ec.png?imageMogr2/auto-orient/strip%7CimageView2/2&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;iTools&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;大工告成！！&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;好了，我们可以看看hook过的微信抢红包效果了~&lt;/p&gt;
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/691288-cf9d5c6e1ebce029.gif?imageMogr2/auto-orient/strip&quot; data-original-src=&quot;http://upload-images.jianshu.io/upload_images/691288-cf9d5c6e1ebce029.gif?imageMogr2/auto-orient/strip&quot; /&gt;&lt;br /&gt;&lt;div class=&quot;image-caption&quot;&gt;自动抢红包&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;哈哈，是不是觉得很爽啊，&quot;妈妈再也不用担心我抢红包了。&quot;。大家如果有兴趣可以继续hook微信的其他函数，这样既加强了学习，又满足了自己的特(zhuang)殊(bi)需求嘛。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;特别鸣谢:&lt;/strong&gt;
+
+&lt;br /&gt;1.&lt;a href=&quot;http://drops.wooyun.org/papers/12803&quot; target=&quot;_blank&quot;&gt;iOS冰与火之歌(作者:蒸米)&lt;/a&gt;
+
+&lt;br /&gt;2.&lt;a href=&quot;http://www.amazon.cn/iOS%E5%BA%94%E7%94%A8%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B-%E6%B2%99%E6%A2%93%E7%A4%BE/dp/B00VFDVY7E/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1458733194&amp;amp;sr=1-1&amp;amp;keywords=ios%E5%BA%94%E7%94%A8%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B&quot; target=&quot;_blank&quot;&gt;iOS应用逆向工程&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
-        <link>http://liuchuanweb.com/2015/03/welcome-to-swift/</link>
-        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/welcome-to-swift/</guid>
+        <pubDate>Tue, 24 Mar 2015 06:22:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/iOS-WeiCat/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/iOS-WeiCat/</guid>
         
-        <category>Swift</category>
-        
-        
-        <category>Swift</category>
         
       </item>
     
       <item>
-        <title>Swift变量</title>
-        <description>&lt;h2&gt;Swift 变量&lt;/h2&gt;
-
-&lt;p&gt;变量是一种使用方便的占位符，用于引用计算机内存地址。
-Swift 每个变量都指定了特定的类型，该类型决定了变量占用内存的大小，不同的数据类型也决定可存储值的范围。
-上一章节我们已经为大家介绍了基本的数据类型，包括整形Int、浮点数Double和Float、布尔类型Bool以及字符串类型String。此外，Swift还提供了其他更强大数据类型， Optional, Array, Dictionary, Struct, 和 Class 等。&lt;/p&gt;
-
-&lt;p&gt;接下来我们将为大家介绍如何在 Swift 程序中声明和使用变量。
-&lt;h3&gt;变量声明&lt;/h3&gt;&lt;/p&gt;
-
-&lt;p&gt;变量声明意思是告诉编译器在内存中的哪个位置上为变量创建多大的存储空间。
-在使用变量前，你需要使用 &lt;b&gt;var&lt;/b&gt; 关键字声明它，如下所示：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;var variableName = &amp;lt;initial value&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;b&gt;以下是一个 Swift 程序中变量声明的简单实例：&lt;/b&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
-var varA = 42
-print(varA)
-
-var varB:Float
-varB = 3.14159
-print(varB)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;42
-3.14159&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3&gt;变量命名&lt;/h3&gt;
-
-&lt;p&gt;变量名可以由字母，数字和下划线组成。
-变量名需要以字母或下划线开始。
-Swift 是一个区分大小写的语言，所以字母大写与小写是不一样的。
-变量名也可以使用简单的 Unicode 字符，如下实例：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
-
-var _var = &amp;quot;Hello, Swift!&amp;quot;
-print(_var)
-
-var 你好 = &amp;quot;你好世界&amp;quot;
-var 菜鸟教程 = &amp;quot;www.runoob.com&amp;quot;
-print(你好)
-print(菜鸟教程)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;Hello, Swift!
-你好世界
-www.runoob.com&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3&gt;变量输出&lt;/h3&gt;
-
-&lt;p&gt;变量和常量可以使用&lt;b&gt; print&lt;/b&gt;（swift 2 将 print 替换了 println） 函数来输出。
-在字符串中可以使用括号与反斜线来插入变量，如下实例：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
-var name = &amp;quot;菜鸟教程&amp;quot;
-var site = &amp;quot;http://www.runoob.com&amp;quot;
-
-print(&amp;quot;\(name)的官网地址为：\(site)&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;菜鸟教程的官网地址为：http://www.runoob.com&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-</description>
-        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
-        <link>http://liuchuanweb.com/2015/03/swift-variable/</link>
-        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/swift-variable/</guid>
-        
-        <category>Swift</category>
-        
-        
-        <category>Swift</category>
-        
-      </item>
-    
-      <item>
-        <title>Swift数据类型</title>
-        <description>&lt;h2&gt;Swift 数据类型&lt;/h2&gt;
-
-&lt;p&gt;在我们使用任何程序语言编程时，需要使用各种数据类似来存储不同的信息。
-变量的数据类型决定了如何将代表这些值的位存储到计算机的内存中。在声明变量时也可指定它的数据类型。
-所有变量都具有数据类型，以决定能够存储哪种数据。&lt;/p&gt;
-
-&lt;h3&gt;内置数据类型&lt;/h3&gt;
-
-&lt;p&gt;Swift 提供了非常丰富的数据类型，以下列出了常用了集中数据类型：&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Int&lt;/b&gt;&lt;/p&gt;
-
-&lt;p&gt;一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：
-&lt;p&gt;*在32位平台上，Int和Int32长度相同。&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;*在64位平台上，Int和Int64长度相同。&lt;/p&gt;
-
-&lt;p&gt;除非你需要特定长度的整数，一般来说使用Int就够了。这可以提高代码一致性和可复用性。即使是在32位平台上，Int可以存储的整数范围也可以达到-2,147,483,648~2,147,483,647，大多数时候这已经足够大了。&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;UInt&lt;/b&gt;&lt;/p&gt;
-
-&lt;p&gt;Swift 也提供了一个特殊的无符号类型UInt，长度与当前平台的原生字长相同：
-&lt;p&gt;
-*在32位平台上，UInt和UInt32长度相同。&lt;/p&gt;
-
-&lt;p&gt;*在64位平台上，UInt和UInt64长度相同。
-&lt;/p&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;lt;b&amp;gt;注意：&amp;lt;/b&amp;gt;
-尽量不要使用UInt，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。除了这种情况，最好使用Int，即使你要存储的值已知是非负的。统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断，请参考&amp;lt;u&amp;gt;类型安全和类型推断。&amp;lt;/u&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3&gt;浮点数&lt;/h3&gt;
-
-&lt;p&gt;浮点数是有小数部分的数字，比如3.14159，0.1和-273.15。
-浮点类型比整数类型表示的范围更大，可以存储比Int类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：
-&lt;p&gt;
-Double表示64位浮点数。当你需要存储很大或者很高精度的浮点数时请使用此类型。&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;Float表示32位浮点数。精度要求不高的话可以使用此类型。&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;注意：&lt;/b&gt;
-Double精确度很高，至少有15位数字，而Float最少只有6位数字。选择哪个类型取决于你的代码需要处理的值的范围。&lt;/p&gt;
-
-&lt;h3&gt;布尔值&lt;/h3&gt;
-
-&lt;p&gt;Swift 有一个基本的布尔（Boolean）类型，叫做Bool。布尔值指逻辑上的值，因为它们只能是真或者假。Swift 有两个布尔常量，true和false。&lt;/p&gt;
-
-&lt;h3&gt;字符串&lt;/h3&gt;
-
-&lt;p&gt;字符串是字符的序列集合，例如：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;quot;Hello, World!&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3&gt;字符&lt;/h3&gt;
-
-&lt;p&gt;字符指的是单个字母，例如：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;quot;C&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3&gt;可选类型&lt;/h3&gt;
-
-&lt;p&gt;使用可选类型（optionals）来处理值可能缺失的情况。可选类型表示有值或没有值。
-数值范围
-下表显示了不同变量类型内存的存储空间，及变量类型的最大最小值：
-类型  大小（字节）  区间值
-Int8    1 字节    -127 到 127
-UInt8   1 字节    0 到 255
-Int32   4 字节    -2147483648 到 2147483647
-UInt32  4 字节    0 到 4294967295
-Int64   8 字节    -9223372036854775808 到 9223372036854775807
-UInt64  8 字节    0 到 18446744073709551615
-Float   4 字节    1.2E-38 到 3.4E+38 (~6 digits)
-Double  8 字节    2.3E-308 到 1.7E+308 (~15 digits)&lt;/p&gt;
-
-&lt;h3&gt;类型别名&lt;/h3&gt;
-
-&lt;p&gt;类型别名对当前的类型定义了另一个名字，类型别名通过使用 typealias 关键字来定义。语法格式如下：
-typealias newname = type
-例如以下定义了 Int 的类型别名为 Feet：
-typealias Feet = Int
-现在，我们可以通过别名来定义变量：
-import Cocoa&lt;/p&gt;
-
-&lt;p&gt;typealias Feet = Int
-var distance: Feet = 100
-print(distance)
-我们使用 playground 执行以上程序，输出结果为：
-100
-&lt;h3&gt;类型安全&lt;/h3&gt;&lt;/p&gt;
-
-&lt;p&gt;Swift 是一个类型安全（type safe）的语言。
-由于 Swift 是类型安全的，所以它会在编译你的代码时进行类型检查（type checks），并把不匹配的类型标记为错误。这可以让你在开发的时候尽早发现并修复错误。
-import Cocoa&lt;/p&gt;
-
-&lt;p&gt;var varA = 42
-varA = &amp;quot;This is hello&amp;quot;
-print(varA)
-以上程序，会在 Xcode 中报错：
-error: cannot assign value of type &amp;#39;String&amp;#39; to type &amp;#39;Int&amp;#39;
-varA = &amp;quot;This is hello&amp;quot;
-意思为不能将 &amp;#39;String&amp;#39; 字符串赋值给 &amp;#39;Int&amp;#39; 变量。&lt;/p&gt;
-
-&lt;h3&gt;类型推断&lt;/h3&gt;
-
-&lt;p&gt;当你要处理不同类型的值时，类型检查可以帮你避免错误。然而，这并不是说你每次声明常量和变量的时候都需要显式指定类型。
-如果你没有显式指定类型，Swift 会使用类型推断（type inference）来选择合适的类型。
-例如，如果你给一个新常量赋值42并且没有标明类型，Swift 可以推断出常量类型是Int，因为你给它赋的初始值看起来像一个整数：
-let meaningOfLife = 42
-// meaningOfLife 会被推测为 Int 类型
-同理，如果你没有给浮点字面量标明类型，Swift 会推断你想要的是Double：
-let pi = 3.14159
-// pi 会被推测为 Double 类型
-当推断浮点数的类型时，Swift 总是会选择Double而不是Float。
-如果表达式中同时出现了整数和浮点数，会被推断为Double类型：
-let anotherPi = 3 + 0.14159
-// anotherPi 会被推测为 Double 类型
-原始值3没有显式声明类型，而表达式中出现了一个浮点字面量，所以表达式会被推断为Double类型。
-实例
-import Cocoa&lt;/p&gt;
-
-&lt;p&gt;// varA 会被推测为 Int 类型 
-var varA = 42
-print(varA)&lt;/p&gt;
-
-&lt;p&gt;// varB 会被推测为 Double 类型&lt;br&gt;
-var varB = 3.14159
-print(varB)&lt;/p&gt;
-
-&lt;p&gt;// varC 也会被推测为 Double 类型&lt;br&gt;
-var varC = 3 + 0.14159
-print(varC)
-执行以上代码，输出结果为：
-42
-3.14159
-3.14159&lt;/p&gt;
-</description>
-        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
-        <link>http://liuchuanweb.com/2015/03/swift-data-type/</link>
-        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/swift-data-type/</guid>
-        
-        <category>Swift</category>
-        
-        
-        <category>Swift</category>
-        
-      </item>
-    
-      <item>
-        <title>Swift基础语法</title>
-        <description>&lt;h2&gt;Swift 基本语法&lt;/h2&gt;
-
-&lt;p&gt;在上一章节中我们已经讲到如何创建 Swift 语言的 &amp;quot;Hello, World!&amp;quot; 程序。现在我们来复习下。
-如果创建的是 OS X playground 需要引入 Cocoa ：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
-/* 我的第一个 Swift 程序 */
-var myString = &amp;quot;Hello, World!&amp;quot;
-print(myString)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;&lt;b&gt;如果我们想创建 iOS playground 则需要引入 UIKit :&lt;/b&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import UIKit
-var myString = &amp;quot;Hello, World!&amp;quot;
-print(myString)
-执行以上程序，输出结果为：
-Hello, World!&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;以上代码即为 Swift 程序的基本结构，接下来我们来详细说明结构的组成部分。&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Swift 引入&lt;/b&gt; 
-&lt;h6&gt;
-我们可以使用 import 语句来引入任何的 Objective-C 框架（或 C 库）到 Swift 程序中。例如 import cocoa 语句导入了使用了 Cocoa 库和API，我们可以在 Swift 程序中使用他们。
-Cocoa 本身由 Objective-C 语言写成，Objective-C 又是 C 语言的严格超集，所以在 Swift 应用中我们可以很简单的混入 C 语言代码，甚至是 C++ 代码。
-&lt;/h6&gt;
-&lt;b&gt;Swift 标记&lt;/b&gt;
-&lt;h6&gt;
-Swift 程序由多种标记组成，标记可以是单词，标识符，常量，字符串或符号。例如以下 Swift 程序由三种标记组成：&lt;/h6&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;print(&amp;quot;test!&amp;quot;)
-标记是：单词、符号
-print
-(
-   &amp;quot;test!&amp;quot;
-)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;b&gt;注释&lt;/b&gt;&lt;/p&gt;
-
-&lt;p&gt;Swift的注释与C语言极其相似，单行注释以两个反斜线开头：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;//这是一行注释
-多行注释以/*开始，以*/结束:
-
-/* 这也是一条注释，
-但跨越多行 */&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;与 C 语言的多行注释有所不同的是，Swift 的多行注释可以嵌套在其他多行注释内部。写法是在一个多行注释块内插入另一个多行注释。第二个注释块封闭时，后面仍然接着第一个注释块：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;/* 这是第一个多行注释的开头
-
-/* 这是嵌套的第二个多行注释 */
-
-这是第一个多行注释的结尾 */&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;多行注释的嵌套是你可以更快捷方便的注释代码块，即使代码块中已经有了注释。&lt;/p&gt;
-
-&lt;h3&gt;分号&lt;/h3&gt;
-
-&lt;p&gt;与其它语言不同的是，Swift不要求在每行语句的结尾使用分号(;)，但当你在同一行书写多条语句时，必须用分号隔开：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;import Cocoa
-/* 我的第一个 Swift 程序 */
-var myString = &amp;quot;Hello, World!&amp;quot;; print(myString)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3&gt;标识符&lt;/h3&gt;
-
-&lt;h5&gt;
-标识符就是给变量、常量、方法、函数、枚举、结构体、类、协议等指定的名字。构成标识符的字母均有一定的规范，Swift语言中标识符的命名规则如下：
-&lt;p&gt;*区分大小写，Myname与myname是两个不同的标识符；&lt;/p&gt;
-
-&lt;p&gt;*标识符首字符可以以下划线（_）或者字母开始，但不能是数字；&lt;/p&gt;
-&lt;p&gt;*标识符中其他字符可以是下划线（_）、字母或数字。&lt;/p&gt;
-
-例如： userName、User_Name、_sys_val、身高等为合法的标识符，而2mail、room#和class为非法的标识符。
-&lt;/h5&gt;
-
-&lt;h4&gt;注意&lt;/h4&gt;:Swift中的字母采用的是Unicode编码[1]。Unicode叫做统一编码制，它包含了亚洲文字编码，如中文、日文、韩文等字符，甚至是我们在聊天工具中使用的表情符号
-如果一定要使用关键字作为标识符，可以在关键字前后添加重音符号（`），例如：
-
-&lt;h3&gt;关键字&lt;/h3&gt;
-
-关键字是类似于标识符的保留字符序列，除非用重音符号（`）将其括起来，否则不能用作标识符。关键字是对编译器具有特殊意义的预定义保留标识符。常见的关键字有以下4种。
-
-&lt;h4&gt;与声明有关的关键字&lt;/h4&gt;
-
-&lt;p&gt;class   deinit  enum    extension
-func    import  init    internal
-let operator    private protocol
-public  static  struct  subscript
-typealias   var     &lt;/p&gt;
-
-&lt;p&gt;与语句有关的关键字&lt;/p&gt;
-
-&lt;p&gt;break   case    continue    default
-do  else    fallthrough for
-if  in  return  switch
-where   while       &lt;/p&gt;
-
-&lt;p&gt;表达式和类型关键字&lt;/p&gt;
-
-&lt;p&gt;as  dynamicType false   is
-nil self    Self    super
-true    &lt;em&gt;COLUMN&lt;/em&gt;    &lt;em&gt;FILE&lt;/em&gt;  &lt;em&gt;FUNCTION&lt;/em&gt;
-&lt;em&gt;LINE&lt;/em&gt;&lt;br&gt;
-在特定上下文中使用的关键字
-associativity   convenience dynamic didSet
-final   get infix   inout
-lazy    left    mutating    none
-nonmutating optional    override    postfix
-precedence  prefix  Protocol    required
-right   set Type    unowned
-weak    willSet     &lt;/p&gt;
-
-&lt;h3&gt;Swift 空格&lt;/h3&gt;
-
-&lt;p&gt;Swift语言并不是像C/C++，Java那样完全忽视空格，Swift对空格的使用有一定的要求，但是又不像Python对缩进的要求那么严格。
-在Swift中，运算符不能直接跟在变量或常量的后面。例如下面的代码会报错：&lt;/p&gt;
-
-&lt;p&gt;let a= 1 + 2&lt;/p&gt;
-
-&lt;p&gt;错误信息是：
-error: prefix/postfix &amp;#39;=&amp;#39; is reserved&lt;/p&gt;
-
-&lt;p&gt;意思大概是等号直接跟在前面或后面这种用法是保留的。
-下面的代码还是会报错（继续注意空格）：&lt;/p&gt;
-
-&lt;p&gt;let a = 1+ 2&lt;/p&gt;
-
-&lt;p&gt;错误信息是：
-error: consecutive statements on a line must be separated by &amp;#39;;&amp;#39;&lt;/p&gt;
-
-&lt;p&gt;这是因为Swift认为到1+这个语句就结束了，2就是下一个语句了。&lt;/p&gt;
-
-&lt;p&gt;只有这样写才不会报错：
-let a = 1 + 2;  // 编码规范推荐使用这种写法
-let b = 3+4 // 这样也是OK的
-&lt;h3&gt;Swift 字面量&lt;/h3&gt;&lt;/p&gt;
-
-&lt;h5&gt;所谓字面量，就是指像特定的数字，字符串或者是布尔值这样，能够直接了当地指出自己的类型并为变量进行赋值的值。比如在下面：&lt;/h5&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;42                 // 整型字面量
-3.14159            // 浮点型字面量
-&amp;quot;Hello, world!&amp;quot;    // 字符串型字面量
-true               // 布尔型字面量&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-</description>
-        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
-        <link>http://liuchuanweb.com/2015/03/swift-Basis/</link>
-        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/swift-Basis/</guid>
-        
-        <category>Swift</category>
-        
-        
-        <category>Swift</category>
-        
-      </item>
-    
-      <item>
-        <title>CocoaPods安装使用心得</title>
-        <description>&lt;h1&gt;CocoaPods安装使用心得，分享给墙内的朋友们&lt;/h1&gt;
-
-&lt;h2&gt;前言&lt;/h2&gt;
-
-&lt;p&gt;CocoaPods是一个负责管理iOS项目中第三方开源代码的工具。&lt;/p&gt;
-
-&lt;p&gt;二、安装
-由于网上的教程基本都大同小异，但细节之处还不是很完善，所以借机会在这里补充下：
-注：要使用CocoaPods，那就要下载安装它，而下载安装CocoaPods需要Ruby环境&lt;/p&gt;
-
-&lt;h2&gt;1.Ruby环境搭建&lt;/h2&gt;
-
-&lt;p&gt;当前安装环境为Mac Pro 10.11.1。Mac  OS本身自带Ruby，但还是更新一下保险，因为升级了系统之后,可能会出现一些意想不到的情况,最好还是更新一下Ruby。&lt;/p&gt;
-
-&lt;ul&gt;&lt;li&gt;&lt;p&gt;查看下当前ruby版本：打开终端输入 ruby -v（确实安装了，不过iOS9使用https协议替换http协议,所以以前挂靠在淘宝下ruby的源的路径也要修改下，顺便更新下ruby）&lt;/p&gt;&lt;p&gt;   
-
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$  ruby -v
-ruby 2.0.0p645 (2015-04-13 revision 50299) [universal.x86_64-darwin15]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
+        <title>Swift基本运算符</title>
+        <description>&lt;h1&gt;基本运算符(Basic Operators)&lt;/h1&gt;
+
+&lt;h3&gt;1、基本运算符&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;1、Swift支持C标准库中的大多数运算符并提升了各自的兼容性，从而可以排除常见的编码错误&lt;/li&gt;
+    &lt;li&gt;2、分配符 (=)不会返回一个值，这样可以防止你因粗心将 等于(==)写成 赋值运算符(=) 而引起的错误&lt;/li&gt;
+    &lt;li&gt;3、算术符(+、 -、 *、 /、 % 等)会检查与驳回值溢出，这样可以避免值类型的数据在超过值类型所允许的存储范围时，
+  出现意想不到的数据。你可以选择使用Swift所提供的值溢出运算符进行量化溢出的行为，详细见溢出操作符。&lt;/li&gt;
+    &lt;li&gt;4、与C语言不同，Swift允许你对浮点数执行取余运算&lt;/li&gt;
+    &lt;li&gt;5、Swift提供两个范围的运算符 (&lt;code&gt;a..b&lt;/code&gt; 和 &lt;code&gt;a...b&lt;/code&gt;)，作为表示一个数值范围的简写方式，这点C不支持&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;术语&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;操作符都是一元、二元或三元:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;一元操作符操作单个对象 (如 -a)。一元前缀操作符出现在对象前(如 !b)，一元后缀操作符在对象后出现 (如 i++)。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;二元操作符操作两个对象(如 2 + 3)，并且操作符位于两个元素中间。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;三元操作符对两个对象进行操作。与C一样，Swift仅支持一个三元操作符：三元条件操作符 (a ? b : c)。(?前面一定需要至少一个空格)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;操作符所影响的值被称为操作数。&lt;/p&gt;
+
+&lt;p&gt;表达式&lt;code&gt;1 + 2&lt;/code&gt;中，符号&lt;code&gt; + &lt;/code&gt;是一个二元运算符并且两个操作数分别为&lt;code&gt; 1 &lt;/code&gt;和 &lt;code&gt;2&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3&gt;2、赋值运算符&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt; let b = 10
+ var a = 5
+ a = b      //用b的值去初始化或更新a 的值
  
- &lt;/li&gt;&lt;li&gt;&lt;p&gt;淘宝已经停止基于 HTTP 协议的镜像服务, 请在配置中使用 HTTPS 协议代替&lt;/p&gt;
+ let (x, y) = (1, 2) // x等于1, 并且y等于2
+&lt;/code&gt;&lt;/pre&gt;
 
+&lt;blockquote&gt;
+  &lt;p&gt;与C及Objective-C不同，Swift中赋值运算符并不将自身作为一个值进行返回。所以以下的代码是不合法的：&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$ gem sources - l
-*** CURRENT SOURCES ***
-http://ruby.taobao.org/
-CYdediannao:~ lcy$ gem sources --add https://ruby.taobao.org/ --remove http://ruby.taobao.org/
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;此特性帮助你避免因粗心将 等于&lt;code&gt;(==)&lt;/code&gt;写成 赋值运算符&lt;code&gt; (=)&lt;/code&gt; 而引起的错误。因为 &lt;code&gt;if a = b&lt;/code&gt; 这样写是无效的&lt;/p&gt;
 
-https://ruby.taobao.org/ added to sources
-http://ruby.taobao.org/ removed from sources&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    &lt;pre&gt;&lt;code&gt;  if a = b {
+  // 错误, 因为a = b并不会返回一个值
+  }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;
-&lt;p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;gem sources -l  （用来检查使用替换镜像位置成功，然后升级ruby
+&lt;h3&gt;3、算术运算符&lt;/h3&gt;
 
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Swift支持所有数字类型的四个标注运算符:&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$ sudo gem install rails&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;加法(+)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;减法(-)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;乘法(*)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;除法(/)&lt;/p&gt;
 
+    &lt;pre&gt;&lt;code&gt;  1 + 2 // equals 3
+  5 - 3 // equals 2
+  2 * 3 // equals 6
+  10.0 / 2.5 // equals 4.0
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;不同于C和Objective-C，默认情况下Swift的算术运算符不允许值溢出。&lt;/li&gt;
+  &lt;li&gt;你可以通过Swift的溢出运算符来选择值的溢出情况(例如 a &amp;amp; + b)。详见&lt;code&gt; 溢出运算符&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;两个字符，或者一个字符一个字符串，能组合成一个新的字符串：&lt;/p&gt;
 
+    &lt;pre&gt;&lt;code&gt;  let dog: Character = &quot;🐶&quot;
+  let cow: Character = &quot;🐮&quot;
+  //let dogCow = dog + cow  // dogCow is equal to &quot;🐶🐮&quot;
+  var dogCow: String = &quot;&quot;
+  dogCow.append(dog)
+  dogCow.append(cow)
+  print(dogCow)
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-或者是 &lt;code&gt;CYdediannao:~ lcy$ sudo gem update --system&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;3.1、求余运算符&lt;/h4&gt;
 
-&lt;h2&gt;2.下载安装CocoaPods&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;求余运算符&lt;code&gt;(a % b)&lt;/code&gt;，a是b的几倍并且返回被留下的值(叫作余数)&lt;/p&gt;
 
+    &lt;p&gt;&lt;code&gt;9 % 4 // 等于 1&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;浮点数求余数计算&lt;/li&gt;
+  &lt;li&gt;不同于C和Objective-C，Swift的余数运算符也能运用于浮点数：&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$ sudo gem install cocoapods
+&lt;p&gt;&lt;code&gt;8 % 2.5 // 等于 0.5&lt;/code&gt;&lt;/p&gt;
 
-&amp;lt;h3&amp;gt;出现的错误###：原因是该文件夹没有修改的权限&amp;lt;/h3&amp;gt;
+&lt;blockquote&gt;
+  &lt;p&gt;swift自增 ++ 和自减运算符 – 将被取消.
+Swift 2.2 正式将 ++ 和 – 否决掉了，意味着虽然在 Swift 2.2 版本还能工作，但编译器会给你一个警告。但在 3.0 版本会被完全移除。&lt;/p&gt;
+&lt;/blockquote&gt;
 
-CYdediannao:~ lcy$ sudo gem install cocoapods 
-Fetching: nap-1.0.0.gem (100%)
-Successfully installed nap-1.0.0
-Fetching: molinillo-0.4.0.gem (100%)
-Successfully installed molinillo-0.4.0
-Fetching: cocoapods-trunk-0.6.4.gem (100%)
-Successfully installed cocoapods-trunk-0.6.4
-Fetching: cocoapods-try-0.5.1.gem (100%)
-Successfully installed cocoapods-try-0.5.1
-Fetching: cocoapods-stats-0.6.2.gem (100%)
-Successfully installed cocoapods-stats-0.6.2
-Fetching: cocoapods-search-0.1.0.gem (100%)
-Successfully installed cocoapods-search-0.1.0
-Fetching: cocoapods-downloader-0.9.3.gem (100%)
-Successfully installed cocoapods-downloader-0.9.3
-Fetching: xcodeproj-0.28.2.gem (100%)
-ERROR:  While executing gem ... (Errno::EPERM)
-    Operation not permitted - /usr/bin/xcodeproj&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;你可以使用&lt;code&gt; += 1&lt;/code&gt; 和&lt;code&gt; -= 1&lt;/code&gt; 来替代，至于为什么要将其移除，有这么几个解释：&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;写&lt;code&gt; ++&lt;/code&gt; 并不比 &lt;code&gt;+=1 &lt;/code&gt;能节省多少时间, &lt;code&gt;++ &lt;/code&gt;对学 Swift 没有任何帮助，&lt;code&gt;+= &lt;/code&gt;至少可读性更好&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
+&lt;blockquote&gt;
+  &lt;p&gt;传统 C styel for 循环中的 – 也被否决掉了&lt;/p&gt;
+&lt;/blockquote&gt;
 
-   &lt;h3&gt;10.11以上系统使用命令： sudo gem install -n /usr/local/bin cocoapods&lt;/h3&gt;
-    
+&lt;pre&gt;&lt;code&gt; var a1 = 0
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;CYdediannao:~ lcy$ sudo gem install -n /usr/local/bin cocoapods
-Password:
-Successfully installed xcodeproj-0.28.2
-Fetching: cocoapods-core-0.39.0.gem (100%)
-Successfully installed cocoapods-core-0.39.0
-Fetching: cocoapods-0.39.0.gem (100%)
-Successfully installed cocoapods-0.39.0
-Parsing documentation for xcodeproj-0.28.2
-Installing ri documentation for xcodeproj-0.28.2
-Parsing documentation for cocoapods-core-0.39.0
-Installing ri documentation for cocoapods-core-0.39.0
-Parsing documentation for cocoapods-0.39.0
-Installing ri documentation for cocoapods-0.39.0
-3 gems installed&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;要注意的是，复合赋值操作符不返回值。例如，你不能写让成&lt;code&gt;&quot;let b1 = a1 += 1&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
+&lt;pre&gt;&lt;code&gt; let b1 = a1 += 1 // `a`和`b`是现在都等于1
+ let c1 = a1 += 1 // 现在等于2,但`c1`前增量值被设置为1
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4&gt;3.使用命令 pod search AFNetworking 查找某一个库，看cocoapods有没有安装好，搜索结果如下，已经安装好了cocoa pods&lt;/h4&gt;&lt;p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;一元负号运算符（一个数值前加了符号-，叫作一元减运算符）&lt;/p&gt;
+&lt;/blockquote&gt;
 
+&lt;pre&gt;&lt;code&gt;let three = 3
+let minusThree = -three     // minusThree 等于 -3
+let plusThree = -minusThree // plusThree 等于 3, or &quot;minus minus three&quot;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;-&amp;gt; AFNetworking (2.6.0)
-   A delightful iOS and OS X networking framework.
-   pod &amp;#39;AFNetworking&amp;#39;, &amp;#39;~&amp;gt; 2.6.0&amp;#39;
-   - Homepage: https://github.com/AFNetworking/AFNetworking
-   - Source:   https://github.com/AFNetworking/AFNetworking.git
-   - Versions: 2.6.0, 2.5.4, 2.5.3, 2.5.2, 2.5.1, 2.5.0, 2.4.1, 2.4.0, 2.3.1,
-   2.3.0, 2.2.4, 2.2.3, 2.2.2, 2.2.1, 2.2.0, 2.1.0, 2.0.3, 2.0.2, 2.0.1, 2.0.0,
-   2.0.0-RC3, 2.0.0-RC2, 2.0.0-RC1, 1.3.4, 1.3.3, 1.3.2, 1.3.1, 1.3.0, 1.2.1,
-   1.2.0, 1.1.0, 1.0.1, 1.0, 1.0RC3, 1.0RC2, 1.0RC1, 0.10.1, 0.10.0, 0.9.2,
-   0.9.1, 0.9.0, 0.7.0, 0.5.1 [master repo] - 2.6.0, 2.5.4, 2.5.3, 2.5.2, 2.5.1,
-   2.5.0, 2.4.1, 2.4.0, 2.3.1, 2.3.0, 2.2.4, 2.2.3, 2.2.2, 2.2.1, 2.2.0, 2.1.0,
-   2.0.3, 2.0.2, 2.0.1, 2.0.0, 2.0.0-RC3, 2.0.0-RC2, 2.0.0-RC1, 1.3.4, 1.3.3,
-   1.3.2, 1.3.1, 1.3.0, 1.2.1, 1.2.0, 1.1.0, 1.0.1, 1.0, 1.0RC3, 1.0RC2, 1.0RC1,
-   0.10.1, 0.10.0, 0.9.2, 0.9.1, 0.9.0, 0.7.0, 0.5.1 [master-1 repo]
-   - Subspecs:
-     - AFNetworking/Serialization (2.6.0)
-     - AFNetworking/Security (2.6.0)
-     - AFNetworking/Reachability (2.6.0)
-     - AFNetworking/NSURLConnection (2.6.0)
-     - AFNetworking/NSURLSession (2.6.0)
-     - AFNetworking/UIKit (2.6.0)
+&lt;p&gt;//一元正号算符（一元加运算符(+)返回的值，不做任何变动）&lt;/p&gt;
 
+&lt;pre&gt;&lt;code&gt;let minusSix = -6
+let alsoMinusSix = +minusSix // alsoMinusSix 等于 -6
+&lt;/code&gt;&lt;/pre&gt;
 
--&amp;gt; AFNetworking+AutoRetry (0.0.5)
-   Auto Retries for AFNetworking requests
-   pod &amp;#39;AFNetworking+AutoRetry&amp;#39;, &amp;#39;~&amp;gt; 0.0.5&amp;#39;
-   - Homepage: https://github.com/shaioz/AFNetworking-AutoRetry
-   - Source:   https://github.com/shaioz/AFNetworking-AutoRetry.git
-   - Versions: 0.0.5, 0.0.4, 0.0.3, 0.0.2, 0.0.1 [master repo] - 0.0.5, 0.0.4,
-   0.0.3, 0.0.2, 0.0.1 [master-1 repo]
+&lt;h3&gt;4、复合赋值操作符&lt;/h3&gt;
 
+&lt;pre&gt;&lt;code&gt;var e = 1
 
--&amp;gt; AFNetworking+Ext (1.2.1)
-   AFNetworking的封装, 并提供一个 UIImageView+DYLoading  cache in fileSystem+memory
-   pod &amp;#39;AFNetworking+Ext&amp;#39;, &amp;#39;~&amp;gt; 1.2.1&amp;#39;
-   - Homepage: https://github.com/junhaiyang/AFNetworkingExt
-   - Source:   https://github.com/junhaiyang/AFNetworkingExt.git
-   - Versions: 1.2.1, 1.2, 1.1, 1.0, 0.5, 0.4, 0.3 [master repo] - 1.2.1, 1.2,
-   1.1, 1.0, 0.5, 0.4, 0.3 [master-1 repo]
-   - Subspecs:
-     - AFNetworking+Ext/Base (1.2.1)
-     - AFNetworking+Ext/AFCustomRequestOperation (1.2.1)
-     - AFNetworking+Ext/AFDownloadRequestOperation (1.2.1)
-     - AFNetworking+Ext/AFTextResponseSerializer (1.2.1)
-     - AFNetworking+Ext/example (1.2.1)
-     - AFNetworking+Ext/UIKit (1.2.1)
-     - AFNetworking+Ext/UIKit/UIImageView+DYLoading (1.2.1)
+//要注意的是，复合赋值操作符不返回值。例如，你不能写让成&quot;let b = e += 2&quot;
+//let b = e += 2  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;5、比较运算符&lt;/h3&gt;
 
-##还有很大篇幅的结果，此处省略。。。##&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;ul&gt;
+  &lt;li&gt;通常用在条件语句&lt;/li&gt;
+&lt;/ul&gt;
 
+&lt;blockquote&gt;
+  &lt;p&gt;Swift支持所有标准c的比较运算符&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;/h5&gt;&lt;h2&gt;4.cocoapods的使用&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt; 	 等于 (a == b)	 
+	 不等于(a != b)
+	 大于 (a &amp;gt; b)
+	 小于 (a &amp;lt; b)
+	 大于等于 (a &amp;gt;= b)
+	 小于等于(a &amp;lt;= b)
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;/li&gt;&lt;li&gt;&lt;p&gt;新建一个项目，名字podsTest项目
+&lt;blockquote&gt;
+  &lt;p&gt;Swift 提供两个&lt;code&gt;恒等运算符&lt;/code&gt;(&lt;code&gt;=== &lt;/code&gt;and&lt;code&gt; !==&lt;/code&gt;)，用它来测试两个对象引用是否来自于同一个对象实例&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-25c7ce2edc1537e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
+&lt;pre&gt;&lt;code&gt;1 == 1 	 // true, 因为1等于1
+2 != 1 	// true, 因为2不等于1
+2 &amp;gt; 1 		// true, 因为 2 &amp;gt; 1成立
+1 &amp;lt; 2 		// true, 因为1 &amp;lt; 2 成立
+1 &amp;gt;= 1		 // true, 因为1是大于或等于1
+2 &amp;lt;= 1		 // false, 因为2是小于或等于1
+&lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3&gt;6、三元条件运算符&lt;/h3&gt;
 
-&lt;/li&gt;&lt;li&gt;&lt;p&gt;打开项目所在的文件夹，在终端敲入 cd 将文件夹拖拽到终端 &lt;p&gt;
-或者用cd打开项目所在文件夹（注意：包含podsTest文件夹、podsTest.xcodeproj、podsTestTest、podsTestUITests的那个总目录）如图：
+&lt;blockquote&gt;
+  &lt;p&gt;三元条件运算符是一种特殊的运算符 有三个部分，其形式为&lt;code&gt;question? answer1：answer2&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;特别注意：因为Swift语言(?)有特殊的意义（可选量），所以三目运算符里面的(?)前面一定要有至少一个空格，否则就当成了可选量&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;三元条件运算符是下面的代码的简化&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-135856a82cc057d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
-&lt;/p&gt;&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;  if question {
+      answer1
+   } else {
+      answer2
+   }
+  let contentHeight = 40
+  let hasHeader = true
+  let rowHeight = contentHeight + (hasHeader ? 50 : 20)
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-bc6bbedf65e2da2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
-&lt;/li&gt;&lt;li&gt;&lt;p&gt;建立Podfile（配置文件）
-&lt;/p&gt;
-1.接着上一步，终端输入 vim Podfile
-&lt;/p&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-ff9367af4eea800b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
-&lt;p&gt;
-2.键盘输入 i，进入编辑模式&lt;/p&gt;
+&lt;h3&gt;空合运算符(Nil Coalescing Operator)&lt;/h3&gt;
 
-&lt;p&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-82d38c7fcfc4d8c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;
-&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;空合运算符&lt;code&gt;( a ?? b )&lt;/code&gt;将对可选类型 &lt;code&gt;a &lt;/code&gt;进行空判断,如果 &lt;code&gt;a &lt;/code&gt;包含一个值就进行解封,否则就返回一个默认值 b .&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;3.内容按这个格式输入
-  platform :ios, &amp;#39;7.0&amp;#39;
-　pod &amp;#39;MBProgressHUD&amp;#39;, &amp;#39;~&amp;gt; 0.9.1&amp;#39;
-　pod &amp;#39;ASIHTTPRequest&amp;#39;, &amp;#39;~&amp;gt; 1.8.2&amp;#39;
-　pod &amp;#39;SDWebImage&amp;#39;, &amp;#39;~&amp;gt; 3.7.3&amp;#39;
-　&lt;p&gt;
-　注意：　如果你不知道这些框架目前的版本是，可以使用命令pod search +框架名称查看 相应的信息&lt;/p&gt;&lt;p&gt;
-　
-&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-31adb37f17d235b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;这个运算符有两个条件:&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;表达式 a 必须是Optional类型&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;默认值 b 的类型必须要和 a 存储值的类型保持一致&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;p&gt; 4.然后按Esc，并且输入 shift +“ ：”号进入vim命令模式，然后在冒号后边输入wq 按回车键，保存并且退出。
- &lt;/p&gt;5.结果如下图：
- &lt;/p&gt;&lt;p&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-1f1a82c28b6110c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+&lt;p&gt;空合并运算符是对以下代码的简短表达方法&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;p&gt;6.发现podTest项目总目录中多一个Podfile文件&lt;/p&gt;&lt;p&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-7aadbe1cfd34ad7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;a != nil ? a! : b
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;p&gt;7.激动人心的时刻到了：确定终端cd到项目总目录，然后输入 pod install，等待一会，框架安装好了如图所示，多出了3个文件夹/文件夹。&lt;/p&gt;&lt;p&gt;
-&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-08526c1690c9f975.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;上述代码使用了三目运算符。当可选类型 a 的值不为空时,进行强制解封( a! )访问 a 中值,反之当 a 中值为空时,返回默认值b。&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;h3&gt;注意：&lt;/h3&gt;&lt;p&gt;现在打开项目不是点击 podTest.xodeproj了，而是点击 podsTest.xcworkspace&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;无疑空合运算符&lt;code&gt;( ?? )&lt;/code&gt;提供了一种更为优雅的方式去封装条件判断和解封两种行为,显得简洁以及更具可读性。&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://upload-images.jianshu.io/upload_images/830888-374b5624ae6ecf9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;/&gt;&lt;/p&gt;
+&lt;p&gt;注意: 如果&lt;code&gt; a &lt;/code&gt;为非空值( non-nil ),那么值 b 将不会被估值。这也就是所谓的短路求值。&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;h2&gt;5.cocoaPods使用心得&lt;/h2&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;最近使用CocoaPods来添加第三方类库，无论是执行pod install还是pod update都卡在了Analyzing dependencies不动 原因在于当执行以上两个命令的时候会升级CocoaPods的spec仓库，加一个参数可以省略这一步，命令如下：&lt;br&gt;
-&lt;/p&gt;&lt;code&gt;pod install --verbose --no-repo-update&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;下文例子采用空合并运算符,实现了在默认颜色名和可选自定义颜色名之间抉择:&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;code&gt;pod update --verbose --no-repo-update&lt;/code&gt;&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;  let defaultColorName = &quot;red&quot;
+  var userDefinedColorName:String?    //默认值为nil
+  var colorNameToUse = userDefinedColorName ?? defaultColorName
+  //userDefinedColorName的值为空 ,所以colorNameToUse的值为`red`
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;详解：&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;userDefinedColorName&lt;/code&gt; 的值被定义为一个可选String类型，默认值为nil.&lt;/li&gt;
+  &lt;li&gt;由于 &lt;code&gt;userDefinedColorName&lt;/code&gt; 是一个可选类型，我们可以使用空合运算符去判断其值。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在上一个例子中,通过空合运算符为一个名为 &lt;code&gt;colorNameToUse&lt;/code&gt; 的的变量赋予一个字符串类型初始值。
+ 由于 &lt;code&gt;userDefinedColorName&lt;/code&gt; 值为空, 因此表达式 &lt;code&gt;userDefinedColorName?? defaultColorName &lt;/code&gt;返回 &lt;code&gt;DefinedColorName&lt;/code&gt; 的值，即&lt;code&gt;red&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;另一种情况,分配一个非空值（non-nil）给 &lt;code&gt;userDefinedColorName&lt;/code&gt; ,再次执行空合运算,运算结果为封包在 &lt;code&gt;userDefinedColorName&lt;/code&gt;中的值。
+ 而非默认值&lt;/p&gt;
 
-&lt;p&gt;$ pod install只会按照Podfile的要求来请求类库，如果类库版本号有变化，那么将获取失败。但是 $ pod update会更新所有的类库，获取最新版本的类库。每次用$ pod update就行。&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;  userDefinedColorName = &quot;green&quot;
+  colorNameToUse = userDefinedColorName ?? defaultColorName
+  //userDefinedColorName非空,因此colorNameToUsede的值为绿色
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;/li&gt;&lt;li&gt;安装一个xcode插件管理工具，&lt;a href=&quot;http://alcatraz.io&quot;&gt;地址&lt;/a&gt; 目前还不支持XCode7
+&lt;h3&gt;区间（也叫范围）运算符&lt;/h3&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;Swift 提供了两个方便表达一个区间的值的运算符。&lt;/li&gt;
+&lt;/ul&gt;
 
-在终端中执行
-&lt;code&gt;curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh&lt;/code&gt;
-&lt;p&gt;
-安装完了打开xcode-&gt;window-&gt;package manger 搜cocoapods安装，方便操作。&lt;/li&gt;&lt;li&gt;工程在模拟器上编译报错，不支持i386，Cocoapods确实还不支持64位模拟器，&lt;a href=&quot;http://stackoverflow.com/questions/19213782/undefined-symbols-for-architecture-arm64&quot;&gt;解决办法：&lt;/a&gt;
-&lt;/p&gt;
+&lt;h4&gt;闭区间运算符:&lt;/h4&gt;
 
-&lt;p&gt;其实就2条：
-&lt;p&gt;1.build active architecture only 在debug的时候设置成YES，不要在release的时候用模拟器
-&lt;p&gt;2.other linker flags 加一个 $(inherited)
-&lt;p&gt;用到svn,git多人协作的话，Pods/这个文件夹不要上传，例如：
-.../Pods/Pods.xcodeproj  ...Pods/Target Support Files/这些每次编译都会改动从而引起合并代码的时候冲突&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://www.cocoachina.com/bbs/read.php?tid-277900.html&quot;&gt;心得内容来源&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;闭区间运算符(&lt;code&gt; a...b&lt;/code&gt; )定义一个包含从 a 到 b (包括 a 和 b )的所有值的区间, b 必须大于等于 a 。&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;h2&gt;6.cocoaPods使用常见错误汇总：&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;闭区间运算符在迭代一个区间的所有值时是非常有用的,如在&lt;code&gt; for-in &lt;/code&gt;循环中:&lt;/p&gt;
 
-&lt;p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;pod install 时出现以下错误，错误原因是在vim Podfile 时，输入命令前面带有空格导致的，把空格去掉就好了&lt;/p&gt;&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt; for index in 1...5 {
+     print(&quot;\(index) * 5 = \(index * 5)&quot;)
+ }
+ // 1 * 5 = 5
+ // 2 * 5 = 10
+ // 3 * 5 = 15
+ // 4 * 5 = 20
+ // 5 * 5 = 25
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;lt;code&amp;gt;错误写法：
-　platform :ios, &amp;#39;7.0&amp;#39;
-　pod &amp;#39;MBProgressHUD&amp;#39;, &amp;#39;~&amp;gt; 0.9.1&amp;#39;
-　pod &amp;#39;ASIHTTPRequest&amp;#39;, &amp;#39;~&amp;gt; 1.8.2&amp;#39;
-　pod &amp;#39;SDWebImage&amp;#39;, &amp;#39;~&amp;gt; 3.7.3&amp;#39;
-提示错误：
+&lt;h4&gt;半开区间运算符&lt;/h4&gt;
 
-[!] Invalid &amp;lt;/code&amp;gt;Podfile&amp;lt;code&amp;gt; file: undefined method ‘pod’; for #&amp;lt;Pod::Podfile:0x007ff3f9a45a48&amp;amp;amp&amp;gt;. Updating CocoaPods might fix the issue.
-正确写法：命令前面不留空格
- platform :ios, &amp;#39;7.0&amp;#39;
-　pod &amp;#39;MBProgressHUD&amp;#39;, &amp;#39;~&amp;gt; 0.9.1&amp;#39;
-　pod &amp;#39;ASIHTTPRequest&amp;#39;, &amp;#39;~&amp;gt; 1.8.2&amp;#39;
-　pod &amp;#39;SDWebImage&amp;#39;, &amp;#39;~&amp;gt; 3.7.3&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;半开区间(&lt;code&gt; a..&amp;lt;b &lt;/code&gt;)定义一个从 a 到 b 但不包括 b 的区间。 
+ 之所以称为半开区间,是因为该区间包含第一个值而不包括最后的值。&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;h3&gt;7 使用CocoaPods来管理Objective-c的类库，非常方便。但是有一个小问题，当我在xcode输入import关键字的时候，没有自动联想补齐代码的功能，需要手工敲全了文件名，难以适应。&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;半开区间的实用性在于当你使用一个0始的列表(如数组)时,非常方便地从0数到列表的长度。&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&amp;lt;/p&amp;gt;&amp;lt;code&amp;gt;在stackoverflow上找到了解决办法:
-1.Go to the Target &amp;amp;amp;gt; \”Build Settings\” tab and find the \”User Header Search Paths\” setting.
+    &lt;pre&gt;&lt;code&gt; let names = [&quot;Anna&quot;, &quot;Alex&quot;, &quot;Brian&quot;, &quot;Jack&quot;]
+ let count = names.count
+ for i in 0..&amp;lt;count {
+     print(&quot;第 \(i + 1) 个人叫 \(names[i])&quot;)    
+ }
+ // 第 1 个人叫 Anna
+ // 第 2 个人叫 Alex
+ // 第 3 个人叫 Brian
+ // 第 4 个人叫 Jack
+&lt;/code&gt;&lt;/pre&gt;
 
-2.Set this to \”$(BUILT&amp;lt;em&amp;gt;PRODUCTS&amp;lt;/em&amp;gt;DIR)\” and check the \”Recursive\” check box.
+    &lt;ul&gt;
+      &lt;li&gt;数组有4个元素,但 &lt;code&gt;0..&amp;lt;count &lt;/code&gt;只数到3(最后一个元素的下标),因为它是半开区间。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-Now the built target will search the workspace’s shared build directory to locate the linkable header files.
+&lt;h3&gt;8、逻辑运算符&lt;/h3&gt;
 
-简单说就是这么几步:
+&lt;blockquote&gt;
+  &lt;p&gt;逻辑运算符修改或结合布尔逻辑值&lt;code&gt;true&lt;/code&gt;和&lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
 
-1.选择Target -&amp;gt; Build Settings 菜单，找到\”User Header Search Paths\”设置项
-2.新增一个值$(BUILT&amp;lt;em&amp;gt;PRODUCTS&amp;lt;/em&amp;gt;DIR)，并且选择\”Recursive\”，这样xcode就会在项目目录中递归搜索文件
-自动补齐功能马上就好使了.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;Swift支持这三个标准逻辑运算符基于c语言:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Logical NOT (&lt;code&gt;!&lt;/code&gt;a)        	//逻辑非&lt;/li&gt;
+  &lt;li&gt;Logical AND (a &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; b)   	//逻辑与&lt;/li&gt;
+  &lt;li&gt;Logical OR (a &lt;code&gt;||&lt;/code&gt; b)    	 //逻辑或&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;以下列出了 Swift 语言支持的逻辑运算符，其中&lt;code&gt;变量A&lt;/code&gt;为 &lt;code&gt;true&lt;/code&gt;，&lt;code&gt;变量B&lt;/code&gt; 为 &lt;code&gt;false：&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;运算符&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;实例&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&amp;amp;&amp;amp;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;逻辑与。如果运算符两侧都为 TRUE 则为 TRUE。&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;(A &amp;amp;&amp;amp; B) 为 false。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;||	&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;逻辑或。 如果运算符两侧至少有一个为 TRUE 则为 TRUE&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;(A &lt;code&gt;||&lt;/code&gt; B)为true。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;!&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;逻辑非。布尔值取反，使得true变false，false变true。&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;!(A &amp;amp;&amp;amp; B) 为 true。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;以下为逻辑运算的简单实例：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt; var A = true
+ var B = false
+ print(&quot;A &amp;amp;&amp;amp; B 结果为：\(A &amp;amp;&amp;amp; B)&quot;)
+ print(&quot;A || B 结果为：\(A || B)&quot;)
+ print(&quot;!A 结果为：\(!A)&quot;)
+ print(&quot;!B 结果为：\(!B)&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; A &amp;amp;&amp;amp; B 结果为：false
+ A || B 结果为：true
+ !A 结果为：false
+ !B 结果为：true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;8.1逻辑非运算符&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;逻辑非运算符&lt;code&gt;(!a)&lt;/code&gt;转化一个&lt;code&gt;Bollean&lt;/code&gt;值，以便&lt;code&gt;true&lt;/code&gt;成为&lt;code&gt;false&lt;/code&gt;，&lt;code&gt;false&lt;/code&gt;变成&lt;code&gt;true&lt;/code&gt;&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt;  let allowedEntry = false
+
+  if !allowedEntry {
+	    
+      print(&quot;ACCESS DENIED&quot;)
+  }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;8.2逻辑与运算符&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;对于逻辑与运算，如果第一个操作数被判定为“false”，系统不再判定或求解第二个操作数。结果就为“ false”。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;逻辑与运算符：&lt;code&gt;（A &amp;amp;&amp;amp; B）&lt;/code&gt;，其中A和B两个值必须同时为true时表达式才正确。&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt;  let enteredDoorCode = true
+  let passedRetinaScan = false
+
+  if enteredDoorCode &amp;amp;&amp;amp; passedRetinaScan {
+      print(&quot;Welcome!&quot;)
+  } else {
+      print(&quot;ACCESS DENIED&quot;)
+  }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;8.3逻辑或运算符&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;表达式&lt;code&gt;（a || b）&lt;/code&gt;运算符中、只要a或者b有一个为true、则表达式正确。&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt;  let hasDoorKey = false
+  let knowsOverridePassword = true
+  if hasDoorKey || knowsOverridePassword {
+      print(&quot;Welcome!&quot;)
+  } else {
+      print(&quot;ACCESS DENIED&quot;)
+  }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;8.4复合逻辑表达式 （ 逻辑运算符组合计算 ）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;你可以将多个逻辑运算符复合来创建更长的复合表达式&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt;  if enteredDoorCode &amp;amp;&amp;amp; passedRetinaScan || hasDoorKey || knowsOverridePassword {
+	    
+      print(&quot;Welcome!&quot;)
+  } else {
+      print(&quot;ACCESS DENIED&quot;)
+  }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;说明：&lt;/li&gt;
+    &lt;li&gt;这个例子使用了含多个&lt;code&gt; &amp;amp;&amp;amp; &lt;/code&gt;和 &lt;code&gt;||&lt;/code&gt; 的复合逻辑。但无论怎样,&lt;code&gt; &amp;amp;&amp;amp;&lt;/code&gt; 和 &lt;code&gt;||&lt;/code&gt; 始终只能操作两个值。&lt;/li&gt;
+    &lt;li&gt;所以这实际是三个 简单逻辑连续操作的结果。 所以整个复杂表达式的值还是 &lt;code&gt;true &lt;/code&gt;。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;注意: Swift 逻辑操作符 &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; 和 &lt;code&gt;||&lt;/code&gt; 是左结合的,这意味着拥有多元逻辑操作符的复合表达式优先计算 最左边 的子表达式。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt; 使用括号（）来明确优先级&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;可以添加(), 明确意图&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;为了一个复杂表达式更容易读懂,在合适的地方使用括号来明确优先级是很有效的,虽然它并非必要的。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在上个关于门的权限的例子中,我们给第一个部分加个括号,使用它看起来逻辑更明确:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if (enteredDoorCode &amp;amp;&amp;amp; passedRetinaScan) || hasDoorKey || knowsOverridePassword {
+    print(&quot;Welcome!&quot;)
+} else {
+    print(&quot;ACCESS DENIED&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;这括号使得前两个值被看成整个逻辑表达中独立的一个部分。虽然有括号和没括号的输出结果是一样的,&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;但对于读代码的人来说有括号的代码更清晰。可读性比简洁性更重要,请在可以让你代码变清晰地地方加个括号吧!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 </description>
-        <pubDate>Mon, 09 Mar 2015 06:21:49 +0800</pubDate>
-        <link>http://liuchuanweb.com/2015/03/cocoapods-demo/</link>
-        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/cocoapods-demo/</guid>
+        <pubDate>Mon, 09 Mar 2015 06:28:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/Swift-Basic-Operators/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/Swift-Basic-Operators/</guid>
         
-        <category>CocoaPods</category>
+        <category>Swift</category>
         
         
-        <category>熟能生巧</category>
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>Swift字面量</title>
+        <description>&lt;h2&gt;Swift 字面量&lt;/h2&gt;
+
+&lt;p&gt;所谓字面量，就是指像特定的&lt;code&gt;数字&lt;/code&gt;，&lt;code&gt;字符串&lt;/code&gt;或者是&lt;code&gt;布尔值&lt;/code&gt;这样，能够直接了当地指出自己的类型并为变量进行赋值的值。比如在下面：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let aNumber = 3         //整型字面量
+let aString = &quot;Hello&quot;   //字符串字面量
+let aBool = true        //布尔值字面量
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;整型字面量&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;整型字面量可以是一个&lt;code&gt;十进制&lt;/code&gt;，&lt;code&gt;二进制&lt;/code&gt;，&lt;code&gt;八进制&lt;/code&gt;或&lt;code&gt;十六进制常量&lt;/code&gt;。 二进制前缀为 &lt;code&gt;0b&lt;/code&gt;，八进制前缀为 &lt;code&gt;0o&lt;/code&gt;，十六进制前缀为 &lt;code&gt;0x&lt;/code&gt;，十进制没有前缀：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;以下为一些整型字面量的实例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let decimalInteger = 17           // 17 - 十进制表示
+let binaryInteger = 0b10001       // 17 - 二进制表示
+let octalInteger = 0o21           // 17 - 八进制表示
+let hexadecimalInteger = 0x11     // 17 - 十六进制表示
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;浮点型字面量&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;浮点型字面量有&lt;code&gt;整数部分&lt;/code&gt;，&lt;code&gt;小数点&lt;/code&gt;，&lt;code&gt;小数部分&lt;/code&gt;及&lt;code&gt;指数部分&lt;/code&gt;。
+除非特别指定，浮点型字面量的默认推导类型为 Swift 标准库类型中的 &lt;code&gt;Double&lt;/code&gt;，表示64位浮点数。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;浮点型字面量默认用十进制表示（无前缀），也可以用十六进制表示（加前缀 0x）。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;十进制浮点型字面量由十进制数字串后跟小数部分或指数部分（或两者皆有）组成。十进制小数部分由小数点 . 后跟十进制数字串组成。指数部分由大写或小写字母 e 为前缀后跟十进制数字串组成，这串数字表示&lt;code&gt; e&lt;/code&gt; 之前的数量乘以 &lt;code&gt;10 的几次方&lt;/code&gt;。例如：1.25e2 表示 1.25 ⨉ 10^2，也就是 125.0；同样，1.25e－2 表示 1.25 ⨉ 10^－2，也就是 0.0125。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;十六进制浮点型字面量由前缀 &lt;code&gt;0x&lt;/code&gt; 后跟可选的十六进制小数部分以及十六进制指数部分组成。十六进制小数部分由小数点后跟十六进制数字串组成。指数部分由大写或小写字母 p 为前缀后跟十进制数字串组成，这串数字表示 p 之前的数量乘以 2 的几次方。例如：0xFp2 表示 15 ⨉ 2^2，也就是 60；同样，0xFp-2 表示 15 ⨉ 2^-2，也就是 3.75。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;负的浮点型字面量由一元运算符减号 - 和浮点型字面量组成，例如 -42.5。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;浮点型字面量允许使用下划线&lt;code&gt; _&lt;/code&gt; 来增强数字的可读性，下划线会被系统忽略，因此不会影响字面量的值。同样地，也可以在数字前加 0，并不会影响字面量的值。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;以下为一些浮点型字面量的实例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let decimalDouble = 12.1875       //十进制浮点型字面量
+let exponentDouble = 1.21875e1    //十进制浮点型字面量
+let hexadecimalDouble = 0xC.3p0   //十六进制浮点型字面量
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;字符串型字面量&lt;/h3&gt;
+
+&lt;p&gt;字符串型字面量由被包在双引号中的一串字符组成，形式如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&quot;characters&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;字符串型字面量中不能包含未转义的双引号 （”）、未转义的反斜线（\）、回车符或换行符。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;转移字符&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;含义&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\0&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;空字符&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;反斜线 \&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\b&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;退格(BS) ，将当前位置移到前一列&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\f&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;换页(FF)，将当前位置移到下页开头&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\n&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;换行符&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\r&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;回车符&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\t&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;水平制表符&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\v&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;垂直制表符&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&#39;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;单引号&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&quot;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;双引号&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\000&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;1到3位八进制数所代表的任意字符&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\xhh…&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;1到2位十六进制所代表的任意字符&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;以下为字符串字面量的简单实例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import Cocoa
+let stringL = &quot;Hello\tWorld\n\n菜鸟教程官网：\&#39;http://www.runoob.com\&#39;&quot;
+print(stringL)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Hello	World
+菜鸟教程官网：&#39;http://www.runoob.com&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;布尔型字面量&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;布尔型字面量的默认类型是&lt;code&gt; Bool&lt;/code&gt;。
+布尔值字面量有三个值，它们是 Swift 的保留关键字：&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;true&lt;/code&gt; 表示真。&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;false&lt;/code&gt; 表示假。&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;nil&lt;/code&gt; 表示没有值。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 09 Mar 2015 06:27:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/Swift-literal/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/Swift-literal/</guid>
+        
+        <category>Swift</category>
+        
+        
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>Swift常量</title>
+        <description>&lt;h2&gt;Swift 常量&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;常量一旦设定，在程序运行时就无法改变其值。&lt;/li&gt;
+    &lt;li&gt;常量可以是任何的数据类型如：&lt;code&gt;整型常量&lt;/code&gt;，&lt;code&gt;浮点型常量&lt;/code&gt;，&lt;code&gt;字符常量&lt;/code&gt;或&lt;code&gt;字符串常量&lt;/code&gt;。同样也有&lt;code&gt;枚举类型的常量&lt;/code&gt;：&lt;/li&gt;
+    &lt;li&gt;常量类似于变量，区别在于常量的值一旦设定就不能改变，而变量的值可以随意更改。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;常量声明&lt;/h2&gt;
+
+&lt;p&gt;常量使用关键字 &lt;code&gt;let&lt;/code&gt; 来声明，语法如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let constantName = &amp;lt;initial value&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以下是一个简单的 Swift 程序中使用常量的实例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let constA = 42
+print(constA)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;42
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;类型标注&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;当你声明常量或者变量的时候可以加上类型标注（type annotation），说明常量或者变量中要存储的值的类型。如果要添加类型标注，需要在常量或者变量名后面加上一个冒号和空格，然后加上类型名称。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;var constantName:&amp;lt;data type&amp;gt; = &amp;lt;optional initial value&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以下是一个简单是实例演示了 Swift 中常量使用&lt;code&gt;类型标注&lt;/code&gt;。需要注意的是常量定义时必须初始值：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let constA = 42
+print(constA)
+
+let constB:Float = 3.14159
+print(constB)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;42
+3.14159
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;常量命名&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;常量的命名可以由&lt;code&gt;字母&lt;/code&gt;，&lt;code&gt;数字&lt;/code&gt;和&lt;code&gt;下划线&lt;/code&gt;组成。&lt;/li&gt;
+    &lt;li&gt;常量需要以&lt;code&gt;字母&lt;/code&gt;或&lt;code&gt;下划线&lt;/code&gt;开始。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;Swift&lt;/code&gt; 是一个区分大小写的语言，所以字母大写与小写是不一样的。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;常量名也可以使用简单的 &lt;code&gt;Unicode&lt;/code&gt; 字符，如下实例：&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let _const = &quot;Hello, Swift!&quot;
+print(_const)
+
+let 你好 = &quot;你好世界&quot;
+print(你好)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Hello, Swift!
+你好世界
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;常量输出&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;变量和常量可以使用 &lt;code&gt;print&lt;/code&gt; 函数来输出。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在字符串中可以使用括号与反斜线来插入常量，如下实例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let name = &quot;Apple&quot;
+let site = &quot;http://www.apple.com&quot;
+print(&quot;\(name)的官网地址为：\(site)&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Apple的官网地址为：http://www.apple.com
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Mon, 09 Mar 2015 06:26:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/Swift-constant/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/Swift-constant/</guid>
+        
+        <category>Swift</category>
+        
+        
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>Swift可选类型</title>
+        <description>&lt;h2&gt;Swift 可选(Optionals)类型&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Swift 的可选&lt;code&gt;（Optional）&lt;/code&gt;类型，用于处理值缺失的情况。可选表示”那儿有一个值，并且它等于 x “或者”那儿没有值”。
+Swfit语言定义后缀&lt;code&gt;？&lt;/code&gt;作为命名类型Optional的简写，换句话说，以下两种声明是相等的：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;var optionalInteger: Int?
+var optionalInteger: Optional&amp;lt;Int&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在这两种情况下，变量&lt;code&gt;optionalInteger&lt;/code&gt;都是可选整数类型。注意，在类型和&lt;code&gt;？&lt;/code&gt;之间没有空格。
+&amp;gt; &lt;code&gt;Optional&lt;/code&gt; 是一个含有两种情况的枚举，&lt;code&gt;None&lt;/code&gt;和&lt;code&gt;Some(T)&lt;/code&gt;，用来表示可能有或可能没有值。任何类型都可以明确声明为（或者隐式转换）可选类型。当声明一个可选类型的时候，要确保用括号给？操作符一个合适的范围。例如，声明可选整数数组，应该写成&lt;code&gt;(Int[])?&lt;/code&gt;；写成&lt;code&gt;Int[]?&lt;/code&gt;会报错。&lt;/p&gt;
+
+&lt;p&gt;当你声明一个可选变量或者可选属性的时候没有提供初始值，它的值会默认为&lt;code&gt;nil&lt;/code&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;可选项遵照LogicValue协议，因此可以出现在布尔环境中。在这种情况下，如果可选类型T?包含类型为T的任何值（也就是说它的值是Optional.Some(T)），这个可选类型等于&lt;code&gt;true&lt;/code&gt;，反之为&lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;如果一个可选类型的实例包含一个值，你可以用后缀操作符 &lt;code&gt;！&lt;/code&gt;来访问这个值，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;optionalInteger = 42
+optionalInteger! // 42
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用操作符&lt;code&gt;！&lt;/code&gt;去获取值为nil的可选变量会有运行时错误。&lt;/p&gt;
+
+&lt;p&gt;你可以用可选链接和可选绑定选择性执行可选表达式上的操作。如果值为&lt;code&gt;nil&lt;/code&gt;，任何操作都不会执行，也不会有运行报错。
+让我们来详细看下以下实例来了解 Swift 中可选类型的应用:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import Cocoa
+var myString:String? = nil
+if myString != nil {
+    print(myString)
+}else{
+    print(&quot;字符串为 nil&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;字符串为 nil
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可选类型类似于Objective-C中指针的&lt;code&gt;nil&lt;/code&gt;值，但是&lt;code&gt;nil&lt;/code&gt;只对类(class)有用，而可选类型对所有的类型都可用，并且更安全。&lt;/p&gt;
+
+&lt;h3&gt;强制解析&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;当你确定可选类型确实包含值之后，你可以在可选的名字后面加一个感叹号&lt;code&gt;（!）&lt;/code&gt;来获取值。这个感叹号表示”我知道这个可选有值，请使用它。”这被称为可选值的强制解析（forced unwrapping）。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;实例如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import Cocoa
+var myString:String?
+myString = &quot;Hello, Swift!&quot;
+
+if myString != nil {
+   print(myString)
+}else{
+   print(&quot;myString 值为 nil&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Optional(&quot;Hello, Swift!&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;强制解析可选值，使用感叹号（!）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import Cocoa
+
+var myString:String?
+
+myString = &quot;Hello, Swift!&quot;
+
+if myString != nil {
+   // 强制解析
+   print( myString! )
+}else{
+   print(&quot;myString 值为 nil&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Hello, Swift!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：
+使用&lt;code&gt;!&lt;/code&gt;来获取一个不存在的可选值会导致运行时错误。使用!来强制解析值之前，一定要确定可选包含一个非nil的值。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;自动解析&lt;/h3&gt;
+
+&lt;p&gt;你可以在声明可选变量时使用感叹号&lt;code&gt;（!）&lt;/code&gt;替换问号&lt;code&gt;（?）&lt;/code&gt;。这样可选变量在使用时就不需要再加一个感叹号&lt;code&gt;（!）&lt;/code&gt;来获取值，它会自动解析。&lt;/p&gt;
+
+&lt;p&gt;实例如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import Cocoa
+
+var myString:String!
+
+myString = &quot;Hello, Swift!&quot;
+
+if myString != nil {
+   print(myString)
+}else{
+   print(&quot;myString 值为 nil&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Hello, Swift!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;可选绑定&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;使用可选绑定（optional binding）来判断可选类型是否包含值，如果包含就把值赋给一个临时常量或者变量。可选绑定可以用在if和while语句中来对可选类型的值进行判断并把值赋给一个常量或者变量。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;像下面这样在if语句中写一个可选绑定：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if let constantName = someOptional {
+    statements
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;让我们来看下一个简单的可选绑定实例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import Cocoa
+
+var myString:String?
+
+myString = &quot;Hello, Swift!&quot;
+
+if let yourString = myString {
+   print(&quot;你的字符串值为 - \(yourString)&quot;)
+}else{
+   print(&quot;你的字符串没有值&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上程序执行结果为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;你的字符串值为 - Hello, Swift!
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 09 Mar 2015 06:25:49 +0800</pubDate>
+        <link>http://liuchuanweb.com/2015/03/Swift-Optionals/</link>
+        <guid isPermaLink="true">http://liuchuanweb.com/2015/03/Swift-Optionals/</guid>
+        
+        <category>Swift</category>
+        
+        
+        <category>Swift</category>
         
       </item>
     

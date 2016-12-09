@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Swift循环</title>
+  <meta name="description" content="Swift 循环">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift循环">
+  <meta name="twitter:description" content="Swift 循环">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift循环">
+  <meta property="og:description" content="Swift 循环">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://liuchuanweb.com/2015/03/Swift-Loop/">
+  <link rel="alternate" type="application/rss+xml" title="Hacker's Liu" href="http://liuchuanweb.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Hacker's Liu 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Hacker's Liu logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Hacker's Liu" class="blog-button">Hacker's Liu</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">人格的完善是本，财富的确立是末</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。<p>正在修行，探求创意之源。</p>There is no perfect system , only undiscovered vulnerabilities!.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">突破电脑特权，创造艺术之美!.</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
+                
+                  <li class="navigation__item"><a href="http://chinahackers.github.io/" target="_blank" title="My Projects">关于</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/LiuChuan77" title="@LiuChuan77 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/ChinaHackers" title="@ChinaHackers 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/LiuChuan_" title="@LiuChuan_" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:93428739@qq.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2015-03-09 06:21:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
+    </div>
+    <h1 class="post-title">Swift循环</h1>
+  </header>
+
+  <section class="post">
+    <h2>Swift 循环</h2>
+
+<p>有的时候，我们可能需要多次执行同一块代码。一般情况下，语句是按顺序执行的：函数中的第一个语句先执行，接着是第二个语句，依此类推。
+编程语言提供了更为复杂执行路径的多种控制结构。
+循环语句允许我们多次执行一个语句或语句组，下面是大多数编程语言中循环语句的流程图：</p>
+
+<h3> 流程图</h3>
+
+<p>```flow</p>
+
+<p>st=&gt;start: Start
+e=&gt;end
+op=&gt;operation: 条件
+cond=&gt;condition: 条件为false、true?</p>
+
+<p>st-&gt;op-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;op</p>
+
+<p>```</p>
+
+<h4>循环类型</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">循环类型</th>
+      <th style="text-align: left">描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">for-in</td>
+      <td style="text-align: left">遍历一个集合里面的所有元素，例如由数字表示的区间、数组中的元素、字符串中的字符。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">for 循环</td>
+      <td style="text-align: left">用来重复执行一系列语句直到达成特定条件达成，一般通过在每次循环完成后增加计数器的值来实现。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">while 循环</td>
+      <td style="text-align: left">运行一系列语句，如果条件为true，会重复运行，直到条件变为false。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">repeat..while 循环</td>
+      <td style="text-align: left">类似 while 语句区别在于判断循环条件之前，先执行一次循环的代码块。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>循环控制语句</h4>
+<p>循环控制语句改变你代码的执行顺序，通过它你可以实现代码的跳转。</p>
+
+<p>Swift 以下几种循环控制语句：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">控制语句</th>
+      <th style="text-align: left">描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">continue 语句</td>
+      <td style="text-align: left">告诉一个循环体立刻停止本次循环迭代，重新开始下次循环迭代。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">break 语句</td>
+      <td style="text-align: left">中断当前循环。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">fallthrough 语句</td>
+      <td style="text-align: left">如果在一个case执行完后，继续执行下面的case，需要使用fallthrough(贯穿)关键字。</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/cocoapods-demo/" title="link to CocoaPods安装使用心得">CocoaPods安装使用心得</a></h2>
+       <p class="excerpt">CocoaPods安装使用心得，分享给墙内的朋友们前言CocoaPods是一个负责管理iOS项目中第三方开源代码的工具。二、安装由于网上的教程基本都大同小异，但细节之处还不是很完善，所以借机会在这里补充下：注：要使用CocoaPods，那就要下载安装它，而下载安装CocoaPods需要Ruby环境1.Ruby环境搭建当前安装环境为Mac Pro 10.11.1。Mac  OS本身自带Ruby，但还是更新一下保险，因为升级了系统之后,可能会出现一些意想不到的情况,最好还是更新一下Ruby。查...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">CocoaPods</span><a class="btn-border-small" href=/2015/03/cocoapods-demo/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2015/03/Swift_Type_Casting/" title="link to Swift_type_casting">Swift_type_casting</a></h2>
+       <p class="excerpt">layout: posttitle:  Swift基础语法date:   2015-03-08 22:22:49categories: Swifttags: Swift—类型转换（Type Casting）  1.0翻译：xiehurricane校对：happyming  2.0翻译+校对：yangsiy  2.1校对：shanks，2015-11-01本页包含内容：  定义一个类层次作为例子  检查类型  向下转型（Downcasting）  Any 和 AnyObject 的类型转换类...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-08 00:00:00 +0800" class="post-list__meta--date date">2015-03-08</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2015/03/Swift_Type_Casting/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://liuchuanweb.com/2015/03/Swift-Loop/";
+        this.page.identifier = "/2015/03/Swift-Loop/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-12-09 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

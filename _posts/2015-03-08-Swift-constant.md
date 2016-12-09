@@ -20,7 +20,6 @@ tags: Swift
 	
 以下是一个简单的 Swift 程序中使用常量的实例：
 
-	import Cocoa
 
 	let constA = 42
 	print(constA)
@@ -37,12 +36,10 @@ tags: Swift
 	
 以下是一个简单是实例演示了 Swift 中常量使用`类型标注`。需要注意的是常量定义时必须初始值：
 
-	import Cocoa
 	let constA = 42
 	print(constA)
-
+	
 	let constB:Float = 3.14159
-
 	print(constB)
 	
 以上程序执行结果为：
@@ -55,11 +52,9 @@ tags: Swift
 > * 常量的命名可以由`字母`，`数字`和`下划线`组成。
 * 常量需要以`字母`或`下划线`开始。
 
-Swift 是一个区分大小写的语言，所以字母大写与小写是不一样的。
+`Swift` 是一个区分大小写的语言，所以字母大写与小写是不一样的。
 
 *常量名也可以使用简单的 `Unicode` 字符，如下实例：*
-
-	import Cocoa
 
 	let _const = "Hello, Swift!"
 	print(_const)
@@ -74,16 +69,15 @@ Swift 是一个区分大小写的语言，所以字母大写与小写是不一�
 
 <h3>常量输出</h3>
 
->变量和常量可以使用 `print`（swift 2 将 `print` 替换了 `println`） 函数来输出。
+>变量和常量可以使用 `print` 函数来输出。
 
 在字符串中可以使用括号与反斜线来插入常量，如下实例：
 
-	import Cocoa
-	let name = "菜鸟教程"
-	let site = "http://www.runoob.com"
-
+	let name = "Apple"
+	let site = "http://www.apple.com"
 	print("\(name)的官网地址为：\(site)")
 
 以上程序执行结果为：
 
-	菜鸟教程的官网地址为：http://www.runoob.com
+	Apple的官网地址为：http://www.apple.com
+

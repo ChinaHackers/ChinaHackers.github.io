@@ -64,7 +64,7 @@
               <ul class="navigation">
                 <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">博客</a></li>
                 
-                  <li class="navigation__item"><a href="github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
+                  <li class="navigation__item"><a href="https://github.com/ChinaHackers" target="_blank" title="My Projects">项目</a></li>
                 
                   <li class="navigation__item"><a href="http://chinahackers.github.io/" target="_blank" title="My Projects">关于</a></li>
                 
@@ -133,7 +133,7 @@
     </div>
     
     
-    <div class="panel-cover--overlay cover-black"></div>
+    <div class="panel-cover--overlay cover-slate"></div>
     
   </div>
 </header>
@@ -144,7 +144,7 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2015-03-09 06:21:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
+      <time datetime="2015-03-09 06:23:49 +0800" itemprop="datePublished" class="post-meta__date date">2015-03-09</time> &#8226; <span class="post-meta__tags tags">Swift</span>
     </div>
     <h1 class="post-title">Swift数据类型</h1>
   </header>
@@ -160,45 +160,61 @@
 
 <p>Swift 提供了非常丰富的数据类型，以下列出了常用了集中数据类型：</p>
 
-<p><b>Int</b></p>
+<h4>Int</h4>
 
-<p>一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：
-<p>*在32位平台上，Int和Int32长度相同。</p></p>
-
-<p>*在64位平台上，Int和Int64长度相同。</p>
+<ul>
+  <li>一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：
+    <ul>
+      <li>在32位平台上，Int和Int32长度相同。</li>
+      <li>在64位平台上，Int和Int64长度相同。</li>
+    </ul>
+  </li>
+</ul>
 
 <p>除非你需要特定长度的整数，一般来说使用Int就够了。这可以提高代码一致性和可复用性。即使是在32位平台上，Int可以存储的整数范围也可以达到-2,147,483,648~2,147,483,647，大多数时候这已经足够大了。</p>
 
-<p><b>UInt</b></p>
+<h4>UInt</h4>
 
-<p>Swift 也提供了一个特殊的无符号类型UInt，长度与当前平台的原生字长相同：
-<p>
-*在32位平台上，UInt和UInt32长度相同。</p>
+<ul>
+  <li>
+    <p>Swift 也提供了一个特殊的无符号类型UInt，长度与当前平台的原生字长相同：</p>
 
-<p>*在64位平台上，UInt和UInt64长度相同。
-</p></p>
+    <ul>
+      <li>在32位平台上，UInt和UInt32长度相同。</li>
+      <li>64位平台上，UInt和UInt64长度相同。</li>
+    </ul>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">&lt;b&gt;注意：&lt;/b&gt;
-尽量不要使用UInt，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。除了这种情况，最好使用Int，即使你要存储的值已知是非负的。统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断，请参考&lt;u&gt;类型安全和类型推断。&lt;/u&gt;</code></pre></figure>
+    <p>注意:
+      尽量不要使用UInt，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。
+      除了这种情况，最好使用Int，即使你要存储的值已知是非负的。
+      统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断.
+      请参考_类型安全和类型推断。</p>
+  </li>
+</ul>
 
 <h3>浮点数</h3>
 
-<p>浮点数是有小数部分的数字，比如3.14159，0.1和-273.15。
-浮点类型比整数类型表示的范围更大，可以存储比Int类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：
-<p>
-Double表示64位浮点数。当你需要存储很大或者很高精度的浮点数时请使用此类型。</p></p>
+<ul>
+  <li>
+    <p>浮点数是有小数部分的数字，比如3.14159，0.1和-273.15。
+浮点类型比整数类型表示的范围更大，可以存储比Int类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：</p>
 
-<p>Float表示32位浮点数。精度要求不高的话可以使用此类型。</p>
+    <ul>
+      <li>Double表示64位浮点数。当你需要存储很大或者很高精度的浮点数时请使用此类型。</li>
+      <li>Float表示32位浮点数。精度要求不高的话可以使用此类型。</li>
+    </ul>
 
-<p><b>注意：</b>
-Double精确度很高，至少有15位数字，而Float最少只有6位数字。选择哪个类型取决于你的代码需要处理的值的范围。</p>
+    <p>注意：
+  Double精确度很高，至少有15位数字，而Float最少只有6位数字。
+  选择哪个类型取决于你的代码需要处理的值的范围。</p>
+  </li>
+</ul>
 
 <h3>布尔值</h3>
 
 <p>Swift 有一个基本的布尔（Boolean）类型，叫做Bool。布尔值指逻辑上的值，因为它们只能是真或者假。Swift 有两个布尔常量，true和false。</p>
 
 <h3>字符串</h3>
-
 <p>字符串是字符的序列集合，例如：</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">&quot;Hello, World!&quot;</code></pre></figure>
@@ -213,78 +229,99 @@ Double精确度很高，至少有15位数字，而Float最少只有6位数字。
 
 <p>使用可选类型（optionals）来处理值可能缺失的情况。可选类型表示有值或没有值。
 数值范围
-下表显示了不同变量类型内存的存储空间，及变量类型的最大最小值：
-类型  大小（字节）  区间值
-Int8    1 字节    -127 到 127
-UInt8   1 字节    0 到 255
-Int32   4 字节    -2147483648 到 2147483647
-UInt32  4 字节    0 到 4294967295
-Int64   8 字节    -9223372036854775808 到 9223372036854775807
-UInt64  8 字节    0 到 18446744073709551615
-Float   4 字节    1.2E-38 到 3.4E+38 (~6 digits)
-Double  8 字节    2.3E-308 到 1.7E+308 (~15 digits)</p>
+下表显示了不同变量类型内存的存储空间，及变量类型的最大最小值：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">类型	大小（字节）	区间值
+Int8	1 字节	-127 到 127
+UInt8	1 字节	0 到 255
+Int32	4 字节	-2147483648 到 2147483647
+UInt32	4 字节	0 到 4294967295
+Int64	8 字节	-9223372036854775808 到 9223372036854775807
+UInt64	8 字节	0 到 18446744073709551615
+Float	4 字节	1.2E-38 到 3.4E+38 (~6 digits)
+Double	8 字节	2.3E-308 到 1.7E+308 (~15 digits)</code></pre></figure>
 
 <h3>类型别名</h3>
 
-<p>类型别名对当前的类型定义了另一个名字，类型别名通过使用 typealias 关键字来定义。语法格式如下：
-typealias newname = type
-例如以下定义了 Int 的类型别名为 Feet：
-typealias Feet = Int
-现在，我们可以通过别名来定义变量：
-import Cocoa</p>
+<p>类型别名对当前的类型定义了另一个名字，类型别名通过使用 typealias 关键字来定义。
+语法格式如下：</p>
 
-<p>typealias Feet = Int
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">typealias newname = type</code></pre></figure>
+
+<p>例如以下定义了 Int 的类型别名为 Feet：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">typealias Feet = Int</code></pre></figure>
+
+<p>现在，我们可以通过别名来定义变量：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">typealias Feet = Int
 var distance: Feet = 100
-print(distance)
-我们使用 playground 执行以上程序，输出结果为：
-100
-<h3>类型安全</h3></p>
+print(distance)</code></pre></figure>
+
+<p>我们使用 playground 执行以上程序，输出结果为：
+100</p>
+
+<h3>类型安全</h3>
 
 <p>Swift 是一个类型安全（type safe）的语言。
-由于 Swift 是类型安全的，所以它会在编译你的代码时进行类型检查（type checks），并把不匹配的类型标记为错误。这可以让你在开发的时候尽早发现并修复错误。
-import Cocoa</p>
+由于 Swift 是类型安全的，所以它会在编译你的代码时进行类型检查（type checks），并把不匹配的类型标记为错误。这可以让你在开发的时候尽早发现并修复错误。</p>
 
-<p>var varA = 42
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">import Cocoa
+
+var varA = 42
 varA = &quot;This is hello&quot;
-print(varA)
-以上程序，会在 Xcode 中报错：
-error: cannot assign value of type &#39;String&#39; to type &#39;Int&#39;
-varA = &quot;This is hello&quot;
-意思为不能将 &#39;String&#39; 字符串赋值给 &#39;Int&#39; 变量。</p>
+print(varA)</code></pre></figure>
+
+<p>以上程序，会在 Xcode 中报错：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">error: cannot assign value of type &#39;String&#39; to type &#39;Int&#39;
+varA = &quot;This is hello&quot;</code></pre></figure>
+
+<p>意思为不能将 ‘String’ 字符串赋值给 ‘Int’ 变量。</p>
 
 <h3>类型推断</h3>
 
 <p>当你要处理不同类型的值时，类型检查可以帮你避免错误。然而，这并不是说你每次声明常量和变量的时候都需要显式指定类型。
 如果你没有显式指定类型，Swift 会使用类型推断（type inference）来选择合适的类型。
-例如，如果你给一个新常量赋值42并且没有标明类型，Swift 可以推断出常量类型是Int，因为你给它赋的初始值看起来像一个整数：
-let meaningOfLife = 42
-// meaningOfLife 会被推测为 Int 类型
-同理，如果你没有给浮点字面量标明类型，Swift 会推断你想要的是Double：
-let pi = 3.14159
-// pi 会被推测为 Double 类型
-当推断浮点数的类型时，Swift 总是会选择Double而不是Float。
-如果表达式中同时出现了整数和浮点数，会被推断为Double类型：
-let anotherPi = 3 + 0.14159
-// anotherPi 会被推测为 Double 类型
-原始值3没有显式声明类型，而表达式中出现了一个浮点字面量，所以表达式会被推断为Double类型。
-实例
-import Cocoa</p>
+例如，如果你给一个新常量赋值42并且没有标明类型，Swift 可以推断出常量类型是Int，因为你给它赋的初始值看起来像一个整数：</p>
 
-<p>// varA 会被推测为 Int 类型 
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">let meaningOfLife = 42
+// meaningOfLife 会被推测为 Int 类型</code></pre></figure>
+
+<p>同理，如果你没有给浮点字面量标明类型，Swift 会推断你想要的是Double：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">let pi = 3.14159
+// pi 会被推测为 Double 类型</code></pre></figure>
+
+<p>当推断浮点数的类型时，Swift 总是会选择Double而不是Float。
+如果表达式中同时出现了整数和浮点数，会被推断为Double类型：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">let anotherPi = 3 + 0.14159
+// anotherPi 会被推测为 Double 类型</code></pre></figure>
+
+<p>原始值3没有显式声明类型，而表达式中出现了一个浮点字面量，所以表达式会被推断为Double类型。</p>
+
+<h4>实例</h4>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">import Cocoa
+
+// varA 会被推测为 Int 类型 
 var varA = 42
-print(varA)</p>
+print(varA)
 
-<p>// varB 会被推测为 Double 类型<br>
+// varB 会被推测为 Double 类型  
 var varB = 3.14159
-print(varB)</p>
+print(varB)
 
-<p>// varC 也会被推测为 Double 类型<br>
+// varC 也会被推测为 Double 类型   
 var varC = 3 + 0.14159
-print(varC)
-执行以上代码，输出结果为：
-42
+print(varC)</code></pre></figure>
+
+<p>执行以上代码，输出结果为：</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">42
 3.14159
-3.14159</p>
+3.14159</code></pre></figure>
 
   </section>
 </article>
@@ -296,7 +333,7 @@ print(varC)
        <span class="read-more-item-dim">最近的文章</span>
        <h2 class="post-list__post-title post-title"><a href="/2015/03/swift-variable/" title="link to Swift变量">Swift变量</a></h2>
        <p class="excerpt">Swift 变量变量是一种使用方便的占位符，用于引用计算机内存地址。Swift 每个变量都指定了特定的类型，该类型决定了变量占用内存的大小，不同的数据类型也决定可存储值的范围。上一章节我们已经为大家介绍了基本的数据类型，包括整形Int、浮点数Double和Float、布尔类型Bool以及字符串类型String。此外，Swift还提供了其他更强大数据类型， Optional, Array, Dictionary, Struct, 和 Class 等。接下来我们将为大家介绍如何在 Swift ...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-variable/>继续阅读</a></div>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:24:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-variable/>继续阅读</a></div>
    </div>
    
    
@@ -305,8 +342,8 @@ print(varC)
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
        <h2 class="post-list__post-title post-title"><a href="/2015/03/swift-Basis/" title="link to Swift基础语法">Swift基础语法</a></h2>
-       <p class="excerpt">Swift 基本语法在上一章节中我们已经讲到如何创建 Swift 语言的 &quot;Hello, World!&quot; 程序。现在我们来复习下。如果创建的是 OS X playground 需要引入 Cocoa ：import Cocoa/* 我的第一个 Swift 程序 */var myString = &quot;Hello, World!&quot;print(myString)如果我们想创建 iOS playground 则需要引入 UIKit :import UIKitva...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2015-03-09 06:21:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-Basis/>继续阅读</a></div>
+       <p class="excerpt">Swift 基本语法在上一章节中我们已经讲到如何创建 Swift 语言的 “Hello, World!” 程序。现在我们来复习下。如果创建的是 OS X playground 需要引入 Cocoa ：import Cocoa/* 我的第一个 Swift 程序 */var myString = "Hello, World!"print(myString)如果我们想创建 iOS playground 则需要引入 UIKit :import UIKitvar myString = &quot;H...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2015-03-09 06:22:49 +0800" class="post-list__meta--date date">2015-03-09</time> &#8226; <span class="post-list__meta--tags tags">Swift</span><a class="btn-border-small" href=/2015/03/swift-Basis/>继续阅读</a></div>
    </div>
    
 </section>
@@ -342,7 +379,7 @@ print(varC)
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-05-02 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-12-09 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
         <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
     </footer>
 </section>
