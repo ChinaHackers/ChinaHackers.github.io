@@ -1,8 +1,6 @@
-
-
 ---
 layout: post
-title:  使用 Kingfisher 处理网络图片的读取与缓存 
+title:  使用Kingfisher处理网络图片的读取与缓存 
 date:   2016-03-08 22:21:49
 categories: 能工巧匠集
 tags: 能工巧匠集
