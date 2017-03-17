@@ -7,10 +7,11 @@ tags: 能工巧匠集
 ---
 
 
+`Kingfisher` 是一个读取网络图片和处理本地缓存的开源库，由 `onevcat` 开发。提到图片缓存库，那么熟悉 `Objective-C` 开发的同学，可能会想起 `SDWebImage`。 没错，`Kingfisher` 除了提供图片的读取和缓存功能，它还是完全使用 `Swift` 实现的。
+
 ![](https://raw.githubusercontent.com/onevcat/Kingfisher/master/images/logo.png)
 
 
-`Kingfisher` 是一个读取网络图片和处理本地缓存的开源库，由 `onevcat` 开发。提到图片缓存库，那么熟悉 `Objective-C` 开发的同学，可能会想起 `SDWebImage`。 没错，`Kingfisher` 除了提供图片的读取和缓存功能，它还是完全使用 `Swift` 实现的。
 
 ## 安装 Kingfisher
 
