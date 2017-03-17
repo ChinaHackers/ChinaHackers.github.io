@@ -14,7 +14,7 @@ tags: Objective-C
 
 从最开始动笔动画篇的博客，至今已经过去了四个多月。按照原本自己的规划，本篇博客应该是`CoreAnimation`核心的开篇。但这段时间回头看了看自己之前的动画文章，发现用来讲解动画的例子确实不那么的赏心悦目，说人话就是之前的动画略丑。于是这段时间总是想着使用最基础的动画知识来实现一个好看的效果，却迟迟想不到该怎么做（/(ㄒoㄒ)/~~本人的想象力果然是差得很），直到在网上看到一个惊艳的碎片化动画，于是自己实现之后拿来讲解一下：
 
-![](http://allluckly.cn/images/blog/tuogao/tougao45/1.gif)
+![](http://upload-images.jianshu.io/upload_images/783864-1e8a7fc7b3bcfa6d.gif?imageMogr2/auto-orient/strip)
 
 <h2>遮罩视图</h2>
 
@@ -32,11 +32,12 @@ UIView *maskView = [[UIView alloc] initWithFrame: CGRectMake(50, 50, 75, 75)];
 maskView.backgroundColor = [UIColor yellowColor];
 contentView.maskView = maskView;
 ```
-![](http://allluckly.cn/images/blog/tuogao/tougao45/2.jpeg)
+
+![](http://upload-images.jianshu.io/upload_images/783864-694b07118f09e331.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 上面的代码小小的改动一下，我们分别修改一下`maskView`和`contentView`的透明度，看看在遮罩透明度改变之后红色的视图会发生什么变化：
-![](http://allluckly.cn/images/blog/tuogao/tougao45/3.jpeg)
+![](http://upload-images.jianshu.io/upload_images/783864-b855b91e9c888dc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 通过实验我们可以看到修改视图自身的透明度或者修改maskView的透明度达成的效果是一样的。换句话说，遮盖视图对于视图自身的影响直接决定在透明度和显示尺寸这两个可视的属性。
 
@@ -57,9 +58,10 @@ maskView.backgroundColor = [UIColor clearColor]; UIView * sub1 = [[UIView alloc]
 sub1.backgroundColor = [UIColor blackColor]; UIView * sub2 = [[UIView alloc] initWithFrame: CGRectMake(15, 18, 33, 40)]; 
 sub2.backgroundColor = [UIColor blackColor]; [maskView addSubview: sub1]; [maskView addSubview: sub2];
 ```
+
 要了解`maskView`的子视图对遮罩效果的影响，我们需要排除遮罩视图自身的干扰，因此`maskView`的背景颜色要设置成透明色
 
-![](http://allluckly.cn/images/blog/tuogao/tougao45/4.jpeg)
+![](http://upload-images.jianshu.io/upload_images/783864-a1c469224dc281ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 可以看到，在遮罩自身透明的情况下，子视图也可以实现部分遮罩视图的效果。因此如果我们改变这些子视图的透明度的时候，遮罩效果也同样会发生改变
 
@@ -159,6 +161,7 @@ iOS中，在`category`中声明的所有属性编译器都不会自动绑定`get
 }
 // other setAssociatedObject method
 ```
+
 有了碎片化隐藏视图的动画，同样需要一个还原的动画效果：
 
 ```swift
@@ -194,7 +197,7 @@ __block NSInteger timeCount = 0;
 
 在知道了碎片动画的实现之后，我要做一个酷炫的广告轮播页。同样采用`category`的方式来实现，当然demo中轮播的全是本地的图片。现在放上效果图：
 
-![](http://allluckly.cn/images/blog/tuogao/tougao45/5.gif)
+![](http://upload-images.jianshu.io/upload_images/783864-7ad1344b0dc1af75.gif?imageMogr2/auto-orient/strip)
 
 那么实现一个广告页轮播需要哪些步骤呢？
 1、在当前动画的图片下面插入一个`UIImageView`来展示下一张图片。如果可以，尽量复用这个`imageView`
