@@ -11,7 +11,7 @@ url: "http://liuchuanweb.com"
 permalink: /:year/:month/:title/
 
 # Format
-highlighter: plain
+highlighter: rouge
 markdown: kramdown
 kramdown:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", tables]
