@@ -4,7 +4,9 @@ subtitle:  人格的完善是本，财富的确立是末
 
 welcome_message: 突破电脑特权，创造艺术之美!.
 description: hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。<p>正在修行，探求创意之源。</p>There is no perfect system , only undiscovered vulnerabilities!.
-creator: <a href="http://onev.cat">@onevcat</a>
+creator: <a href="https://twitter.com/LiuChuan_">@LiuChuan_</a>
+
+
 
 url: "http://liuchuanweb.com"
 
@@ -17,7 +19,7 @@ kramdown:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", tables]
 
 # supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: slate
+cover_color: green
 
 # The blog button should not be removed.
 blog_button:
