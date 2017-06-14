@@ -6,9 +6,6 @@ categories: 能工巧匠集
 tags: 能工巧匠集
 ---
 
-
-# 使用Github + Jekyll搭建个人博客
-
 ![](http://upload-images.jianshu.io/upload_images/119048-12115e2953edd3be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 长大后才发现政府建造 GFW 真是太 TM 机智了，由于本人自制力较差，且不说 91porn, youporn 等两性知识网站的超强战斗力，单单一个Youtube就可以让我瞬间强撸灰飞烟灭。即使本人意志力足够强，万一不小心点击进了大纪元，遭受到了轮子思想的侵袭，动摇了我无条件支持 CCP 的 自干五 情怀那也是极其不好的。
