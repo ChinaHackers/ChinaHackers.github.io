@@ -6,12 +6,6 @@ categories: 能工巧匠集
 tags: 能工巧匠集
 ---
 
-
-<h1 align = "center">iOS开发UI篇—程序启动原理和UIApplication</h1>
-
-
-
-
 ### 一、UIApplication
 ## 1.简单介绍
 （1）UIApplication对象是应用程序的象征，一个UIApplication对象就代表一个应用程序。
