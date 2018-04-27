@@ -15,7 +15,7 @@ tags: 能工巧匠集
 仔细的观察`QQ`的顶部，有毛玻璃的透明效果，实现方法很简单，就是使用 `NSVisualEffectView`。
 
 
-<center>![](https://ws2.sinaimg.cn/large/006tNbRwly1fy6kc5x55ej30nb08wjrs.jpg)</center>
+![](https://ws2.sinaimg.cn/large/006tNbRwly1fy6kc5x55ej30nb08wjrs.jpg)
 
 
 然后修改它的风格：
@@ -26,7 +26,7 @@ self.effectView.material = NSVisualEffectMaterialLight;
 ```
 
 
-<center>![](https://ws3.sinaimg.cn/large/006tNbRwly1fy6kd64bmdj30fl05igmj.jpg)</center>
+![](https://ws3.sinaimg.cn/large/006tNbRwly1fy6kd64bmdj30fl05igmj.jpg)
 
 
 对比左右两边，效果就明显了。
@@ -84,13 +84,13 @@ self.effectView.material = NSVisualEffectMaterialLight;
 新建`NSView`，由于功能和iOS中的`Tabbar`类似，暂且命名为`TabbarView`。然后新建`TabbarView.xib`文件并相关联。
 
 
-<center>![](https://ws4.sinaimg.cn/large/006tNbRwly1fy6kgoxsgwj309o04qq2y.jpg)</center>
+![](https://ws4.sinaimg.cn/large/006tNbRwly1fy6kgoxsgwj309o04qq2y.jpg)
 
 
 添加按钮Gradient Button继承自TabbarBtn
 
 
-<center>![](https://ws1.sinaimg.cn/large/006tNbRwly1fy6kh4u7j0j306m02l3y9.jpg)</center>
+![](https://ws1.sinaimg.cn/large/006tNbRwly1fy6kh4u7j0j306m02l3y9.jpg)
 
 
 需要修改按钮的属性：去掉`Bordered`的勾选。
@@ -148,9 +148,8 @@ self.effectView.material = NSVisualEffectMaterialLight;
 - 2-3、把TabbarView添加到ViewController中
 拖拽`CustomView`到`view`顶部，并修改他的类`TabbarView`，添加约束居中显示
 
-<center>![](https://ws4.sinaimg.cn/large/006tNbRwly1fy6kjz5tmwj30mw057jrn.jpg)</center>
+![](https://ws4.sinaimg.cn/large/006tNbRwly1fy6kjz5tmwj30mw057jrn.jpg)
 
 运行后：
 
-
-<center>![](https://ws4.sinaimg.cn/large/006tNbRwly1fy6kjjelvdj30rs080weo.jpg)</center>
+![](https://ws4.sinaimg.cn/large/006tNbRwly1fy6kjjelvdj30rs080weo.jpg)
