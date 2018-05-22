@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  [译] macOS 上的Core Graphics入门教程
+title:  macOS上的Core Graphics入门教程
 date:   2018-1-1 18:21:49
 categories: 能工巧匠集
 tags: 能工巧匠集
