@@ -1,5 +1,5 @@
 # Basic
-title: Liu’s Den
+title: Liu's Den
 subtitle:  人格的完善是本, 财富的确立是末.
 
 welcome_message: 突破电脑特权, 创造艺术之美.
@@ -8,7 +8,7 @@ creator: <a href="https://twitter.com/LiuChuan_">@LiuChuan_</a>
 
 
 
-url: "http://liuchuanweb.com"
+#url: "http://liuchuanweb.com"
 
 permalink: /:year/:month/:title/
 
