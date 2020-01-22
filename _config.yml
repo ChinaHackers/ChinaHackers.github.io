@@ -1,9 +1,9 @@
 # Basic
-title: Hacker's Liu
+title: Liu’s Den
 subtitle:  人格的完善是本, 财富的确立是末.
 
 welcome_message: 突破电脑特权, 创造艺术之美.
-description: hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / Unity 开发者。<p>正在修行，探求创意之源。</p>There is no perfect system , only undiscovered vulnerabilities.
+description: hi 嗨，我是柳川 (@LiuChuan_)，一名来自中国的 iOS / macOS / Python 开发者。<p>正在修行，探求创意之源。</p>There is no perfect system , only undiscovered vulnerabilities.
 creator: <a href="https://twitter.com/LiuChuan_">@LiuChuan_</a>
 
 
@@ -28,8 +28,8 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: 项目, description: My Projects, url: 'https://github.com/ChinaHackers'}
-    - {title: 关于, description: My Projects, url: 'https://chinahackers.github.io'}
+    - {title: 项目, description: My Projects, url: 'https://github.com/DevLiuSir'}
+    - {title: 关于, description: My Projects, url: 'https://DevLiuSir.github.io'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
@@ -45,11 +45,11 @@ comment:
 # Social
 social:
     weibo: LiuChuan77
-    github: ChinaHackers
+    github: DevLiuSir
     twitter: LiuChuan_
-    #Facebook: ImLiuChuan
+    Facebook: ImDevLiuSir/
    # gplus: 107108267983477358170
-    mail: 93428739@qq.com
+    mail: liuchuan910927@hotmail.com
 
 # Google Analytics
 ga:
