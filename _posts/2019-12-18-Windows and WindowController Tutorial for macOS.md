@@ -28,16 +28,12 @@ tags: macOS开发
 
 
 - 单窗口的 `library-style`应用，比如照片应用(Photos.app)
-
-<p align="center"> 
-<img  src="https://tva1.sinaimg.cn/large/00831rSTly1gdlac7bte0j31cv0u0767.jpg"</p>
+![](https://tva1.sinaimg.cn/large/00831rSTly1gdlac7bte0j31cv0u0767.jpg)
 
 
 - 基于文档的多窗口应用，比如文本编辑应用(TextEdit.app)
 
-<p align="center"> 
-<img  src="https://tva1.sinaimg.cn/large/00831rSTly1gdlac76ty7j31cv0u0q5h.jpg"</p>
-
+![](https://tva1.sinaimg.cn/large/00831rSTly1gdlac76ty7j31cv0u0q5h.jpg)
 
 不管属于哪一类的应用，几乎每一个 macOS 应用都是使用 MVC (Model-View-Controller) 构建的，这是 macOS 开发中核心的开发模式。
 
